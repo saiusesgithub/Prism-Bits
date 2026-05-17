@@ -1,8 +1,9 @@
-import { ArrowRight, Boxes, Code2, GitBranch, Layers3, Sparkles } from "lucide-react";
+import { Boxes, Code2, Layers3, Sparkles } from "lucide-react";
 import { Button } from "@/components/common/button";
 import { Container } from "@/components/common/container";
 import { SectionBadge } from "@/components/common/section-badge";
 import { FeatureCard } from "@/components/landing/feature-card";
+import Prism from "@/components/registry/Prism";
 
 const features = [
   {
@@ -32,30 +33,49 @@ export default function Home() {
   return (
     <main className="relative overflow-hidden">
       <div className="prism-grid pointer-events-none absolute inset-x-0 top-0 h-[720px]" />
-      <Container className="relative pt-28 pb-20 sm:pt-36 lg:pt-44">
+      <div className="pointer-events-none absolute inset-x-0 top-16 h-[620px] opacity-80">
+        <Prism
+          animationType="rotate"
+          timeScale={0.5}
+          height={3.5}
+          baseWidth={5.5}
+          scale={3.6}
+          hueShift={0}
+          colorFrequency={1}
+          noise={0.5}
+          glow={1}
+          bloom={1.2}
+          suspendWhenOffscreen
+        />
+      </div>
+
+      <Container className="relative flex min-h-screen items-center justify-center pt-36 pb-20">
         <section className="mx-auto max-w-5xl text-center">
-          <SectionBadge>Open-source UI component library</SectionBadge>
-          <h1 className="mt-8 text-balance text-5xl font-semibold tracking-normal text-foreground sm:text-7xl lg:text-8xl">
-            Prism Bits
+          <SectionBadge>
+            <span className="mr-2 rounded-full bg-white px-3 py-1 text-sm font-bold text-black">NEW</span>
+            Just shipped v2.0
+          </SectionBadge>
+          <h1 className="mx-auto mt-10 max-w-4xl text-balance text-5xl font-semibold tracking-normal text-foreground sm:text-6xl lg:text-7xl">
+            A spectrum of colors that spark creativity
           </h1>
-          <p className="prism-text mx-auto mt-5 max-w-4xl text-balance text-2xl font-medium sm:text-4xl">
+          <p className="prism-text mx-auto mt-5 hidden max-w-4xl text-balance text-2xl font-medium sm:text-4xl">
             Beautiful open-source UI bits you can copy, customize, and ship.
           </p>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-7 text-muted sm:text-lg">
+          <p className="mx-auto mt-6 hidden max-w-2xl text-pretty text-base leading-7 text-muted sm:text-lg">
             A contributor-friendly component library starter with a premium dark interface, reusable primitives, and a registry path ready for future UI bits.
           </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button href="/components" size="lg">
-              Browse components
-              <ArrowRight className="size-4" />
+              Get started
             </Button>
             <Button href="https://github.com" variant="secondary" size="lg">
-              <GitBranch className="size-4" />
-              GitHub
+              Learn more
             </Button>
           </div>
         </section>
+      </Container>
 
+      <Container className="relative pb-20">
         <section className="mt-20 grid gap-4 rounded-[2rem] border border-white/10 bg-white/[0.035] p-3 shadow-2xl shadow-purple-950/20 backdrop-blur md:grid-cols-3">
           {stats.map((stat) => (
             <div key={stat.label} className="rounded-3xl border border-white/[0.08] bg-black/20 px-6 py-5 text-left">
@@ -66,7 +86,7 @@ export default function Home() {
         </section>
       </Container>
 
-      <Container className="relative pb-24">
+      <Container id="features" className="relative pb-24">
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionBadge>Why Prism Bits</SectionBadge>
@@ -76,7 +96,6 @@ export default function Home() {
           </div>
           <Button href="/docs" variant="ghost">
             Read docs
-            <ArrowRight className="size-4" />
           </Button>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
@@ -86,7 +105,7 @@ export default function Home() {
         </div>
       </Container>
 
-      <Container className="pb-28">
+      <Container id="about" className="pb-28">
         <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-card/70 p-8 shadow-2xl shadow-cyan-950/10 sm:p-12">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--accent-2)/0.16),transparent_24rem)]" />
           <div className="relative grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
@@ -102,15 +121,17 @@ export default function Home() {
             <div className="rounded-3xl border border-white/10 bg-black/35 p-4 font-mono text-sm text-muted">
               <div className="mb-3 flex items-center gap-2 border-b border-white/10 pb-3 text-xs text-muted">
                 <Boxes className="size-4 text-accent-2" />
-                src/components/registry
+                src/components/registry/Prism
               </div>
               <pre className="overflow-x-auto leading-7">
-{`export const componentsRegistry = [
-  {
-    name: "prism-card",
-    status: "planned",
-  },
-];`}
+                {`<Prism
+  animationType="rotate"
+  timeScale={0.5}
+  height={3.5}
+  baseWidth={5.5}
+  scale={3.6}
+  glow={1}
+/>`}
               </pre>
             </div>
           </div>
