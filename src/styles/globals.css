@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: 226 28% 5%;
+  --foreground: 220 30% 96%;
+  --muted: 224 18% 64%;
+  --border: 228 18% 18%;
+  --card: 228 26% 8%;
+  --card-foreground: 220 30% 96%;
+  --accent: 266 94% 68%;
+  --accent-2: 190 94% 66%;
+  --accent-3: 330 92% 70%;
+  --ring: 266 94% 68%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-muted: hsl(var(--muted));
+  --color-border: hsl(var(--border));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-2: hsl(var(--accent-2));
+  --color-accent-3: hsl(var(--accent-3));
+  --font-sans: var(--font-inter);
+}
+
+* {
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+html {
+  background: hsl(var(--background));
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% -10%, hsl(var(--accent) / 0.2), transparent 32rem),
+    radial-gradient(circle at 90% 10%, hsl(var(--accent-2) / 0.14), transparent 28rem),
+    linear-gradient(180deg, hsl(226 33% 6%), hsl(226 28% 5%) 38%, hsl(228 24% 4%));
+  color: hsl(var(--foreground));
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: hsl(var(--accent) / 0.35);
+  color: hsl(var(--foreground));
+}
+
+.prism-grid {
+  background-image:
+    linear-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.prism-text {
+  background: linear-gradient(90deg, hsl(var(--foreground)), hsl(var(--accent-2)), hsl(var(--accent)), hsl(var(--accent-3)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
