@@ -29,6 +29,9 @@ export type ComponentMetadata = {
     preview: string;
     code: string;
     usage: string;
+    html?: string;
+    css?: string;
+    js?: string;
   };
 };
 
@@ -218,6 +221,40 @@ export function HeroBackground() {
   <span>Email</span>
   <input placeholder="you@example.com" />
 </label>`,
+      html: `<label class="field">
+  <span>Email</span>
+  <input placeholder="you@example.com" />
+  <small>We only use this for product updates.</small>
+</label>`,
+      css: `.field {
+  display: grid;
+  gap: 0.6rem;
+  width: min(100%, 340px);
+  color: rgba(255, 255, 255, 0.78);
+  font: 500 14px system-ui, sans-serif;
+}
+
+.field input {
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  padding: 0 16px;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: rgba(125, 229, 255, 0.7);
+  box-shadow: 0 0 0 4px rgba(125, 229, 255, 0.12);
+}
+
+.field small {
+  color: rgba(255, 255, 255, 0.46);
+}`,
+      js: `document.querySelector("input")?.addEventListener("input", (event) => {
+  event.currentTarget.dataset.filled = String(Boolean(event.currentTarget.value));
+});`,
       usage: `Copy the HTML and pair it with your form handler.`,
     },
   },
@@ -238,6 +275,31 @@ export function HeroBackground() {
   height: 12px;
   border-radius: 999px;
   animation: pulse 1s infinite;
+}`,
+      html: `<span class="loader" aria-label="Loading"></span>`,
+      css: `.loader {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: inline-block;
+  background: #9be7ff;
+  box-shadow: 0 0 0 0 rgba(155, 231, 255, 0.7);
+  animation: pulse 1.25s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(155, 231, 255, 0.65);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 22px rgba(155, 231, 255, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(155, 231, 255, 0);
+  }
 }`,
       usage: `<span class="loader" aria-label="Loading"></span>`,
     },
@@ -276,6 +338,33 @@ export function HeroBackground() {
   text-decoration: underline;
   text-decoration-color: #f0a3c7;
   text-decoration-thickness: 0.2em;
+}`,
+      html: `<p class="headline">Build with <span class="highlight">Elegant</span> UI bits.</p>`,
+      css: `.headline {
+  margin: 0;
+  color: white;
+  font: 600 36px/1.15 system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: -0.1em;
+  bottom: -0.08em;
+  height: 0.22em;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #67e8f9, #c4b5fd, #f0a3c7);
+  opacity: 0.72;
+  z-index: -1;
 }`,
       usage: `<span class="highlight">Elegant</span>`,
     },
