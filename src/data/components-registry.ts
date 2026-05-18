@@ -31,7 +31,7 @@ export const componentsRegistry: ComponentMetadata[] = [
     description: "Animated WebGL prism background for expressive hero sections and feature moments.",
     tags: ["webgl", "ogl", "hero", "background"],
     difficulty: "Advanced",
-    author: "React Bits",
+    author: "Prism Bits",
     status: "available",
   },
   {
