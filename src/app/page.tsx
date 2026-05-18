@@ -4,9 +4,10 @@ import { FeatureSection } from "@/components/landing/feature-section";
 import { Footer } from "@/components/landing/footer";
 import { HeroSection } from "@/components/landing/hero-section";
 import { SearchFilters } from "@/components/landing/search-filters";
-import { componentsRegistry } from "@/data/components-registry";
+import { getComponentsRegistry } from "@/lib/registry";
 
-export default function Home() {
+export default async function Home() {
+  const componentsRegistry = await getComponentsRegistry();
   const featuredComponents = componentsRegistry.slice(0, 4);
 
   return (

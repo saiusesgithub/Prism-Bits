@@ -1,7 +1,7 @@
 import { Container } from "@/components/common/container";
 import { ComponentBrowserLayout } from "@/components/component-browser/component-browser-layout";
 import { Footer } from "@/components/landing/footer";
-import { componentsRegistry } from "@/data/components-registry";
+import { getComponentsRegistry } from "@/lib/registry";
 
 type ComponentPageProps = {
   params: Promise<{
@@ -10,7 +10,9 @@ type ComponentPageProps = {
   }>;
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const componentsRegistry = await getComponentsRegistry();
+
   return componentsRegistry.map((component) => ({
     category: component.category,
     slug: component.slug,

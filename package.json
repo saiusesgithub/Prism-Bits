@@ -13,6 +13,7 @@
     "@radix-ui/react-slot": "latest",
     "class-variance-authority": "latest",
     "clsx": "latest",
+    "fast-glob": "^3.3.3",
     "framer-motion": "latest",
     "lucide-react": "latest",
     "next": "latest",

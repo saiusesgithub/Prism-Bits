@@ -55,7 +55,7 @@ export function CategorySearch({ categories, components }: CategorySearchProps) 
       </section>
 
       {filteredCategories.length ? (
-        <CategoryGrid categories={filteredCategories} />
+        <CategoryGrid categories={filteredCategories} components={components} />
       ) : (
         <section className="mt-10 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-8 text-center">
           <h2 className="text-xl font-semibold text-foreground">No categories found</h2>

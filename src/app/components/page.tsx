@@ -2,9 +2,12 @@ import { Container } from "@/components/common/container";
 import { Footer } from "@/components/landing/footer";
 import { SectionBadge } from "@/components/common/section-badge";
 import { CategorySearch } from "@/components/component-browser/category-search";
-import { componentCategories, componentsRegistry } from "@/data/components-registry";
+import { componentCategories } from "@/data/components-registry";
+import { getComponentsRegistry } from "@/lib/registry";
 
-export default function ComponentsPage() {
+export default async function ComponentsPage() {
+  const components = await getComponentsRegistry();
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-background pt-36">
       <Container className="relative pb-24">
@@ -18,7 +21,7 @@ export default function ComponentsPage() {
           </p>
         </section>
 
-        <CategorySearch categories={componentCategories} components={componentsRegistry} />
+        <CategorySearch categories={componentCategories} components={components} />
       </Container>
       <Footer />
     </main>

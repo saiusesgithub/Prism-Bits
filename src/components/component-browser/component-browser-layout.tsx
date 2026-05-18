@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
+import { getCategoryBySlug } from "@/data/components-registry";
 import {
-  getCategoryBySlug,
   getComponentBySlug,
   getComponentsByCategory,
   getFirstComponentForCategory,
-} from "@/data/components-registry";
+} from "@/lib/registry";
 import { ComponentDetailPanel } from "@/components/component-browser/component-detail-panel";
 import { ComponentSidebar } from "@/components/component-browser/component-sidebar";
 
@@ -13,14 +13,14 @@ type ComponentBrowserLayoutProps = {
   selectedSlug?: string;
 };
 
-export function ComponentBrowserLayout({ categorySlug, selectedSlug }: ComponentBrowserLayoutProps) {
+export async function ComponentBrowserLayout({ categorySlug, selectedSlug }: ComponentBrowserLayoutProps) {
   const category = getCategoryBySlug(categorySlug);
   if (!category) notFound();
 
-  const components = getComponentsByCategory(categorySlug);
+  const components = await getComponentsByCategory(categorySlug);
   if (!components.length) notFound();
 
-  const selected = selectedSlug ? getComponentBySlug(categorySlug, selectedSlug) : getFirstComponentForCategory(categorySlug);
+  const selected = selectedSlug ? await getComponentBySlug(categorySlug, selectedSlug) : await getFirstComponentForCategory(categorySlug);
   if (!selected) notFound();
 
   return (

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ComponentCategory } from "@/data/components-registry";
-import { getCategoryComponentCount } from "@/data/components-registry";
 
 type CategoryCardProps = {
   category: ComponentCategory;
+  count: number;
 };
 
-export function CategoryCard({ category }: CategoryCardProps) {
+export function CategoryCard({ category, count }: CategoryCardProps) {
   return (
     <Link
       href={`/components/${category.slug}`}
@@ -17,7 +17,7 @@ export function CategoryCard({ category }: CategoryCardProps) {
         <div className="flex items-start justify-between gap-4">
           <h2 className="text-2xl font-semibold text-foreground">{category.name}</h2>
           <span className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs text-white/58">
-            {getCategoryComponentCount(category.slug)} bits
+            {count} bits
           </span>
         </div>
         <p className="mt-4 text-sm leading-6 text-muted">{category.description}</p>
