@@ -40,10 +40,7 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(circle at 20% -10%, hsl(var(--accent) / 0.2), transparent 32rem),
-    radial-gradient(circle at 90% 10%, hsl(var(--accent-2) / 0.14), transparent 28rem),
-    linear-gradient(180deg, hsl(226 33% 6%), hsl(226 28% 5%) 38%, hsl(228 24% 4%));
+  background: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
@@ -71,4 +68,12 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
 }
