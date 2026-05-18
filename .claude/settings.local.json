@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\" -Recurse -Directory | ForEach-Object { $_.FullName -replace [regex]::Escape\\(\"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\"\\), \".\" } | Sort-Object | head -50)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\" -Recurse -Directory | ForEach-Object { $_.FullName -replace [regex]::Escape\\(\"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\"\\), \".\" } | Sort-Object | Select-Object -First 50)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\app\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\lib\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\data\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\styles\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\app\\\\components\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\app\\\\docs\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\app\\\\showcase\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\registry\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\common\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\landing\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\registry\\\\buttons\" -File | ForEach-Object { $_.Name } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\registry\\\\cards\" -File | ForEach-Object { $_.Name } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\registry\\\\forms\" -File | ForEach-Object { $_.Name } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\registry\\\\loaders\" -File | ForEach-Object { $_.Name } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\registry\\\\navbars\" -File | ForEach-Object { $_.Name } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Saisr\\\\Desktop\\\\Coding\\\\Prism-Bits\\\\src\\\\components\\\\registry\\\\sections\" -File | ForEach-Object { $_.Name } | Sort-Object)"
+    ]
+  }
+}

@@ -3,6 +3,7 @@
 import { Code2, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import type { ComponentMetadata } from "@/data/components-registry";
+import { getCategoryBySlug } from "@/data/components-registry";
 import { Button } from "@/components/common/button";
 import { ComponentPreview } from "@/components/landing/component-preview";
 
@@ -11,6 +12,8 @@ type ComponentCardProps = {
 };
 
 export function ComponentCard({ component }: ComponentCardProps) {
+  const category = getCategoryBySlug(component.category);
+
   return (
     <motion.article
       id={component.slug}
@@ -27,7 +30,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
       <div className="p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-medium text-accent-2">{component.category}</p>
+            <p className="text-sm font-medium text-accent-2">{category?.name ?? component.category}</p>
             <h3 className="mt-1 text-2xl font-semibold text-foreground">{component.name}</h3>
           </div>
           <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs capitalize text-white/62">
@@ -43,7 +46,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
           ))}
         </div>
         <div className="mt-6 grid grid-cols-2 gap-3">
-          <Button href={`/components#${component.slug}`} variant="secondary" className="h-11 rounded-xl text-sm">
+          <Button href={`/components/${component.category}/${component.slug}`} variant="secondary" className="h-11 rounded-xl text-sm">
             <Eye className="size-4" />
             Preview
           </Button>

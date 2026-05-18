@@ -7,6 +7,8 @@ import { SearchFilters } from "@/components/landing/search-filters";
 import { componentsRegistry } from "@/data/components-registry";
 
 export default function Home() {
+  const featuredComponents = componentsRegistry.slice(0, 4);
+
   return (
     <main className="relative overflow-hidden">
       <HeroSection />
@@ -28,7 +30,7 @@ export default function Home() {
           </p>
         </div>
         <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {componentsRegistry.map((component) => (
+          {featuredComponents.map((component) => (
             <ComponentCard key={component.slug} component={component} />
           ))}
         </section>
