@@ -1,0 +1,13 @@
+{
+  "name": "Metric Rail",
+  "slug": "metric-rail",
+  "category": "dashboards",
+  "framework": "react",
+  "description": "A compact metric strip for dashboard summaries and reports.",
+  "tags": ["dashboard", "metrics", "data"],
+  "difficulty": "Intermediate",
+  "status": "draft",
+  "author": {
+    "name": "Prism Bits"
+  }
+}

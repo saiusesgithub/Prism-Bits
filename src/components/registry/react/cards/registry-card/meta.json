@@ -1,0 +1,14 @@
+{
+  "name": "Registry Card",
+  "slug": "registry-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "A compact metadata card for previewing copy-ready UI components.",
+  "tags": ["card", "registry", "metadata"],
+  "difficulty": "Beginner",
+  "status": "planned",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

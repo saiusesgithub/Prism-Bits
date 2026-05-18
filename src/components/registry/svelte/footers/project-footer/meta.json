@@ -1,0 +1,13 @@
+{
+  "name": "Project Footer",
+  "slug": "project-footer",
+  "category": "footers",
+  "framework": "svelte",
+  "description": "A simple footer for docs and open-source project pages.",
+  "tags": ["footer", "links", "docs"],
+  "difficulty": "Beginner",
+  "status": "draft",
+  "author": {
+    "name": "Prism Bits"
+  }
+}
