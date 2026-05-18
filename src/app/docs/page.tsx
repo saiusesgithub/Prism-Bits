@@ -1,5 +1,6 @@
 import { Code2, Eye, GitBranch, Palette, Search } from "lucide-react";
 import { Container } from "@/components/common/container";
+import { Footer } from "@/components/landing/footer";
 import { SectionBadge } from "@/components/common/section-badge";
 
 const docsSteps = [
@@ -32,8 +33,8 @@ const docsSteps = [
 
 export default function DocsPage() {
   return (
-    <main className="min-h-screen pt-36">
-      <Container className="pb-24">
+    <main className="relative min-h-screen overflow-hidden bg-background pt-36">
+      <Container className="relative pb-24">
         <section className="max-w-3xl">
           <SectionBadge>Docs</SectionBadge>
           <h1 className="mt-6 text-4xl font-semibold tracking-normal text-foreground sm:text-6xl">
@@ -46,7 +47,7 @@ export default function DocsPage() {
 
         <section className="mt-12 grid gap-4 md:grid-cols-2">
           {docsSteps.map((step) => (
-            <article key={step.title} className="rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-6 backdrop-blur">
+            <article key={step.title} className="rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-6 shadow-2xl shadow-purple-950/10 backdrop-blur-2xl transition hover:-translate-y-1 hover:border-cyan-200/25 hover:bg-white/[0.065]">
               <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06]">
                 <step.icon className="size-5 text-accent-2" />
               </div>
@@ -56,6 +57,7 @@ export default function DocsPage() {
           ))}
         </section>
       </Container>
+      <Footer />
     </main>
   );
 }
