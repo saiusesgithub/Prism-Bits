@@ -1,0 +1,14 @@
+{
+  "name": "Corner Outline Button",
+  "slug": "corner-outline-button",
+  "category": "buttons",
+  "framework": "html-css-js",
+  "description": "A minimal outline button with animated corner expansion on hover.",
+  "tags": ["button", "outline", "hover"],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Sai Srujan",
+    "github": "saiusesgithub"
+  }
+}

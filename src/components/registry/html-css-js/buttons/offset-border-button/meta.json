@@ -1,0 +1,14 @@
+{
+  "name": "Offset Border Button",
+  "slug": "offset-border-button",
+  "category": "buttons",
+  "framework": "html-css-js",
+  "description": "A bold uppercase button with an offset border-shadow press effect.",
+  "tags": ["button", "border", "shadow"],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Sai Srujan",
+    "github": "saiusesgithub"
+  }
+}

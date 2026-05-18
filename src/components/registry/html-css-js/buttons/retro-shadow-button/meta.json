@@ -1,0 +1,14 @@
+{
+  "name": "Retro Shadow Button",
+  "slug": "retro-shadow-button",
+  "category": "buttons",
+  "framework": "html-css-js",
+  "description": "A rounded retro-style button with a chunky pressed shadow effect.",
+  "tags": ["button", "retro", "shadow"],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Sai Srujan",
+    "github": "saiusesgithub"
+  }
+}
