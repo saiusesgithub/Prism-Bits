@@ -1,9 +1,8 @@
-import { Search } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { Footer } from "@/components/landing/footer";
 import { SectionBadge } from "@/components/common/section-badge";
-import { CategoryGrid } from "@/components/component-browser/category-grid";
-import { componentCategories } from "@/data/components-registry";
+import { CategorySearch } from "@/components/component-browser/category-search";
+import { componentCategories, componentsRegistry } from "@/data/components-registry";
 
 export default function ComponentsPage() {
   return (
@@ -19,14 +18,7 @@ export default function ComponentsPage() {
           </p>
         </section>
 
-        <section className="mt-10 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-3">
-          <div className="flex min-h-14 items-center gap-3 rounded-[1.1rem] border border-white/[0.08] bg-black/25 px-5 text-muted">
-            <Search className="size-5 text-white/45" />
-            <span>Search categories or components</span>
-          </div>
-        </section>
-
-        <CategoryGrid categories={componentCategories} />
+        <CategorySearch categories={componentCategories} components={componentsRegistry} />
       </Container>
       <Footer />
     </main>
