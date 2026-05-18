@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src next.config.ts eslint.config.mjs"
+    "lint": "eslint src next.config.ts eslint.config.mjs",
+    "validate:registry": "node scripts/validate-registry.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "latest",

@@ -31,6 +31,22 @@ const docsSteps = [
   },
 ];
 
+const contributionSteps = [
+  "Pick a framework and category folder under src/components/registry.",
+  "Create a slug folder for your bit, like react/buttons/glass-cta.",
+  "Add the component source, preview file when supported, code snippet, and meta.json.",
+  "Register the component in src/data/components-registry.ts.",
+  "Run npm run validate:registry, npm run lint, and npm run build before opening a pull request.",
+];
+
+const folderExamples = [
+  "react/buttons/glass-cta/component.tsx",
+  "html-css-js/buttons/glass-button/index.html",
+  "css-only/loaders/pulse-loader/style.css",
+  "vue/cards/profile-card/component.vue",
+  "svelte/cards/profile-card/component.svelte",
+];
+
 export default function DocsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-background pt-36">
@@ -55,6 +71,58 @@ export default function DocsPage() {
               <p className="mt-3 text-sm leading-6 text-muted">{step.description}</p>
             </article>
           ))}
+        </section>
+
+        <section className="mt-16 rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-purple-950/10 backdrop-blur-2xl sm:p-8">
+          <SectionBadge>Contributor guide</SectionBadge>
+          <div className="mt-6 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <h2 className="text-3xl font-semibold tracking-normal text-foreground sm:text-4xl">
+                Add a component without guessing the structure.
+              </h2>
+              <p className="mt-4 text-sm leading-6 text-muted">
+                Prism Bits keeps component contributions close to their framework and category. Every bit needs source files, a small metadata file, and a registry entry so the site can route, search, and display it.
+              </p>
+              <ol className="mt-6 space-y-3">
+                {contributionSteps.map((step, index) => (
+                  <li key={step} className="flex gap-3 text-sm leading-6 text-white/68">
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-black/25 text-xs text-white/72">
+                      {index + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="space-y-4">
+              <div className="rounded-[1.25rem] border border-white/10 bg-black/25 p-5">
+                <h3 className="text-lg font-semibold text-foreground">Folder examples</h3>
+                <div className="mt-4 space-y-2 font-mono text-xs text-white/58">
+                  {folderExamples.map((example) => (
+                    <p key={example}>src/components/registry/{example}</p>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-[1.25rem] border border-white/10 bg-black/25 p-5">
+                <h3 className="text-lg font-semibold text-foreground">meta.json minimum</h3>
+                <pre className="mt-4 overflow-auto rounded-2xl bg-black/45 p-4 text-xs leading-5 text-white/68">
+{`{
+  "name": "Glass CTA",
+  "slug": "glass-cta",
+  "category": "buttons",
+  "framework": "react",
+  "description": "A polished call-to-action button pair.",
+  "tags": ["button", "cta", "glass"],
+  "status": "available",
+  "author": {
+    "name": "Contributor Name",
+    "github": "github-username"
+  }
+}`}
+                </pre>
+              </div>
+            </div>
+          </div>
         </section>
       </Container>
       <Footer />
