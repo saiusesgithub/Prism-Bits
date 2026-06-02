@@ -14,7 +14,7 @@ A clear and concise description of what the feature is. Ex. It would be good to 
 
 **Solution to follow**
 <!--
-A clear and concise description of what you want to reproduce.
+A clear and concise description of the proposed solution or implementation approach.
 -->
 
 **Suggest tags for this issue**
