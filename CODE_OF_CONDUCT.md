@@ -34,18 +34,18 @@ If you experience or witness unacceptable behavior, report it as soon as possibl
 - Email: `saisrujanpunati@gmail.com`
 - Include: what happened, where/when it happened, and any relevant links or screenshots.
 
-Reports will be reviewed by the maintainers or moderators. If you are not comfortable reporting by email, you may also open a private issue or contact a maintainer directly.
+Reports will be reviewed by the maintainers or moderators. If you are not comfortable reporting by email, contact the maintainers directly at `saisrujanpunati@gmail.com`.
 
 ## Enforcement
 
-Maintainters/moderators may take any action they deem appropriate in response to unacceptable behavior, including:
+Maintainers/moderators may take any action they deem appropriate in response to unacceptable behavior, including:
 
 - Warning the offender
 - Temporarily or permanently removing access or contributions
 - Removing content that violates this Code of Conduct
 - Banning repeat offenders
 
-Maintainters/moderators will aim to be fair, consistent, and respectful.
+Maintainers/moderators will aim to be fair, consistent, and respectful.
 
 ## Scope
 
@@ -59,4 +59,3 @@ This Code of Conduct applies to all community spaces associated with Prism Bits,
 ## Attribution
 
 This Code of Conduct is based on commonly used community standards (similar in spirit to the Contributor Covenant format). You can update the reporting contact details to match your project’s needs.
-
