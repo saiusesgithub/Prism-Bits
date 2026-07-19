@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/common/button";
 import { Container } from "@/components/common/container";
 import { GitHubIcon } from "@/components/common/github-icon";
 import { GradientBackground } from "@/components/landing/gradient-background";
-import { SectionBadge } from "@/components/common/section-badge";
 
 const stagger = {
   hidden: {},
@@ -17,11 +16,10 @@ const stagger = {
 };
 
 const rise = {
-  hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 22 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
@@ -47,19 +45,9 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
           animate="show"
           className="mx-auto max-w-5xl text-center"
         >
-          <motion.div variants={rise}>
-            <SectionBadge>
-              <span className="rounded-full bg-gradient-to-r from-accent via-accent-3 to-accent-2 px-3 py-1 text-sm font-bold text-white shadow-[0_0_18px_hsl(var(--accent)/0.45)]">
-                NEW
-              </span>
-              <Sparkles className="size-4 text-accent-2" aria-hidden="true" />
-              Open Source UI Library
-            </SectionBadge>
-          </motion.div>
-
           <motion.h1
             variants={rise}
-            className="font-display mt-8 text-balance text-6xl font-normal tracking-normal text-foreground sm:text-7xl lg:text-8xl"
+            className="font-display text-balance text-6xl font-normal tracking-normal text-foreground sm:text-7xl lg:text-8xl"
           >
             Prism Bits
           </motion.h1>
@@ -135,22 +123,6 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
               </li>
             ))}
           </motion.ul>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          aria-hidden="true"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="flex h-10 w-6 items-start justify-center rounded-full border border-white/20 p-1.5"
-          >
-            <div className="h-2.5 w-1 rounded-full bg-gradient-to-b from-accent-2 to-accent" />
-          </motion.div>
         </motion.div>
       </Container>
     </section>

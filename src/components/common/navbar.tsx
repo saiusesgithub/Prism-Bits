@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -39,20 +38,8 @@ export function Navbar() {
             : "shadow-[0_24px_70px_rgb(0_0_0/0.34)] [--prism-surface:hsl(var(--background)/0.55)]",
         )}
       >
-        <div className="flex h-16 items-center justify-between pl-3 pr-2.5 sm:pl-4 sm:pr-3">
-          <Link href="/" className="group flex items-center gap-2.5 text-white">
-            <span className="relative">
-              <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle,hsl(var(--accent)/0.55),transparent_70%)] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
-              <Image
-                src="/prism-bits-icon.png?v=2"
-                alt="Prism Bits"
-                width={44}
-                height={44}
-                className="relative size-11 object-contain transition-transform duration-300 group-hover:rotate-[-10deg] group-hover:scale-110"
-                priority
-                unoptimized
-              />
-            </span>
+        <div className="flex h-16 items-center justify-between pl-5 pr-2.5 sm:pl-6 sm:pr-3">
+          <Link href="/" className="text-white transition-opacity duration-200 hover:opacity-80">
             <span className="font-display text-lg font-normal leading-none tracking-normal">Prism Bits</span>
           </Link>
 

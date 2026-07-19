@@ -23,7 +23,7 @@
   --color-accent: hsl(var(--accent));
   --color-accent-2: hsl(var(--accent-2));
   --color-accent-3: hsl(var(--accent-3));
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-montserrat);
 }
 
 * {
@@ -42,7 +42,7 @@ body {
   margin: 0;
   background: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
 
 a {
@@ -71,7 +71,7 @@ a {
 }
 
 .font-display {
-  font-family: var(--font-display), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-display), var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
 
 .font-script {
