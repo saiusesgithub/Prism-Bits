@@ -4,8 +4,12 @@
   "category": "hero-sections",
   "framework": "react",
   "description": "A centered product hero with a restrained badge, headline, and CTAs.",
-  "tags": ["hero", "landing", "cta"],
-  "difficulty": "Intermediate",
+  "tags": [
+    "hero",
+    "landing",
+    "cta"
+  ],
+  "difficulty": "intermediate",
   "status": "planned",
   "author": {
     "name": "Prism Bits"

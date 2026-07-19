@@ -4,9 +4,13 @@
   "category": "buttons",
   "framework": "react",
   "description": "A polished call-to-action button pair for dark landing pages.",
-  "tags": ["button", "cta", "glass"],
-  "difficulty": "Beginner",
-  "status": "available",
+  "tags": [
+    "button",
+    "cta",
+    "glass"
+  ],
+  "difficulty": "beginner",
+  "status": "planned",
   "author": {
     "name": "Prism Bits",
     "github": "saiusesgithub"

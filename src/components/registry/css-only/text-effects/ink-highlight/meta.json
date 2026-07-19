@@ -4,9 +4,13 @@
   "category": "text-effects",
   "framework": "css-only",
   "description": "A hand-drawn underline treatment for emphasized inline words.",
-  "tags": ["text", "underline", "highlight"],
-  "difficulty": "Beginner",
-  "status": "available",
+  "tags": [
+    "text",
+    "underline",
+    "highlight"
+  ],
+  "difficulty": "beginner",
+  "status": "planned",
   "author": {
     "name": "Prism Bits"
   }

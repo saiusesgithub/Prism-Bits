@@ -4,8 +4,12 @@
   "category": "cards",
   "framework": "react",
   "description": "A compact metadata card for previewing copy-ready UI components.",
-  "tags": ["card", "registry", "metadata"],
-  "difficulty": "Beginner",
+  "tags": [
+    "card",
+    "registry",
+    "metadata"
+  ],
+  "difficulty": "beginner",
   "status": "planned",
   "author": {
     "name": "Prism Bits",

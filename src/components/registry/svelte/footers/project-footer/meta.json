@@ -4,8 +4,12 @@
   "category": "footers",
   "framework": "svelte",
   "description": "A simple footer for docs and open-source project pages.",
-  "tags": ["footer", "links", "docs"],
-  "difficulty": "Beginner",
+  "tags": [
+    "footer",
+    "links",
+    "docs"
+  ],
+  "difficulty": "beginner",
   "status": "draft",
   "author": {
     "name": "Prism Bits"

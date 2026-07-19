@@ -4,10 +4,17 @@
   "category": "backgrounds",
   "framework": "react",
   "description": "Animated WebGL prism background for expressive hero sections and feature moments.",
-  "tags": ["webgl", "ogl", "hero", "background"],
-  "difficulty": "Advanced",
-  "status": "available",
-  "dependencies": ["ogl"],
+  "tags": [
+    "webgl",
+    "ogl",
+    "hero",
+    "background"
+  ],
+  "difficulty": "advanced",
+  "status": "draft",
+  "dependencies": [
+    "ogl"
+  ],
   "author": {
     "name": "Prism Bits",
     "github": "saiusesgithub"

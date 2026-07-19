@@ -4,8 +4,12 @@
   "category": "bento-grids",
   "framework": "react",
   "description": "A responsive bento section for product features and capability highlights.",
-  "tags": ["bento", "features", "grid"],
-  "difficulty": "Intermediate",
+  "tags": [
+    "bento",
+    "features",
+    "grid"
+  ],
+  "difficulty": "intermediate",
   "status": "planned",
   "author": {
     "name": "Prism Bits"

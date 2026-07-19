@@ -4,8 +4,12 @@
   "category": "dashboards",
   "framework": "react",
   "description": "A compact metric strip for dashboard summaries and reports.",
-  "tags": ["dashboard", "metrics", "data"],
-  "difficulty": "Intermediate",
+  "tags": [
+    "dashboard",
+    "metrics",
+    "data"
+  ],
+  "difficulty": "intermediate",
   "status": "draft",
   "author": {
     "name": "Prism Bits"

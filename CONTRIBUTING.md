@@ -92,6 +92,28 @@ npm run lint
 npm run build
 ```
 
+## Continuous Integration
+
+Every pull request and push to `main` runs the GitHub Actions workflow in
+`.github/workflows/ci.yml`. It executes, in order:
+
+1. `npm ci` — dependencies must install cleanly
+2. `npm run validate:registry` — component metadata and folder structure must be valid
+3. `npm run lint` — ESLint must pass
+4. `npm run build` — the Next.js production build must succeed
+
+A pull request cannot be merged until all checks pass. Run the same three
+commands locally (see above) to catch failures before pushing.
+
+The registry validator also enforces:
+
+- the folder path must be exactly `src/components/registry/<framework>/<category>/<slug>/`
+- folder names must match the `framework`, `category`, and `slug` in `meta.json`
+- `difficulty` must be lowercase: `beginner`, `intermediate`, or `advanced`
+- a component with `"status": "available"` must include all required source files
+  for its framework (incomplete work must use `draft` or `planned`)
+- `category`/`slug` routes must be unique across all frameworks
+
 ## Pull Request Checklist
 
 - Component folder is under the correct framework and category.

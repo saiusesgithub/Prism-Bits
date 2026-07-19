@@ -4,8 +4,12 @@
   "category": "forms",
   "framework": "html-css-js",
   "description": "A minimal input field with a soft active border and helper copy.",
-  "tags": ["input", "form", "focus"],
-  "difficulty": "Beginner",
+  "tags": [
+    "input",
+    "form",
+    "focus"
+  ],
+  "difficulty": "beginner",
   "status": "planned",
   "author": {
     "name": "Prism Bits"

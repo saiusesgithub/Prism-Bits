@@ -4,8 +4,12 @@
   "category": "modals",
   "framework": "vue",
   "description": "A calm modal shell for confirmations and upgrade prompts.",
-  "tags": ["modal", "overlay", "dialog"],
-  "difficulty": "Intermediate",
+  "tags": [
+    "modal",
+    "overlay",
+    "dialog"
+  ],
+  "difficulty": "intermediate",
   "status": "planned",
   "author": {
     "name": "Prism Bits"
