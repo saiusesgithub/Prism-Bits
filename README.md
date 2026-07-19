@@ -1,8 +1,8 @@
 <div align="center">
 
-# ✦ Prism Bits
+# Prism Bits
 
-**Elegant open-source UI bits you can copy, customize, and ship.**
+**Copy-first UI components for frontend developers.**
 
 [![CI](https://github.com/saiusesgithub/Prism-Bits/actions/workflows/ci.yml/badge.svg)](https://github.com/saiusesgithub/Prism-Bits/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-white.svg)](LICENSE)
@@ -10,40 +10,13 @@
 
 </div>
 
----
+Prism Bits is an open-source collection of reusable UI components. There is no package to install and no component API to learn: browse a component, preview it, copy the source, and make it yours.
 
-Prism Bits is a **copy-first** component library. There's no npm package to install, no versions to chase, no abstraction to fight. You browse a component, watch it run live, copy the source, and it's yours — restyle it, rewrite it, ship it.
+Unlike many open-source projects with a fixed scope, Prism Bits is designed to keep growing. Buttons, cards, loaders, backgrounds, dashboards, effects, layouts, forms, and entirely new ideas can all live here. Creativity is the main limit.
 
-Every component is a small, self-contained folder in this repository. The website builds itself from those folders automatically.
+Whether this is your first open-source PR or you already contribute regularly, there is room to build something useful and unique. The goal is simple: build a component library the frontend community can use for years.
 
-## ✨ Why copy-first?
-
-- **You own the code.** Once copied, the component is part of *your* project. No breaking updates, no dependency audits, no lock-in.
-- **Readable by design.** Components are written to be understood and edited, not hidden behind props soup.
-- **Zero runtime cost.** Nothing ships to your users except the code you actually pasted.
-- **Framework-honest.** A React bit is real React; an HTML/CSS bit is real HTML/CSS. What you preview is exactly what you copy.
-
-## 🧩 What's inside
-
-Components are organized into **12 categories** — buttons, cards, navbars, forms, loaders, hero sections, backgrounds, text effects, modals, dashboards, bento grids, and footers — across five framework flavors:
-
-| Framework | Live preview | How it renders |
-|---|---|---|
-| **React** | ✅ Real component | Imported and rendered through a build-time generated import map — actual hooks, actual events |
-| **HTML/CSS/JS** | ✅ Live | Sandboxed iframe (`allow-scripts`, no same-origin access) |
-| **CSS-only** | ✅ Live | Same sandboxed iframe |
-| **Vue** | 📄 Code view | Live renderer planned |
-| **Svelte** | 📄 Code view | Live renderer planned |
-
-## 🚀 Using a component
-
-1. Browse the **/components** page on the site and pick a bit.
-2. Check the **live preview** — click it, tab through it, resize it.
-3. Hit **Copy code** and paste it into your project. Done.
-
-React bits ship as a single `component.tsx` with a default export. HTML bits ship as `index.html` + `style.css` (+ optional `script.js`) you can drop anywhere.
-
-## 🛠️ Running the site locally
+## Quick Start
 
 ```bash
 git clone https://github.com/saiusesgithub/Prism-Bits.git
@@ -52,74 +25,146 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). That's it — the component registry is discovered from the filesystem at startup, and the React preview map is generated automatically before `dev` and `build`.
+Open [http://localhost:3000](http://localhost:3000).
 
-### Scripts
+## New Contributors
+
+Want to add a component? You only need one folder:
+
+```text
+registry/<framework>/<category>/<slug>/
+```
+
+Example:
+
+```text
+registry/react/buttons/glass-cta/
+```
+
+Then add your component files and `meta.json`. The website discovers it automatically. You do not manually register components anywhere.
+
+Full contributor guide: [CONTRIBUTING.md](CONTRIBUTING.md)
+
+Using an AI/vibecoder to contribute? Use [VIBE_CODING.md](VIBE_CODING.md). It contains the repo rules and a copy-paste prompt for component-only contributions.
+
+## What You Can Build
+
+Supported categories:
+
+`buttons`, `cards`, `navbars`, `forms`, `loaders`, `hero-sections`, `backgrounds`, `text-effects`, `modals`, `dashboards`, `bento-grids`, `footers`
+
+Supported frameworks:
+
+| Framework | Source files | Live preview today |
+|---|---|---|
+| `react` | `component.tsx`, optional `preview.tsx` | Yes, real React render |
+| `html-css-js` | `index.html`, `style.css`, optional `script.js` | Yes, sandboxed iframe |
+| `css-only` | `index.html`, `style.css` | Yes, sandboxed iframe |
+| `vue` | `component.vue` | No, code view only |
+| `svelte` | `component.svelte` | No, code view only |
+
+## Before Opening a PR
+
+```bash
+npm run validate:registry
+npm run lint
+npm run build
+```
+
+Every PR should include a screenshot or GIF of the component.
+
+---
+
+# Detailed Docs
+
+## How Prism Bits Works
+
+Every component is stored as a self-contained folder under `registry/`.
+
+```text
+registry/
+  react/
+    buttons/
+      glass-cta/
+        component.tsx
+        preview.tsx
+        meta.json
+  html-css-js/
+    buttons/
+      retro-shadow-button/
+        index.html
+        style.css
+        meta.json
+  css-only/
+    loaders/
+      pulse-loader/
+        index.html
+        style.css
+        meta.json
+```
+
+The site scans `registry/**/meta.json`, validates each folder, and creates component pages at:
+
+```text
+/components/<category>/<slug>
+```
+
+There is no central list to edit. If the folder and metadata are valid, the component appears automatically.
+
+## Scripts
 
 | Command | What it does |
 |---|---|
-| `npm run dev` | Start the dev server (generates the React preview map first) |
-| `npm run build` | Production build (also generates the preview map) |
-| `npm run lint` | ESLint over the whole codebase |
-| `npm run validate:registry` | Validate every component's folder structure + `meta.json` |
-| `npm run generate:react-previews` | Regenerate the React preview import map manually |
+| `npm run dev` | Starts the local Next.js dev server |
+| `npm run build` | Creates a production build |
+| `npm run lint` | Runs ESLint |
+| `npm run validate:registry` | Validates every component folder and `meta.json` |
+| `npm run generate:react-previews` | Regenerates the React preview import map |
 
-## ⚙️ How the registry works
+`npm run dev` and `npm run build` automatically regenerate React previews first.
 
-```text
-src/components/registry/<framework>/<category>/<slug>/
-        │
-        ├─ discovered automatically (fast-glob over meta.json)
-        ├─ validated (folder ↔ meta consistency, required files, unique routes)
-        ├─ routed statically → /components/<category>/<slug>
-        └─ previewed → React import map · sandboxed iframe · code view
-```
+## Registry Rules
 
-- **No central list.** Adding a folder with a valid `meta.json` is all it takes — the site lists, routes, searches, and previews it automatically.
-- **React previews are real.** `scripts/generate-react-preview-map.mjs` scans React component folders and emits statically analyzable dynamic imports, so every `component.tsx` renders as a genuine, code-split React component behind an error boundary.
-- **Contributor code is contained.** HTML/JS runs origin-isolated in a sandboxed iframe; a crashing React preview is caught by an error boundary without taking down the page.
+- Folder path must be exactly `registry/<framework>/<category>/<slug>/`.
+- Folder names must match `framework`, `category`, and `slug` in `meta.json`.
+- Slugs must be lowercase kebab-case, such as `retro-shadow-button`.
+- Slugs must be unique per category across all frameworks.
+- Components marked `"status": "available"` must include all required source files.
+- React components must default-export the reusable component from `component.tsx`.
+- React preview wrappers, when used, must default-export a zero-prop component from `preview.tsx`.
 
-### Project structure
+## Project Structure
 
 ```text
-src/
-├── app/                      # Next.js App Router pages
-│   ├── components/           # /components, /components/[category], /components/[category]/[slug]
-│   ├── docs/  showcase/      # docs + showcase pages
-│   └── page.tsx              # landing page
-├── components/
-│   ├── registry/             # ⭐ THE COMPONENT LIBRARY — contribute here
-│   │   ├── react/            #    react/<category>/<slug>/{component.tsx, preview.tsx?, meta.json}
-│   │   ├── html-css-js/      #    <category>/<slug>/{index.html, style.css, script.js?, meta.json}
-│   │   ├── css-only/  vue/  svelte/
-│   ├── component-browser/    # site UI: sidebar, preview panel, code tabs
-│   ├── landing/  common/     # site UI: hero, navbar, buttons
-│   └── effects/              # site infrastructure (WebGL prism background)
-├── data/components-registry.ts   # categories + metadata types
-├── lib/registry.ts               # filesystem discovery (server-only)
-└── generated/                    # auto-generated React preview map (gitignored)
-scripts/
-├── validate-registry.mjs         # the validator CI runs
-└── generate-react-preview-map.mjs
+registry/                  # Component source contributed by the community
+scripts/                   # Registry validation and React preview generation
+src/app/                   # Next.js App Router pages
+src/components/            # Website UI, preview panels, landing sections
+src/data/                  # Category and metadata types
+src/lib/                   # Registry discovery and preview helpers
+src/generated/             # Auto-generated React preview map, gitignored
 ```
 
-## 🧪 Quality gates
+Most contributors should only touch files inside one `registry/<framework>/<category>/<slug>/` folder.
 
-Every PR and push to `main` runs [CI](.github/workflows/ci.yml): clean install → registry validation → lint → production build. The validator enforces folder/metadata consistency, slug format, unique routes, required source files for `available` components, and default exports for React components — with error messages that name the exact folder and problem. Deployment to production happens automatically from `main` via Vercel; CI and deployment are separate.
+## Quality Gates
 
-## 🤝 Contributing
-
-The whole process at a glance:
+CI runs on pull requests and pushes to `main`:
 
 ```text
-Claim an issue → get assigned → create your folder → add code + meta.json
-       → test locally → run validation → open a PR with a screenshot
+npm ci -> npm run validate:registry -> npm run lint -> npm run build
 ```
 
-Full guide with folder templates and rules: **[CONTRIBUTING.md](CONTRIBUTING.md)** · Be kind: **[Code of Conduct](CODE_OF_CONDUCT.md)**
+The validator checks folder depth, metadata consistency, slug format, supported categories, unique routes, required files, React default exports, and generated React preview entries.
 
-Good first contribution ideas: complete one of the `planned` components already in the registry, or propose a new bit with the **New component** issue template.
+## Contributing
 
-## 📄 License
+Start here: [CONTRIBUTING.md](CONTRIBUTING.md)
 
-[MIT](LICENSE) — free for personal and commercial use. Copy away.
+AI-assisted component workflow: [VIBE_CODING.md](VIBE_CODING.md)
+
+Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+
+## License
+
+[MIT](LICENSE). Free for personal and commercial use.

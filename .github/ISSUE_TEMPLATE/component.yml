@@ -24,7 +24,7 @@ body:
     attributes:
       label: Slug
       description: Lowercase kebab-case — becomes the URL and folder name
-      placeholder: e.g. neon-toggle
+      placeholder: e.g. glass-cta
     validations:
       required: true
 

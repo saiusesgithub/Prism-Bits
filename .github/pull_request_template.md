@@ -15,7 +15,7 @@ Closes #<!-- issue number you were assigned -->
 ## Checklist
 
 - [ ] I was assigned the linked issue before opening this PR
-- [ ] One component only; nothing changed outside `src/components/registry/<framework>/<category>/<slug>/`
+- [ ] One component only; nothing changed outside `registry/<framework>/<category>/<slug>/`
 - [ ] Folder names match `framework`, `category`, and `slug` in `meta.json` exactly
 - [ ] All required files for my framework are present (see CONTRIBUTING.md table)
 - [ ] `npm run validate:registry` passes
