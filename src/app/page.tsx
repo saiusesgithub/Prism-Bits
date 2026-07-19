@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <main className="relative overflow-hidden">
-      <HeroSection />
+      <HeroSection componentCount={componentsRegistry.length} />
 
       <Container className="relative pb-20">
         <SearchFilters />

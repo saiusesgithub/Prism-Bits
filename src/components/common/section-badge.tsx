@@ -7,7 +7,7 @@ export function SectionBadge({ className, ...props }: SectionBadgeProps) {
   return (
     <div
       className={cn(
-        "inline-flex min-h-11 items-center rounded-full border border-white/[0.08] bg-black/38 px-2.5 py-1 text-base font-medium tracking-normal text-white/54 shadow-[inset_0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-md",
+        "prismatic-border inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-1 text-base font-medium tracking-normal text-white/72 shadow-[0_10px_30px_rgb(0_0_0/0.3)] backdrop-blur-md [--prism-surface:hsl(var(--background)/0.62)]",
         className,
       )}
       {...props}
