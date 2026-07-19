@@ -1,0 +1,17 @@
+{
+  "name": "Pulse Loader",
+  "slug": "pulse-loader",
+  "category": "loaders",
+  "framework": "css-only",
+  "description": "A small CSS-only loading indicator for compact interface states.",
+  "tags": [
+    "loader",
+    "css",
+    "motion"
+  ],
+  "difficulty": "beginner",
+  "status": "available",
+  "author": {
+    "name": "Prism Bits"
+  }
+}

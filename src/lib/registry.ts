@@ -130,7 +130,7 @@ async function loadComponentFromMeta(metaPath: string): Promise<ComponentMetadat
 }
 
 export async function getComponentsRegistry() {
-  const metaPaths = await fg("src/components/registry/**/**/**/meta.json", {
+  const metaPaths = await fg("registry/**/meta.json", {
     absolute: true,
     onlyFiles: true,
   });

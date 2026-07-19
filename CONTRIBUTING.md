@@ -22,6 +22,32 @@ registry/<framework>/<category>/<slug>/
 
 One component = one issue = one PR.
 
+## Elite Coders Summer of Code
+
+Prism Bits is being prepared for contributors in the Elite Coders Summer of Code open-source program.
+
+Program rules:
+
+- **Start from an issue.** Pick an issue labeled `component`, `good first issue`, or `beginner-friendly`, then comment that you want to work on it.
+- **Wait for assignment.** A maintainer or mentor must assign the issue before you open a PR.
+- **One contributor per issue.** If an issue is already assigned, choose another issue unless a maintainer says collaboration is allowed.
+- **Use GitHub for project work.** Ask implementation questions in the assigned issue and review questions in the PR. Use any official program channel only for announcements, coordination, or non-code questions.
+- **Keep PRs focused.** A normal program PR should add one component inside `registry/<framework>/<category>/<slug>/`.
+- **Review window.** Maintainers will try to review program PRs within 48 to 72 hours. During high traffic, reviews may take longer.
+- **Be responsive.** If review changes are requested, update the same PR instead of opening a new one.
+
+What counts as an accepted component contribution:
+
+- The issue was assigned to you before the PR.
+- The PR adds one complete, original component.
+- The component lives in the correct `registry/<framework>/<category>/<slug>/` folder.
+- `meta.json` is valid and uses `"status": "available"`.
+- The component has no banned APIs, network calls, CDN scripts, or unapproved dependencies.
+- The component is responsive and accessible for its interaction type.
+- The PR includes a screenshot or GIF.
+- `npm run validate:registry`, `npm run lint`, and `npm run build` pass.
+- Requested review changes are addressed.
+
 ## Quick Cheat Sheet
 
 Folder:
@@ -288,7 +314,25 @@ Use one of these category slugs:
 | Bento Grids | `bento-grids` |
 | Footers | `footers` |
 
-New categories need maintainer approval first.
+### Proposing a New Category
+
+Want to add a component type that doesn't fit any category above (for example
+pricing tables, timelines, or toggles)? Categories are defined centrally in
+`src/data/components-registry.ts`, so adding one is a separate, maintainer-approved change:
+
+1. **Open a category proposal issue** using the "New category" issue template
+   (do not bundle it with a component PR).
+2. In the issue, state the category name, a kebab-case slug, a one-line
+   description, and 2–3 example components that would live in it.
+3. **Wait for maintainer approval.** A category is only worth adding when
+   several distinct components could live in it.
+4. After approval, a maintainer either adds the category or assigns you a
+   small separate PR that only edits `src/data/components-registry.ts`.
+5. Once the category exists on `main`, contribute your component to it through
+   the normal flow.
+
+A component PR that invents its own category will fail validation — the
+validator only accepts the category slugs listed above.
 
 ## Slug Rules
 

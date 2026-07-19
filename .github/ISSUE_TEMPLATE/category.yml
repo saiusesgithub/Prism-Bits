@@ -1,0 +1,60 @@
+name: New category
+description: Propose a new component category for the registry (requires maintainer approval)
+title: "[Category] <slug>"
+labels: ["category-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Categories are defined centrally and need maintainer approval before any
+        component can use them. A good category has room for **several distinct
+        components** — not just the one you want to build.
+
+  - type: input
+    id: name
+    attributes:
+      label: Category name
+      description: Title Case display name
+      placeholder: e.g. Pricing Tables
+    validations:
+      required: true
+
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      description: Lowercase kebab-case
+      placeholder: e.g. pricing-tables
+    validations:
+      required: true
+
+  - type: input
+    id: description
+    attributes:
+      label: One-line description
+      description: Shown on the category card on the /components page
+      placeholder: Plan comparison layouts for SaaS and product sites.
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Example components
+      description: List 2–3 distinct components that would live in this category
+      placeholder: |
+        - three-tier pricing grid
+        - single-plan highlight card
+        - usage-based slider table
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked the existing 12 categories and none of them fits this component type
+          required: true
+        - label: I understand the category must be approved and added to main before component PRs can use it
+          required: true

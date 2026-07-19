@@ -1,0 +1,53 @@
+.focus-field {
+  width: min(100%, 340px);
+  font-family: inherit;
+}
+
+.focus-field__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(244, 245, 251, 0.85);
+}
+
+.focus-field__control {
+  position: relative;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.focus-field__control:focus-within {
+  border-color: rgba(167, 139, 250, 0.8);
+  box-shadow:
+    0 0 0 4px rgba(167, 139, 250, 0.18),
+    0 0 24px rgba(167, 139, 250, 0.25);
+}
+
+.focus-field__input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  font-size: 0.95rem;
+  color: #f4f5fb;
+  outline: none;
+}
+
+.focus-field__input::placeholder {
+  color: rgba(244, 245, 251, 0.35);
+}
+
+.focus-field__helper {
+  margin: 8px 2px 0;
+  font-size: 0.78rem;
+  color: rgba(244, 245, 251, 0.45);
+  transition: color 0.25s ease;
+}
+
+.focus-field:focus-within .focus-field__helper {
+  color: rgba(167, 139, 250, 0.85);
+}

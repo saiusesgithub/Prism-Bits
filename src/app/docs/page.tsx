@@ -32,9 +32,9 @@ const docsSteps = [
 ];
 
 const contributionSteps = [
-  "Pick a framework and category folder under src/components/registry.",
+  "Pick a framework and category folder under registry.",
   "Create a slug folder for your bit, like react/buttons/glass-cta.",
-  "Add the component source, optional preview.tsx for React, and meta.json — no manual registration needed.",
+  "Add the component source, optional preview.tsx for React, and meta.json. The site discovers it automatically.",
   "Run npm run dev and open /components/<category>/<slug> to check the live preview.",
   "Run npm run validate:registry, npm run lint, and npm run build before opening a pull request.",
 ];
@@ -43,8 +43,13 @@ const folderExamples = [
   "react/buttons/glass-cta/component.tsx",
   "html-css-js/buttons/retro-shadow-button/index.html",
   "css-only/loaders/pulse-loader/style.css",
-  "vue/cards/profile-card/component.vue",
-  "svelte/cards/profile-card/component.svelte",
+  "vue/modals/soft-modal/component.vue",
+  "svelte/footers/project-footer/component.svelte",
+];
+
+const previewSupport = [
+  "React, HTML/CSS/JS, and CSS-only components support live preview today.",
+  "Vue and Svelte components currently show code view only.",
 ];
 
 export default function DocsPage() {
@@ -54,7 +59,7 @@ export default function DocsPage() {
         <section className="max-w-3xl">
           <SectionBadge>Docs</SectionBadge>
           <h1 className="mt-6 text-4xl font-semibold tracking-normal text-foreground sm:text-6xl">
-            How Prism Bits will work.
+            How Prism Bits works.
           </h1>
           <p className="mt-5 text-base leading-7 text-muted sm:text-lg">
             Prism Bits is a copy-first component library: discover a bit, preview it, copy the source, then shape it to your product.
@@ -81,7 +86,7 @@ export default function DocsPage() {
                 Add a component without guessing the structure.
               </h2>
               <p className="mt-4 text-sm leading-6 text-muted">
-                Prism Bits keeps component contributions close to their framework and category. Every bit needs source files, a small metadata file, and a registry entry so the site can route, search, and display it.
+                Prism Bits keeps component contributions close to their framework and category. Every bit needs source files and a small metadata file. No manual registration is required.
               </p>
               <ol className="mt-6 space-y-3">
                 {contributionSteps.map((step, index) => (
@@ -99,7 +104,15 @@ export default function DocsPage() {
                 <h3 className="text-lg font-semibold text-foreground">Folder examples</h3>
                 <div className="mt-4 space-y-2 font-mono text-xs text-white/58">
                   {folderExamples.map((example) => (
-                    <p key={example}>src/components/registry/{example}</p>
+                    <p key={example}>registry/{example}</p>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-[1.25rem] border border-white/10 bg-black/25 p-5">
+                <h3 className="text-lg font-semibold text-foreground">Live preview support</h3>
+                <div className="mt-4 space-y-2 text-sm leading-6 text-white/68">
+                  {previewSupport.map((item) => (
+                    <p key={item}>{item}</p>
                   ))}
                 </div>
               </div>

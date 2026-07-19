@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import fg from "fast-glob";
 
-const REACT_ROOT = "src/components/registry/react";
+const REACT_ROOT = "registry/react";
 const OUTPUT_PATH = "src/generated/react-preview-map.tsx";
 
 // A preview entry exists for every react/<category>/<slug>/ folder that ships
@@ -16,7 +16,7 @@ const entries = componentFiles.map((filePath) => {
   const componentDir = dirname(filePath);
   const [category, slug] = componentDir.split("/").slice(-2);
   const hasPreview = existsSync(join(componentDir, "preview.tsx"));
-  const moduleSpecifier = `@/components/registry/react/${category}/${slug}/${hasPreview ? "preview" : "component"}`;
+  const moduleSpecifier = `@registry/react/${category}/${slug}/${hasPreview ? "preview" : "component"}`;
 
   return { key: `${category}/${slug}`, moduleSpecifier };
 });

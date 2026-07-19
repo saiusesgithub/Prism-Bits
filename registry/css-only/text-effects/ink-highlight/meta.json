@@ -1,0 +1,17 @@
+{
+  "name": "Ink Highlight",
+  "slug": "ink-highlight",
+  "category": "text-effects",
+  "framework": "css-only",
+  "description": "A hand-drawn underline treatment for emphasized inline words.",
+  "tags": [
+    "text",
+    "underline",
+    "highlight"
+  ],
+  "difficulty": "beginner",
+  "status": "available",
+  "author": {
+    "name": "Prism Bits"
+  }
+}

@@ -3,7 +3,7 @@ import { dirname, join, relative, sep } from "node:path";
 import fg from "fast-glob";
 import ts from "typescript";
 
-const REGISTRY_ROOT = "src/components/registry";
+const REGISTRY_ROOT = "registry";
 const PREVIEW_MAP_PATH = "src/generated/react-preview-map.tsx";
 
 // Parses a .tsx file with the TypeScript compiler and reports whether it has a

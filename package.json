@@ -2,38 +2,41 @@
   "name": "prism-bits",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "predev": "npm run generate:react-previews",
     "dev": "next dev",
     "prebuild": "npm run generate:react-previews",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src next.config.ts eslint.config.mjs",
+    "lint": "eslint src registry next.config.ts eslint.config.mjs",
     "generate:react-previews": "node scripts/generate-react-preview-map.mjs",
     "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "latest",
-    "class-variance-authority": "latest",
-    "clsx": "latest",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "fast-glob": "^3.3.3",
-    "framer-motion": "latest",
-    "lucide-react": "latest",
-    "next": "latest",
-    "ogl": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "tailwind-merge": "latest"
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.16.0",
+    "next": "^16.2.6",
+    "ogl": "^1.0.11",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
+    "@tailwindcss/postcss": "^4.3.0",
+    "@types/node": "^25.8.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
     "playwright-core": "^1.61.1",
-    "tailwindcss": "latest",
-    "typescript": "latest"
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "name": "Glass Modal",
+  "slug": "glass-modal",
+  "category": "modals",
+  "framework": "html-css-js",
+  "description": "A frosted-glass confirmation dialog with overlay dismiss and Escape-to-close.",
+  "tags": ["modal", "dialog", "glass", "overlay"],
+  "status": "available",
+  "difficulty": "intermediate",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

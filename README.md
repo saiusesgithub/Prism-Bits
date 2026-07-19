@@ -47,6 +47,8 @@ Full contributor guide: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 Using an AI/vibecoder to contribute? Use [VIBE_CODING.md](VIBE_CODING.md). It contains the repo rules and a copy-paste prompt for component-only contributions.
 
+Contributing through Elite Coders Summer of Code? Start with the program section in [CONTRIBUTING.md](CONTRIBUTING.md#elite-coders-summer-of-code): claim an issue, wait for assignment, keep the PR focused, and include a screenshot.
+
 ## What You Can Build
 
 Supported categories:
