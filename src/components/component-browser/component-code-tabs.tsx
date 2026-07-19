@@ -8,12 +8,18 @@ type ComponentCodeTabsProps = {
   component: ComponentMetadata;
 };
 
-const tabs = ["Code", "Usage"] as const;
+type TabName = "Code" | "Usage" | "Preview";
 
 export function ComponentCodeTabs({ component }: ComponentCodeTabsProps) {
-  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("Code");
+  const tabs: TabName[] = component.files.previewSource ? ["Code", "Usage", "Preview"] : ["Code", "Usage"];
+  const [activeTab, setActiveTab] = useState<TabName>("Code");
   const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
-  const content = activeTab === "Usage" ? component.files.usage : component.files.code;
+  const content =
+    activeTab === "Usage"
+      ? component.files.usage
+      : activeTab === "Preview"
+        ? component.files.previewSource ?? component.files.code
+        : component.files.code;
 
   const copyContent = async () => {
     try {

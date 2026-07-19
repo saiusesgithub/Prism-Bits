@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npm run generate:react-previews",
     "dev": "next dev",
+    "prebuild": "npm run generate:react-previews",
     "build": "next build",
     "start": "next start",
     "lint": "eslint src next.config.ts eslint.config.mjs",
-    "validate:registry": "node scripts/validate-registry.mjs"
+    "generate:react-previews": "node scripts/generate-react-preview-map.mjs",
+    "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "latest",

@@ -1,8 +1,34 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import fg from "fast-glob";
+import ts from "typescript";
 
 const REGISTRY_ROOT = "src/components/registry";
+const PREVIEW_MAP_PATH = "src/generated/react-preview-map.tsx";
+
+// Parses a .tsx file with the TypeScript compiler and reports whether it has a
+// default export (`export default ...` or `export { X as default }`).
+function hasDefaultExport(filePath) {
+  const sourceFile = ts.createSourceFile(filePath, readFileSync(filePath, "utf8"), ts.ScriptTarget.Latest, true);
+  let found = false;
+
+  for (const node of sourceFile.statements) {
+    if (ts.isExportAssignment(node) && !node.isExportEquals) found = true;
+    if (
+      ts.canHaveModifiers(node) &&
+      ts.getModifiers(node)?.some((modifier) => modifier.kind === ts.SyntaxKind.DefaultKeyword)
+    ) {
+      found = true;
+    }
+    if (ts.isExportDeclaration(node) && node.exportClause && ts.isNamedExports(node.exportClause)) {
+      if (node.exportClause.elements.some((element) => element.name.text === "default")) found = true;
+    }
+  }
+
+  return found;
+}
+
+const previewMapSource = existsSync(PREVIEW_MAP_PATH) ? readFileSync(PREVIEW_MAP_PATH, "utf8") : null;
 
 const registrySource = readFileSync("src/data/components-registry.ts", "utf8");
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -148,6 +174,32 @@ for (const metaPath of metaPaths) {
     for (const fileName of requiredFilesByFramework[meta.framework]) {
       if (!existsSync(join(componentDir, fileName))) {
         fail(componentDir, `status is "available" but required ${meta.framework} file "${fileName}" is missing`);
+      }
+    }
+  }
+
+  // --- React source rules ---
+  if (meta.framework === "react") {
+    const componentTsxPath = join(componentDir, "component.tsx");
+    const previewTsxPath = join(componentDir, "preview.tsx");
+    const hasComponentTsx = existsSync(componentTsxPath);
+    const hasPreviewTsx = existsSync(previewTsxPath);
+
+    if (hasPreviewTsx && !hasComponentTsx) {
+      fail(componentDir, `preview.tsx exists but component.tsx is missing — preview.tsx is only a demo wrapper for component.tsx`);
+    }
+    if (hasComponentTsx && !hasDefaultExport(componentTsxPath)) {
+      fail(componentDir, `component.tsx must default-export the reusable React component`);
+    }
+    if (hasPreviewTsx && !hasDefaultExport(previewTsxPath)) {
+      fail(componentDir, `preview.tsx must default-export a zero-prop preview component`);
+    }
+
+    if (meta.status === "available") {
+      if (!previewMapSource) {
+        fail(componentDir, `no generated preview map found at ${PREVIEW_MAP_PATH} — run "npm run generate:react-previews"`);
+      } else if (!previewMapSource.includes(`"${folderCategory}/${folderSlug}":`)) {
+        fail(componentDir, `status is "available" but "${folderCategory}/${folderSlug}" has no entry in ${PREVIEW_MAP_PATH} — run "npm run generate:react-previews"`);
       }
     }
   }

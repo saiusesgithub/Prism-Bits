@@ -76,11 +76,51 @@ The `slug` becomes the URL, for example `/components/buttons/retro-shadow-button
 
 ## Framework Files
 
-- React: add `component.tsx`, optionally `preview.tsx` and `code.ts`.
+- React: add `component.tsx`, optionally `preview.tsx`.
 - HTML/CSS/JS: add `index.html`, `style.css`, and optional `script.js`.
 - CSS-only: add `index.html` and `style.css`.
 - Vue: add `component.vue`.
 - Svelte: add `component.svelte`.
+
+## React Components
+
+React components get a real live preview — your `component.tsx` is imported and
+rendered by the site through a build-time generated import map. You never edit
+shared site code or register your slug anywhere.
+
+### Workflow
+
+1. Create the folder: `src/components/registry/react/<category>/<slug>/`
+2. Add `component.tsx` — the reusable component users will copy.
+   It **must default-export** the React component. Add `"use client"` at the top
+   if it uses hooks, events, or browser APIs.
+3. Add `preview.tsx` (optional) — a **zero-prop demo wrapper** that
+   default-exports a component. Use it when `component.tsx` needs props, sample
+   data, or layout context. If `preview.tsx` exists it is rendered in the
+   preview panel; otherwise `component.tsx` is rendered directly.
+4. Add `meta.json` (same schema as every framework).
+5. Run `npm run dev` and open `/components/<category>/<slug>`.
+   The preview map is generated automatically before `dev` and `build`.
+   **If you add a React component while the dev server is already running, run
+   `npm run generate:react-previews` and restart the dev server** — the import
+   map is generated at startup, not watched.
+6. Run `npm run validate:registry`, `npm run lint`, and `npm run build`.
+
+### Minimal example
+
+```txt
+src/components/registry/react/buttons/example-button/
+  component.tsx   ← default-exports ExampleButton (shown in the Code tab)
+  preview.tsx     ← optional; default-exports a zero-prop demo
+  meta.json
+```
+
+### Code tab rules
+
+- The Code tab always shows `component.tsx` — `preview.tsx` never replaces it.
+- When `preview.tsx` exists it appears in a separate "Preview" tab.
+- `code.ts` is only used as a snippet override for components that have no
+  source module (e.g. hand-polished HTML snippets).
 
 ## Validate Locally
 

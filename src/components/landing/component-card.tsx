@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import type { ComponentMetadata } from "@/data/components-registry";
 import { getCategoryBySlug } from "@/data/components-registry";
 import { Button } from "@/components/common/button";
-import { ComponentPreview } from "@/components/landing/component-preview";
+import { ComponentCardPreview } from "@/components/landing/component-card-preview";
 
 type ComponentCardProps = {
   component: ComponentMetadata;
@@ -25,7 +25,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
       className="group overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-cyan-950/10 backdrop-blur transition duration-300 hover:border-cyan-200/30 hover:bg-white/[0.065] hover:shadow-cyan-950/25"
     >
       <div className="h-52 overflow-hidden border-b border-white/10">
-        <ComponentPreview slug={component.slug} />
+        <ComponentCardPreview component={component} />
       </div>
       <div className="p-5">
         <div className="flex items-start justify-between gap-4">

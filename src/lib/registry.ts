@@ -53,9 +53,7 @@ function validateString(value: unknown) {
   return typeof value === "string" && value.trim() ? value.trim() : null;
 }
 
-function getDefaultCode(meta: ComponentMetaJson, files: { html?: string; css?: string; js?: string; component?: string }) {
-  if (files.component) return files.component;
-
+function getAssembledWebCode(meta: ComponentMetaJson, files: { html?: string; css?: string; js?: string }) {
   const chunks = [];
   if (files.html) chunks.push(files.html);
   if (files.css) chunks.push(`<style>\n${files.css}\n</style>`);
@@ -92,10 +90,15 @@ async function loadComponentFromMeta(metaPath: string): Promise<ComponentMetadat
     const tsxComponent = await readOptionalFile(directory, "component.tsx");
     const vueComponent = await readOptionalFile(directory, "component.vue");
     const svelteComponent = await readOptionalFile(directory, "component.svelte");
-    const preview = await readOptionalFile(directory, "preview.tsx");
+    const previewSource = await readOptionalFile(directory, "preview.tsx");
     const codeFile = await readOptionalFile(directory, "code.ts");
     const componentSource = tsxComponent ?? vueComponent ?? svelteComponent;
-    const code = codeFile ?? getDefaultCode(meta, { html, css, js, component: componentSource });
+    // Code-tab source selection, in priority order:
+    // 1. component.tsx / component.vue / component.svelte — the reusable source users copy.
+    //    preview.tsx is a demo wrapper and never replaces it.
+    // 2. code.ts — hand-written snippet override for components without a source module.
+    // 3. Assembled index.html + style.css + script.js for web components.
+    const code = componentSource ?? codeFile ?? getAssembledWebCode(meta, { html, css, js });
 
     return {
       name,
@@ -112,9 +115,9 @@ async function loadComponentFromMeta(metaPath: string): Promise<ComponentMetadat
       status: normalizeStatus(meta.status),
       dependencies,
       files: {
-        preview: preview ?? `${framework === "react" ? "React live preview" : "Code preview"}`,
         code,
         usage: componentSource ? `<${name.replace(/\s+/g, "")} />` : html ?? code,
+        previewSource,
         html,
         css,
         js,

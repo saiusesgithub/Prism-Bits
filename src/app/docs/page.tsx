@@ -34,14 +34,14 @@ const docsSteps = [
 const contributionSteps = [
   "Pick a framework and category folder under src/components/registry.",
   "Create a slug folder for your bit, like react/buttons/glass-cta.",
-  "Add the component source, preview file when supported, code snippet, and meta.json.",
-  "Register the component in src/data/components-registry.ts.",
+  "Add the component source, optional preview.tsx for React, and meta.json — no manual registration needed.",
+  "Run npm run dev and open /components/<category>/<slug> to check the live preview.",
   "Run npm run validate:registry, npm run lint, and npm run build before opening a pull request.",
 ];
 
 const folderExamples = [
   "react/buttons/glass-cta/component.tsx",
-  "html-css-js/buttons/glass-button/index.html",
+  "html-css-js/buttons/retro-shadow-button/index.html",
   "css-only/loaders/pulse-loader/style.css",
   "vue/cards/profile-card/component.vue",
   "svelte/cards/profile-card/component.svelte",
