@@ -1,0 +1,83 @@
+name: New component
+description: Propose a new UI component for Prism Bits (claim it here before building)
+title: "[Component] <framework>/<slug>"
+labels: ["component"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing a component! Fill this in, then wait to be **assigned**
+        before you start building — one component = one issue = one PR.
+        See [CONTRIBUTING.md](https://github.com/saiusesgithub/Prism-Bits/blob/main/CONTRIBUTING.md) for the full guide.
+
+  - type: input
+    id: name
+    attributes:
+      label: Component name
+      description: Title Case display name
+      placeholder: e.g. Neon Toggle
+    validations:
+      required: true
+
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      description: Lowercase kebab-case — becomes the URL and folder name
+      placeholder: e.g. neon-toggle
+    validations:
+      required: true
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: Framework
+      options:
+        - react
+        - html-css-js
+        - css-only
+        - vue
+        - svelte
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - buttons
+        - cards
+        - navbars
+        - forms
+        - loaders
+        - hero-sections
+        - backgrounds
+        - text-effects
+        - modals
+        - dashboards
+        - bento-grids
+        - footers
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What does it look like / do?
+      description: Short description of the component, its states, and any animation. Reference links or images welcome.
+      placeholder: A toggle switch with a neon glow that animates between on/off states…
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched the category page and open issues/PRs — this component doesn't already exist
+          required: true
+        - label: This will be my original work (or I will state the source and its license)
+          required: true
+        - label: It won't need any new npm dependencies (or I'll ask for approval first)
+          required: true
