@@ -77,3 +77,62 @@ a {
 .font-script {
   font-family: var(--font-script), cursive;
 }
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-rotate {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.prismatic-border {
+  --prism-surface: hsl(var(--card) / 0.68);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--prism-surface), var(--prism-surface)) padding-box,
+    conic-gradient(
+        from var(--border-angle),
+        hsl(var(--accent) / 0.9),
+        hsl(var(--accent-2) / 0.65),
+        rgb(255 255 255 / 0.75),
+        hsl(var(--accent-3) / 0.85),
+        hsl(var(--accent) / 0.9)
+      )
+      border-box;
+  animation: border-rotate 6s linear infinite;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    hsl(var(--accent-2) / 0.35) 44%,
+    rgb(255 255 255 / 0.7) 50%,
+    hsl(var(--accent-3) / 0.35) 56%,
+    transparent 75%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.7s ease;
+}
+
+.btn-shine:hover::after {
+  transform: translateX(130%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prismatic-border {
+    animation: none;
+  }
+  .btn-shine::after {
+    display: none;
+  }
+}
