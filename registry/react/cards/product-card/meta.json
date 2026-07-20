@@ -1,0 +1,18 @@
+{
+  "name": "Product Card",
+  "slug": "product-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "An e-commerce product card with image, rating, and add to cart action.",
+  "tags": [
+    "card",
+    "product",
+    "ecommerce"
+  ],
+  "status": "available",
+  "difficulty": "intermediate",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

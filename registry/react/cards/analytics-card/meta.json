@@ -1,0 +1,19 @@
+{
+  "name": "Analytics Card",
+  "slug": "analytics-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "An analytics summary card with a visual chart placeholder.",
+  "tags": [
+    "card",
+    "analytics",
+    "chart",
+    "metrics"
+  ],
+  "status": "available",
+  "difficulty": "intermediate",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}
