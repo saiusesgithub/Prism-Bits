@@ -24,7 +24,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   const isMounted = useIsMounted();
 
   if (!isMounted) {
-    return <div className={cn("size-9 rounded-full bg-white/[0.08]", className)} />;
+    return <div className={cn("size-9 rounded-full bg-muted/20", className)} />;
   }
 
   const isDark = resolvedTheme === "dark";
@@ -35,7 +35,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
       className={cn(
-        "relative flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-foreground transition-colors hover:bg-white/[0.12] hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:border-white/10 dark:bg-white/[0.08]",
+        "relative flex size-9 items-center justify-center rounded-full border border-border bg-card/60 text-foreground transition-colors hover:bg-muted/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className,
       )}
     >
@@ -48,7 +48,11 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           transition={{ duration: 0.22, ease: "easeInOut" }}
           className="flex items-center justify-center"
         >
-          {isDark ? <Sun className="size-4 text-amber-300" /> : <Moon className="size-4 text-indigo-500" />}
+          {isDark ? (
+            <Sun className="size-4 text-amber-400" />
+          ) : (
+            <Moon className="size-4 text-indigo-600 dark:text-indigo-400" />
+          )}
         </motion.div>
       </AnimatePresence>
     </button>

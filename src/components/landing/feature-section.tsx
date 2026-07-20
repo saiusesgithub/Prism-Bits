@@ -31,7 +31,7 @@ export function FeatureSection() {
   return (
     <Container id="features" className="relative pb-24 scroll-mt-24">
       <ScrollReveal direction="up" duration={0.7}>
-        <section className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-5 shadow-2xl shadow-purple-950/10 backdrop-blur-2xl sm:p-8 dark:bg-white/[0.035]">
+        <section className="overflow-hidden rounded-[2rem] border border-border bg-card/60 p-5 shadow-2xl backdrop-blur-2xl sm:p-8">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
               <SectionBadge>Why Prism Bits?</SectionBadge>
