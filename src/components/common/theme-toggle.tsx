@@ -2,8 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { useTheme } from "@/components/common/theme-provider";
 import { cn } from "@/lib/utils";
 
 type ThemeToggleProps = {
@@ -20,25 +20,19 @@ function useIsMounted() {
 }
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const isMounted = useIsMounted();
 
   if (!isMounted) {
-    return (
-      <div className={cn("size-9 rounded-full bg-white/[0.08]", className)} />
-    );
+    return <div className={cn("size-9 rounded-full bg-white/[0.08]", className)} />;
   }
 
   const isDark = resolvedTheme === "dark";
 
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
-
   return (
     <button
       type="button"
-      onClick={toggleTheme}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
       className={cn(
         "relative flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-foreground transition-colors hover:bg-white/[0.12] hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:border-white/10 dark:bg-white/[0.08]",
@@ -54,11 +48,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           transition={{ duration: 0.22, ease: "easeInOut" }}
           className="flex items-center justify-center"
         >
-          {isDark ? (
-            <Sun className="size-4 text-amber-300" />
-          ) : (
-            <Moon className="size-4 text-indigo-500" />
-          )}
+          {isDark ? <Sun className="size-4 text-amber-300" /> : <Moon className="size-4 text-indigo-500" />}
         </motion.div>
       </AnimatePresence>
     </button>
