@@ -18,7 +18,7 @@ export default async function Home() {
         <SearchFilters />
       </Container>
 
-      <Container className="relative pb-24">
+      <Container id="components" className="relative pb-24 scroll-mt-24">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent-2">Featured components</p>

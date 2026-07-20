@@ -27,7 +27,7 @@ const features = [
 
 export function FeatureSection() {
   return (
-    <Container className="relative pb-24">
+    <Container id="features" className="relative pb-24 scroll-mt-24">
       <section className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-5 shadow-2xl shadow-purple-950/10 backdrop-blur-2xl sm:p-8">
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>

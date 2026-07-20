@@ -36,7 +36,7 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section id="hero" className="relative min-h-screen overflow-hidden">
       <GradientBackground />
       <Container className="relative flex min-h-screen items-center justify-center pt-36 pb-24">
         <motion.div

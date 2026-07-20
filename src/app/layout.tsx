@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bruno_Ace_SC, Italianno, Montserrat } from "next/font/google";
 import "@/styles/globals.css";
 import { Navbar } from "@/components/common/navbar";
+import { ScrollProgress } from "@/components/common/scroll-progress";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${montserrat.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}>
+        <ScrollProgress />
         <Navbar />
         {children}
       </body>
