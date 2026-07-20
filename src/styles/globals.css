@@ -11,6 +11,35 @@
   --accent-2: 190 94% 66%;
   --accent-3: 330 92% 70%;
   --ring: 266 94% 68%;
+  color-scheme: dark;
+}
+
+html.light {
+  --background: 220 33% 98%;
+  --foreground: 226 28% 10%;
+  --muted: 224 14% 38%;
+  --border: 228 18% 84%;
+  --card: 0 0% 100%;
+  --card-foreground: 226 28% 10%;
+  --accent: 266 84% 56%;
+  --accent-2: 190 84% 42%;
+  --accent-3: 330 82% 52%;
+  --ring: 266 84% 56%;
+  color-scheme: light;
+}
+
+html.dark {
+  --background: 226 28% 5%;
+  --foreground: 220 30% 96%;
+  --muted: 224 18% 64%;
+  --border: 228 18% 18%;
+  --card: 228 26% 8%;
+  --card-foreground: 220 30% 96%;
+  --accent: 266 94% 68%;
+  --accent-2: 190 94% 66%;
+  --accent-3: 330 92% 70%;
+  --ring: 266 94% 68%;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -33,7 +62,6 @@
 
 html {
   background: hsl(var(--background));
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
@@ -43,6 +71,7 @@ body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {

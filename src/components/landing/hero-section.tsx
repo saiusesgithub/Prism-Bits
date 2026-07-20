@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { AnimatedCounter } from "@/components/common/animated-counter";
 import { Button } from "@/components/common/button";
 import { Container } from "@/components/common/container";
 import { GitHubIcon } from "@/components/common/github-icon";
@@ -28,13 +29,7 @@ type HeroSectionProps = {
   componentCount?: number;
 };
 
-export function HeroSection({ componentCount }: HeroSectionProps) {
-  const stats = [
-    componentCount ? `${componentCount}+ components` : "Growing component library",
-    "React · Vue · HTML/CSS",
-    "MIT licensed",
-  ];
-
+export function HeroSection({ componentCount = 18 }: HeroSectionProps) {
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
       <GradientBackground />
@@ -54,11 +49,11 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
 
           <motion.p
             variants={rise}
-            className="mx-auto mt-6 max-w-3xl text-balance text-xl font-medium leading-8 text-white/72 sm:text-2xl"
+            className="mx-auto mt-6 max-w-3xl text-balance text-xl font-medium leading-8 text-foreground/80 sm:text-2xl"
           >
             <Link
               href="/components"
-              className="font-script group relative mr-2 inline-block text-6xl leading-[0.72] text-white transition-all duration-300 hover:[text-shadow:0_0_24px_hsl(var(--accent-2)/0.6)] sm:text-7xl"
+              className="font-script group relative mr-2 inline-block text-6xl leading-[0.72] text-foreground transition-all duration-300 hover:[text-shadow:0_0_24px_hsl(var(--accent-2)/0.6)] sm:text-7xl dark:text-white"
             >
               Elegant
               <svg
@@ -109,19 +104,25 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
 
           <motion.ul
             variants={rise}
-            className="mt-12 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm font-medium text-white/45"
+            className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-medium text-muted"
           >
-            {stats.map((stat, index) => (
-              <li key={stat} className="flex items-center gap-3">
-                {index > 0 && (
-                  <span
-                    aria-hidden="true"
-                    className="size-1 rounded-full bg-gradient-to-r from-accent to-accent-2"
-                  />
-                )}
-                {stat}
-              </li>
-            ))}
+            <li className="flex items-center gap-2">
+              <span className="font-semibold text-foreground">
+                <AnimatedCounter value={componentCount} suffix="+" />
+              </span>{" "}
+              components
+            </li>
+            <li className="hidden size-1 rounded-full bg-accent sm:block" aria-hidden="true" />
+            <li className="flex items-center gap-2">
+              React · Vue · Tailwind
+            </li>
+            <li className="hidden size-1 rounded-full bg-accent sm:block" aria-hidden="true" />
+            <li className="flex items-center gap-2">
+              <span className="font-semibold text-foreground">
+                <AnimatedCounter value={100} suffix="%" />
+              </span>{" "}
+              Open Source (MIT)
+            </li>
           </motion.ul>
         </motion.div>
       </Container>

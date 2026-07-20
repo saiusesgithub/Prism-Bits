@@ -1,4 +1,5 @@
 import { Container } from "@/components/common/container";
+import { ScrollReveal } from "@/components/common/scroll-reveal";
 import { ComponentCard } from "@/components/landing/component-card";
 import { FeatureSection } from "@/components/landing/feature-section";
 import { Footer } from "@/components/landing/footer";
@@ -11,30 +12,38 @@ export default async function Home() {
   const featuredComponents = componentsRegistry.slice(0, 4);
 
   return (
-    <main className="relative overflow-hidden">
+    <main id="main-content" className="relative overflow-hidden">
       <HeroSection componentCount={componentsRegistry.length} />
 
       <Container className="relative pb-20">
-        <SearchFilters />
+        <ScrollReveal direction="up">
+          <SearchFilters />
+        </ScrollReveal>
       </Container>
 
       <Container id="components" className="relative pb-24 scroll-mt-24">
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent-2">Featured components</p>
-            <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-normal text-foreground sm:text-5xl">
-              Preview the bit before you copy it.
-            </h2>
+        <ScrollReveal direction="up">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent-2">
+                Featured components
+              </p>
+              <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-normal text-foreground sm:text-5xl">
+                Preview the bit before you copy it.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-muted">
+              Visual tiles make it clear what each component does, how polished it feels, and where it fits in a product.
+            </p>
           </div>
-          <p className="max-w-md text-sm leading-6 text-muted">
-            Visual tiles make it clear what each component does, how polished it feels, and where it fits in a product.
-          </p>
-        </div>
-        <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {featuredComponents.map((component) => (
-            <ComponentCard key={component.slug} component={component} />
-          ))}
-        </section>
+          <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {featuredComponents.map((component, index) => (
+              <ScrollReveal key={component.slug} delay={index * 0.1} direction="up">
+                <ComponentCard component={component} />
+              </ScrollReveal>
+            ))}
+          </section>
+        </ScrollReveal>
       </Container>
 
       <FeatureSection />
