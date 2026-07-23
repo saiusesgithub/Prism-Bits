@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/common/button";
-import { Container } from "@/components/common/container";
-import { GitHubIcon } from "@/components/common/github-icon";
-import { GradientBackground } from "@/components/landing/gradient-background";
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/common/button';
+import { Container } from '@/components/common/container';
+import { GitHubIcon } from '@/components/common/github-icon';
+import { GradientBackground } from '@/components/landing/gradient-background';
 
 const stagger = {
   hidden: {},
@@ -30,9 +30,11 @@ type HeroSectionProps = {
 
 export function HeroSection({ componentCount }: HeroSectionProps) {
   const stats = [
-    componentCount ? `${componentCount}+ components` : "Growing component library",
-    "React · Vue · HTML/CSS",
-    "MIT licensed",
+    componentCount
+      ? `${componentCount}+ components`
+      : 'Growing component library',
+    'React · Vue · HTML/CSS',
+    'MIT licensed',
   ];
 
   return (
@@ -68,7 +70,13 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
                 preserveAspectRatio="none"
               >
                 <defs>
-                  <linearGradient id="squiggle-gradient" x1="0" y1="0" x2="1" y2="0">
+                  <linearGradient
+                    id="squiggle-gradient"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
                     <stop offset="0%" stopColor="hsl(266 94% 68%)" />
                     <stop offset="50%" stopColor="hsl(330 92% 70%)" />
                     <stop offset="100%" stopColor="hsl(190 94% 66%)" />

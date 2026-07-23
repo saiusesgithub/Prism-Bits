@@ -4,11 +4,7 @@
   "category": "cards",
   "framework": "react",
   "description": "An event discovery card showing date, time, and location.",
-  "tags": [
-    "card",
-    "event",
-    "calendar"
-  ],
+  "tags": ["card", "event", "calendar"],
   "status": "available",
   "difficulty": "beginner",
   "author": {

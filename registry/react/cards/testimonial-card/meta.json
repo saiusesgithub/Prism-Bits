@@ -4,11 +4,7 @@
   "category": "cards",
   "framework": "react",
   "description": "A customer review card showing rating and feedback.",
-  "tags": [
-    "card",
-    "testimonial",
-    "review"
-  ],
+  "tags": ["card", "testimonial", "review"],
   "status": "available",
   "difficulty": "beginner",
   "author": {

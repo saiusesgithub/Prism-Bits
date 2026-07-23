@@ -1,7 +1,7 @@
 name: New category
 description: Propose a new component category for the registry (requires maintainer approval)
-title: "[Category] <slug>"
-labels: ["category-proposal"]
+title: '[Category] <slug>'
+labels: ['category-proposal']
 body:
   - type: markdown
     attributes:

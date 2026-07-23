@@ -1,7 +1,7 @@
 name: New component
 description: Propose a new UI component for Prism Bits (claim it here before building)
-title: "[Component] <framework>/<slug>"
-labels: ["component"]
+title: '[Component] <framework>/<slug>'
+labels: ['component']
 body:
   - type: markdown
     attributes:

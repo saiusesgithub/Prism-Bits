@@ -1,5 +1,5 @@
-"use client";
-import TestimonialCard from "./component";
+'use client';
+import TestimonialCard from './component';
 
 export default function Preview() {
   return (

@@ -1,5 +1,5 @@
-"use client";
-import EventCard from "./component";
+'use client';
+import EventCard from './component';
 
 export default function Preview() {
   return (

@@ -1,5 +1,5 @@
-import type { ComponentMetadata } from "@/data/components-registry";
-import { getFrameworkLabel } from "@/data/components-registry";
+import type { ComponentMetadata } from '@/data/components-registry';
+import { getFrameworkLabel } from '@/data/components-registry';
 
 type ComponentMetaBadgesProps = {
   component: ComponentMetadata;

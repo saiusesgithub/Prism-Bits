@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import type { MouseEventHandler } from "react";
+import type { MouseEventHandler } from 'react';
 
 type GlassCtaProps = {
   primaryLabel: string;
@@ -9,7 +9,12 @@ type GlassCtaProps = {
   onSecondaryClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export default function GlassCta({ primaryLabel, secondaryLabel, onPrimaryClick, onSecondaryClick }: GlassCtaProps) {
+export default function GlassCta({
+  primaryLabel,
+  secondaryLabel,
+  onPrimaryClick,
+  onSecondaryClick,
+}: GlassCtaProps) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-3">
       <button

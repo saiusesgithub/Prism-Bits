@@ -1,10 +1,13 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
-import Link from "next/link";
-import { Search } from "lucide-react";
-import type { ComponentCategory, ComponentMetadata } from "@/data/components-registry";
-import { getFrameworkLabel } from "@/data/components-registry";
+import { useMemo, useState } from 'react';
+import Link from 'next/link';
+import { Search } from 'lucide-react';
+import type {
+  ComponentCategory,
+  ComponentMetadata,
+} from '@/data/components-registry';
+import { getFrameworkLabel } from '@/data/components-registry';
 
 type ComponentSidebarProps = {
   category: ComponentCategory;
@@ -12,8 +15,12 @@ type ComponentSidebarProps = {
   selectedSlug: string;
 };
 
-export function ComponentSidebar({ category, components, selectedSlug }: ComponentSidebarProps) {
-  const [query, setQuery] = useState("");
+export function ComponentSidebar({
+  category,
+  components,
+  selectedSlug,
+}: ComponentSidebarProps) {
+  const [query, setQuery] = useState('');
   const normalizedQuery = query.trim().toLowerCase();
 
   const filteredComponents = useMemo(() => {
@@ -27,9 +34,9 @@ export function ComponentSidebar({ category, components, selectedSlug }: Compone
         component.framework,
         component.status,
         component.difficulty,
-        component.tags.join(" "),
+        component.tags.join(' '),
       ]
-        .join(" ")
+        .join(' ')
         .toLowerCase();
 
       return searchableText.includes(normalizedQuery);
@@ -62,8 +69,8 @@ export function ComponentSidebar({ category, components, selectedSlug }: Compone
                 href={`/components/${category.slug}/${component.slug}`}
                 className={`min-w-64 rounded-2xl border px-4 py-3 transition lg:min-w-0 ${
                   active
-                    ? "border-white/20 bg-white/[0.08] text-white"
-                    : "border-white/10 bg-black/20 text-white/62 hover:border-white/18 hover:text-white"
+                    ? 'border-white/20 bg-white/[0.08] text-white'
+                    : 'border-white/10 bg-black/20 text-white/62 hover:border-white/18 hover:text-white'
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
@@ -72,7 +79,9 @@ export function ComponentSidebar({ category, components, selectedSlug }: Compone
                     {component.status}
                   </span>
                 </div>
-                <p className="mt-2 text-xs text-white/45">{getFrameworkLabel(component.framework)}</p>
+                <p className="mt-2 text-xs text-white/45">
+                  {getFrameworkLabel(component.framework)}
+                </p>
               </Link>
             );
           })}

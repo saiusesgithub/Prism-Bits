@@ -1,5 +1,5 @@
-"use client";
-import ProductCard from "./component";
+'use client';
+import ProductCard from './component';
 
 export default function Preview() {
   return (

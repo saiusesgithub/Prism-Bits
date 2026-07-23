@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import type { ComponentCategory } from "@/data/components-registry";
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import type { ComponentCategory } from '@/data/components-registry';
 
 type CategoryCardProps = {
   category: ComponentCategory;
@@ -15,17 +15,24 @@ export function CategoryCard({ category, count }: CategoryCardProps) {
     >
       <div>
         <div className="flex items-start justify-between gap-4">
-          <h2 className="text-2xl font-semibold text-foreground">{category.name}</h2>
+          <h2 className="text-2xl font-semibold text-foreground">
+            {category.name}
+          </h2>
           <span className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs text-white/58">
             {count} bits
           </span>
         </div>
-        <p className="mt-4 text-sm leading-6 text-muted">{category.description}</p>
+        <p className="mt-4 text-sm leading-6 text-muted">
+          {category.description}
+        </p>
       </div>
       <div>
         <div className="mt-6 flex flex-wrap gap-2">
           {category.targets.map((target) => (
-            <span key={target} className="rounded-full bg-white/[0.05] px-3 py-1 text-xs text-white/55">
+            <span
+              key={target}
+              className="rounded-full bg-white/[0.05] px-3 py-1 text-xs text-white/55"
+            >
               {target}
             </span>
           ))}

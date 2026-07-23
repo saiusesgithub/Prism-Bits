@@ -1,4 +1,4 @@
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon } from 'lucide-react';
 
 type FeatureCardProps = {
   icon: LucideIcon;
@@ -6,7 +6,11 @@ type FeatureCardProps = {
   description: string;
 };
 
-export function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
+export function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+}: FeatureCardProps) {
   return (
     <article className="rounded-3xl border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-purple-950/10">
       <div className="mb-5 flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06]">

@@ -1,9 +1,9 @@
-import { Container } from "@/components/common/container";
-import { Footer } from "@/components/landing/footer";
-import { SectionBadge } from "@/components/common/section-badge";
-import { CategorySearch } from "@/components/component-browser/category-search";
-import { componentCategories } from "@/data/components-registry";
-import { getComponentsRegistry } from "@/lib/registry";
+import { Container } from '@/components/common/container';
+import { Footer } from '@/components/landing/footer';
+import { SectionBadge } from '@/components/common/section-badge';
+import { CategorySearch } from '@/components/component-browser/category-search';
+import { componentCategories } from '@/data/components-registry';
+import { getComponentsRegistry } from '@/lib/registry';
 
 export default async function ComponentsPage() {
   const components = await getComponentsRegistry();
@@ -21,7 +21,10 @@ export default async function ComponentsPage() {
           </p>
         </section>
 
-        <CategorySearch categories={componentCategories} components={components} />
+        <CategorySearch
+          categories={componentCategories}
+          components={components}
+        />
       </Container>
       <Footer />
     </main>
