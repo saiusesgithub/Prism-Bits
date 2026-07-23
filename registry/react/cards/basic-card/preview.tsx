@@ -1,5 +1,5 @@
-"use client";
-import BasicCard from "./component";
+'use client';
+import BasicCard from './component';
 
 export default function Preview() {
   return (

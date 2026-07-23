@@ -1,5 +1,5 @@
-"use client";
-import AnalyticsCard from "./component";
+'use client';
+import AnalyticsCard from './component';
 
 export default function Preview() {
   return (

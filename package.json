@@ -13,7 +13,8 @@
     "start": "next start",
     "lint": "eslint src registry next.config.ts eslint.config.mjs",
     "generate:react-previews": "node scripts/generate-react-preview-map.mjs",
-    "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs"
+    "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
     "@types/node": "^25.8.0",
+    "prettier": "^3.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",

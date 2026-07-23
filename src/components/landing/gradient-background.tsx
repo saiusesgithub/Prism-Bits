@@ -1,4 +1,4 @@
-import Prism from "@/components/effects/prism";
+import Prism from '@/components/effects/prism';
 
 export function GradientBackground() {
   return (

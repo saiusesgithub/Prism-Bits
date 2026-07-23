@@ -1,32 +1,33 @@
-import type { Metadata } from "next";
-import { Bruno_Ace_SC, Italianno, Montserrat } from "next/font/google";
-import "@/styles/globals.css";
-import { Navbar } from "@/components/common/navbar";
+import type { Metadata } from 'next';
+import { Bruno_Ace_SC, Italianno, Montserrat } from 'next/font/google';
+import '@/styles/globals.css';
+import { Navbar } from '@/components/common/navbar';
 
 const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
+  subsets: ['latin'],
+  variable: '--font-montserrat',
 });
 
 const italianno = Italianno({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-script",
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-script',
 });
 
 const brunoAce = Bruno_Ace_SC({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-display",
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-display',
 });
 
 export const metadata: Metadata = {
-  title: "Prism Bits",
-  description: "Beautiful open-source UI bits you can copy, customize, and ship.",
+  title: 'Prism Bits',
+  description:
+    'Beautiful open-source UI bits you can copy, customize, and ship.',
   icons: {
-    icon: "/prism-bits-icon.png?v=2",
-    shortcut: "/prism-bits-icon.png?v=2",
-    apple: "/prism-bits-icon.png?v=2",
+    icon: '/prism-bits-icon.png?v=2',
+    shortcut: '/prism-bits-icon.png?v=2',
+    apple: '/prism-bits-icon.png?v=2',
   },
 };
 
@@ -37,7 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${montserrat.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}>
+      <body
+        className={`${montserrat.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}
+      >
         <Navbar />
         {children}
       </body>

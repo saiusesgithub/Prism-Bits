@@ -4,11 +4,7 @@
   "category": "cards",
   "framework": "react",
   "description": "A subscription pricing card with a feature list.",
-  "tags": [
-    "card",
-    "pricing",
-    "subscription"
-  ],
+  "tags": ["card", "pricing", "subscription"],
   "status": "available",
   "difficulty": "intermediate",
   "author": {

@@ -1,55 +1,59 @@
-import { Code2, Eye, GitBranch, Palette, Search } from "lucide-react";
-import { Container } from "@/components/common/container";
-import { Footer } from "@/components/landing/footer";
-import { SectionBadge } from "@/components/common/section-badge";
+import { Code2, Eye, GitBranch, Palette, Search } from 'lucide-react';
+import { Container } from '@/components/common/container';
+import { Footer } from '@/components/landing/footer';
+import { SectionBadge } from '@/components/common/section-badge';
 
 const docsSteps = [
   {
     icon: Search,
-    title: "Browse components",
-    description: "Find UI bits by category, tag, difficulty, or use case.",
+    title: 'Browse components',
+    description: 'Find UI bits by category, tag, difficulty, or use case.',
   },
   {
     icon: Eye,
-    title: "Preview variants",
-    description: "Inspect the component in context before copying it into a project.",
+    title: 'Preview variants',
+    description:
+      'Inspect the component in context before copying it into a project.',
   },
   {
     icon: Code2,
-    title: "Copy code",
-    description: "Use source-first components designed to be readable and portable.",
+    title: 'Copy code',
+    description:
+      'Use source-first components designed to be readable and portable.',
   },
   {
     icon: Palette,
-    title: "Customize",
-    description: "Adjust tokens, props, and styles without fighting a heavy abstraction.",
+    title: 'Customize',
+    description:
+      'Adjust tokens, props, and styles without fighting a heavy abstraction.',
   },
   {
     icon: GitBranch,
-    title: "Contribute",
-    description: "Add components through a simple registry structure and clear metadata.",
+    title: 'Contribute',
+    description:
+      'Add components through a simple registry structure and clear metadata.',
   },
 ];
 
 const contributionSteps = [
-  "Pick a framework and category folder under registry.",
-  "Create a slug folder for your bit, like react/buttons/glass-cta.",
-  "Add the component source, optional preview.tsx for React, and meta.json. The site discovers it automatically.",
-  "Run npm run dev and open /components/<category>/<slug> to check the live preview.",
-  "Run npm run validate:registry, npm run lint, and npm run build before opening a pull request.",
+  'Pick a framework and category folder under registry.',
+  'Create a slug folder for your bit, like react/buttons/glass-cta.',
+  'Add the component source, optional preview.tsx for React, and meta.json. The site discovers it automatically.',
+  'Run npm run dev and open /components/<category>/<slug> to check the live preview.',
+  'Run npm run validate:registry, npm run lint, and npm run build before opening a pull request.',
 ];
 
 const folderExamples = [
-  "react/buttons/glass-cta/component.tsx",
-  "html-css-js/buttons/retro-shadow-button/index.html",
-  "css-only/loaders/pulse-loader/style.css",
-  "vue/modals/soft-modal/component.vue",
-  "svelte/footers/project-footer/component.svelte",
+  'react/buttons/glass-cta/component.tsx',
+  'html-css-js/buttons/retro-shadow-button/index.html',
+  'css-only/loaders/pulse-loader/style.css',
+  'vue/modals/soft-modal/component.vue',
+  'svelte/footers/project-footer/component.svelte',
 ];
 
 const previewSupport = [
-  "React, HTML/CSS/JS, and CSS-only components support live preview today.",
-  "Vue and Svelte components currently show code view only.",
+  'React, HTML/CSS/JS, and CSS-only components support live preview today.',
+  'Vue and Svelte components currently show code view only.',
 ];
 
 export default function DocsPage() {
@@ -62,18 +66,26 @@ export default function DocsPage() {
             How Prism Bits works.
           </h1>
           <p className="mt-5 text-base leading-7 text-muted sm:text-lg">
-            Prism Bits is a copy-first component library: discover a bit, preview it, copy the source, then shape it to your product.
+            Prism Bits is a copy-first component library: discover a bit,
+            preview it, copy the source, then shape it to your product.
           </p>
         </section>
 
         <section className="mt-12 grid gap-4 md:grid-cols-2">
           {docsSteps.map((step) => (
-            <article key={step.title} className="rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-6 shadow-2xl shadow-purple-950/10 backdrop-blur-2xl transition hover:-translate-y-1 hover:border-cyan-200/25 hover:bg-white/[0.065]">
+            <article
+              key={step.title}
+              className="rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-6 shadow-2xl shadow-purple-950/10 backdrop-blur-2xl transition hover:-translate-y-1 hover:border-cyan-200/25 hover:bg-white/[0.065]"
+            >
               <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06]">
                 <step.icon className="size-5 text-accent-2" />
               </div>
-              <h2 className="mt-5 text-2xl font-semibold text-foreground">{step.title}</h2>
-              <p className="mt-3 text-sm leading-6 text-muted">{step.description}</p>
+              <h2 className="mt-5 text-2xl font-semibold text-foreground">
+                {step.title}
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-muted">
+                {step.description}
+              </p>
             </article>
           ))}
         </section>
@@ -86,11 +98,16 @@ export default function DocsPage() {
                 Add a component without guessing the structure.
               </h2>
               <p className="mt-4 text-sm leading-6 text-muted">
-                Prism Bits keeps component contributions close to their framework and category. Every bit needs source files and a small metadata file. No manual registration is required.
+                Prism Bits keeps component contributions close to their
+                framework and category. Every bit needs source files and a small
+                metadata file. No manual registration is required.
               </p>
               <ol className="mt-6 space-y-3">
                 {contributionSteps.map((step, index) => (
-                  <li key={step} className="flex gap-3 text-sm leading-6 text-white/68">
+                  <li
+                    key={step}
+                    className="flex gap-3 text-sm leading-6 text-white/68"
+                  >
                     <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-black/25 text-xs text-white/72">
                       {index + 1}
                     </span>
@@ -101,7 +118,9 @@ export default function DocsPage() {
             </div>
             <div className="space-y-4">
               <div className="rounded-[1.25rem] border border-white/10 bg-black/25 p-5">
-                <h3 className="text-lg font-semibold text-foreground">Folder examples</h3>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Folder examples
+                </h3>
                 <div className="mt-4 space-y-2 font-mono text-xs text-white/58">
                   {folderExamples.map((example) => (
                     <p key={example}>registry/{example}</p>
@@ -109,7 +128,9 @@ export default function DocsPage() {
                 </div>
               </div>
               <div className="rounded-[1.25rem] border border-white/10 bg-black/25 p-5">
-                <h3 className="text-lg font-semibold text-foreground">Live preview support</h3>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Live preview support
+                </h3>
                 <div className="mt-4 space-y-2 text-sm leading-6 text-white/68">
                   {previewSupport.map((item) => (
                     <p key={item}>{item}</p>
@@ -117,9 +138,11 @@ export default function DocsPage() {
                 </div>
               </div>
               <div className="rounded-[1.25rem] border border-white/10 bg-black/25 p-5">
-                <h3 className="text-lg font-semibold text-foreground">meta.json minimum</h3>
+                <h3 className="text-lg font-semibold text-foreground">
+                  meta.json minimum
+                </h3>
                 <pre className="mt-4 overflow-auto rounded-2xl bg-black/45 p-4 text-xs leading-5 text-white/68">
-{`{
+                  {`{
   "name": "Glass CTA",
   "slug": "glass-cta",
   "category": "buttons",

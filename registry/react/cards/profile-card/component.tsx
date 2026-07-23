@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 type ProfileCardProps = {
   name?: string;
@@ -9,9 +9,9 @@ type ProfileCardProps = {
 };
 
 export default function ProfileCard({
-  name = "Alex Rivera",
-  role = "Senior Frontend Engineer",
-  avatarUrl = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=128&h=128&q=80",
+  name = 'Alex Rivera',
+  role = 'Senior Frontend Engineer',
+  avatarUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=128&h=128&q=80',
   onFollow,
   onMessage,
 }: ProfileCardProps) {
@@ -27,7 +27,7 @@ export default function ProfileCard({
       </div>
       <h3 className="text-xl font-bold text-white">{name}</h3>
       <p className="mt-1 text-sm font-medium text-cyan-200/70">{role}</p>
-      
+
       <div className="mt-6 flex w-full gap-3">
         <button
           onClick={onFollow}

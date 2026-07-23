@@ -1,7 +1,7 @@
-import { Container } from "@/components/common/container";
-import { ComponentBrowserLayout } from "@/components/component-browser/component-browser-layout";
-import { Footer } from "@/components/landing/footer";
-import { getComponentsRegistry } from "@/lib/registry";
+import { Container } from '@/components/common/container';
+import { ComponentBrowserLayout } from '@/components/component-browser/component-browser-layout';
+import { Footer } from '@/components/landing/footer';
+import { getComponentsRegistry } from '@/lib/registry';
 
 type ComponentPageProps = {
   params: Promise<{

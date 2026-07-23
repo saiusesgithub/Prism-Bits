@@ -12,9 +12,13 @@
   position: relative;
   padding: 0 0.15em;
   color: inherit;
-  background:
-    linear-gradient(100deg, rgba(167, 139, 250, 0.55), rgba(244, 114, 182, 0.55), rgba(103, 232, 249, 0.55))
-      no-repeat left bottom / 100% 0.42em;
+  background: linear-gradient(
+      100deg,
+      rgba(167, 139, 250, 0.55),
+      rgba(244, 114, 182, 0.55),
+      rgba(103, 232, 249, 0.55)
+    )
+    no-repeat left bottom / 100% 0.42em;
   border-radius: 0.2em;
   transition: background-size 0.35s ease;
 }

@@ -7,7 +7,9 @@
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .glass-modal-trigger:hover {
@@ -41,7 +43,11 @@
   padding: 26px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 20px;
-  background: linear-gradient(160deg, rgba(30, 32, 48, 0.92), rgba(14, 15, 26, 0.92));
+  background: linear-gradient(
+    160deg,
+    rgba(30, 32, 48, 0.92),
+    rgba(14, 15, 26, 0.92)
+  );
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
   animation: glass-modal-rise 0.25s ease;
 }

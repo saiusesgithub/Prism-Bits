@@ -1,7 +1,7 @@
-import { Container } from "@/components/common/container";
-import { ComponentBrowserLayout } from "@/components/component-browser/component-browser-layout";
-import { Footer } from "@/components/landing/footer";
-import { componentCategories } from "@/data/components-registry";
+import { Container } from '@/components/common/container';
+import { ComponentBrowserLayout } from '@/components/component-browser/component-browser-layout';
+import { Footer } from '@/components/landing/footer';
+import { componentCategories } from '@/data/components-registry';
 
 type CategoryPageProps = {
   params: Promise<{
