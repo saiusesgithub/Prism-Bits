@@ -50,7 +50,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
             <Eye className="size-4" />
             Preview
           </Button>
-          <Button href="https://github.com/saiusesgithub/Prism-Bits" variant="ghost" className="h-11 rounded-xl border border-white/10 bg-black/20 text-sm">
+          <Button href={`https://github.com/saiusesgithub/Prism-Bits/tree/main/registry/${component.framework}/${component.category}/${component.slug}`} variant="ghost" className="h-11 rounded-xl border border-white/10 bg-black/20 text-sm">
             <Code2 className="size-4" />
             Code
           </Button>
