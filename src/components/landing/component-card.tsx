@@ -11,6 +11,13 @@ type ComponentCardProps = {
   component: ComponentMetadata;
 };
 
+/**
+ * Renders a card displaying a component preview and metadata on the landing page.
+ * Provides quick actions to view the full component or its source code.
+ *
+ * @param props - The component properties.
+ * @param props.component - The metadata of the component to display.
+ */
 export function ComponentCard({ component }: ComponentCardProps) {
   const category = getCategoryBySlug(component.category);
 
