@@ -11,6 +11,13 @@ type ComponentCardProps = {
   component: ComponentMetadata;
 };
 
+/**
+ * Renders a card displaying a component preview and metadata on the landing page.
+ * Provides quick actions to view the full component or its source code.
+ *
+ * @param props - The component properties.
+ * @param props.component - The metadata of the component to display.
+ */
 export function ComponentCard({ component }: ComponentCardProps) {
   const category = getCategoryBySlug(component.category);
 
@@ -50,7 +57,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
             <Eye className="size-4" />
             Preview
           </Button>
-          <Button href="https://github.com/saiusesgithub/Prism-Bits" variant="ghost" className="h-11 rounded-xl border border-white/10 bg-black/20 text-sm">
+          <Button href={`https://github.com/saiusesgithub/Prism-Bits/tree/main/registry/${component.framework}/${component.category}/${component.slug}`} variant="ghost" className="h-11 rounded-xl border border-white/10 bg-black/20 text-sm">
             <Code2 className="size-4" />
             Code
           </Button>
