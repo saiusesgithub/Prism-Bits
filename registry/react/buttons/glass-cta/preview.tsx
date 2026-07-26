@@ -1,22 +1,43 @@
 "use client";
 
-import { useState } from "react";
 import GlassCta from "./component";
+import { Playground } from "@/components/playground/Playground";
+import type { PlaygroundConfig } from "@/components/playground/types";
+
+const playgroundConfig: PlaygroundConfig = {
+  title: "Glass CTA",
+  componentName: "GlassCta",
+
+  defaults: {
+    primaryLabel: "Get started",
+    secondaryLabel: "View docs",
+  },
+
+  controls: {
+    primaryLabel: {
+      type: "text",
+      label: "Primary Label",
+      defaultValue: "Get started",
+    },
+
+    secondaryLabel: {
+      type: "text",
+      label: "Secondary Label",
+      defaultValue: "View docs",
+    },
+  },
+};
 
 export default function GlassCtaPreview() {
-  const [clicks, setClicks] = useState(0);
-
   return (
-    <div className="flex flex-col items-center gap-5">
-      <GlassCta
-        primaryLabel="Get started"
-        secondaryLabel="View docs"
-        onPrimaryClick={() => setClicks((count) => count + 1)}
-        onSecondaryClick={() => setClicks(0)}
-      />
-      <p className="text-xs text-white/45" aria-live="polite">
-        {clicks > 0 ? `Primary clicked ${clicks}× — secondary resets` : "Click the buttons to test interactivity"}
-      </p>
-    </div>
+    <Playground
+      config={playgroundConfig}
+      render={(props) => (
+        <GlassCta
+          primaryLabel={String(props.primaryLabel)}
+          secondaryLabel={String(props.secondaryLabel)}
+        />
+      )}
+    />
   );
 }
