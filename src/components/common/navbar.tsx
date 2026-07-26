@@ -39,8 +39,13 @@ export function Navbar() {
         )}
       >
         <div className="flex h-16 items-center justify-between pl-5 pr-2.5 sm:pl-6 sm:pr-3">
-          <Link href="/" className="text-white transition-opacity duration-200 hover:opacity-80">
-            <span className="font-display text-lg font-normal leading-none tracking-normal">Prism Bits</span>
+          <Link
+            href="/"
+            className="text-white transition-opacity duration-200 hover:opacity-80"
+          >
+            <span className="font-display text-lg font-normal leading-none tracking-normal">
+              Prism Bits
+            </span>
           </Link>
 
           <nav
@@ -48,7 +53,8 @@ export function Navbar() {
             className="absolute left-1/2 hidden -translate-x-1/2 items-center md:flex"
           >
             {navItems.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              const isActive =
+                pathname === item.href || pathname.startsWith(`${item.href}/`);
               const showPill = hovered ? hovered === item.href : isActive;
               return (
                 <Link
@@ -58,13 +64,19 @@ export function Navbar() {
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "relative rounded-full px-4 py-2 text-[15px] font-medium transition-colors duration-200",
-                    isActive || hovered === item.href ? "text-white" : "text-white/55",
+                    isActive || hovered === item.href
+                      ? "text-white"
+                      : "text-white/55",
                   )}
                 >
                   {showPill && (
                     <motion.span
                       layoutId="nav-pill"
-                      transition={{ type: "spring", bounce: 0.22, duration: 0.5 }}
+                      transition={{
+                        type: "spring",
+                        bounce: 0.22,
+                        duration: 0.5,
+                      }}
                       className="absolute inset-0 rounded-full bg-white/[0.1] shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]"
                     />
                   )}
@@ -93,7 +105,11 @@ export function Navbar() {
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               className="inline-flex size-10 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/[0.08] hover:text-white md:hidden"
             >
-              {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+              {mobileOpen ? (
+                <X className="size-5" />
+              ) : (
+                <Menu className="size-5" />
+              )}
             </button>
           </div>
         </div>
@@ -109,7 +125,8 @@ export function Navbar() {
             className="prismatic-border mx-auto mt-2 w-full max-w-[920px] rounded-3xl p-2.5 backdrop-blur-2xl md:hidden [--prism-surface:hsl(var(--background)/0.85)]"
           >
             {navItems.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              const isActive =
+                pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.href}
@@ -118,7 +135,9 @@ export function Navbar() {
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "block rounded-2xl px-4 py-3 text-base font-medium transition-colors",
-                    isActive ? "bg-white/[0.1] text-white" : "text-white/60 hover:bg-white/[0.06] hover:text-white",
+                    isActive
+                      ? "bg-white/[0.1] text-white"
+                      : "text-white/60 hover:bg-white/[0.06] hover:text-white",
                   )}
                 >
                   {item.label}

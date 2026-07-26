@@ -4,13 +4,7 @@
   "category": "forms",
   "framework": "react",
   "description": "A dark mode login form with smooth floating labels, client-side validation, and a password visibility toggle.",
-  "tags": [
-    "form",
-    "login",
-    "floating label",
-    "animated",
-    "glass"
-  ],
+  "tags": ["form", "login", "floating label", "animated", "glass"],
   "difficulty": "intermediate",
   "status": "available",
   "author": {

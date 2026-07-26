@@ -22,7 +22,8 @@ const brunoAce = Bruno_Ace_SC({
 
 export const metadata: Metadata = {
   title: "Prism Bits",
-  description: "Beautiful open-source UI bits you can copy, customize, and ship.",
+  description:
+    "Beautiful open-source UI bits you can copy, customize, and ship.",
   icons: {
     icon: "/prism-bits-icon.png?v=2",
     shortcut: "/prism-bits-icon.png?v=2",
@@ -37,7 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${montserrat.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}>
+      <body
+        className={`${montserrat.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}
+      >
         <Navbar />
         {children}
       </body>

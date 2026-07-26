@@ -2,7 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import type { ComponentCategory, ComponentMetadata } from "@/data/components-registry";
+import type {
+  ComponentCategory,
+  ComponentMetadata,
+} from "@/data/components-registry";
 import { CategoryGrid } from "@/components/component-browser/category-grid";
 
 type CategorySearchProps = {
@@ -10,7 +13,10 @@ type CategorySearchProps = {
   components: ComponentMetadata[];
 };
 
-export function CategorySearch({ categories, components }: CategorySearchProps) {
+export function CategorySearch({
+  categories,
+  components,
+}: CategorySearchProps) {
   const [query, setQuery] = useState("");
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -18,7 +24,9 @@ export function CategorySearch({ categories, components }: CategorySearchProps) 
     if (!normalizedQuery) return categories;
 
     return categories.filter((category) => {
-      const categoryComponents = components.filter((component) => component.category === category.slug);
+      const categoryComponents = components.filter(
+        (component) => component.category === category.slug,
+      );
       const searchableText = [
         category.name,
         category.slug,
@@ -58,8 +66,12 @@ export function CategorySearch({ categories, components }: CategorySearchProps) 
         <CategoryGrid categories={filteredCategories} components={components} />
       ) : (
         <section className="mt-10 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-8 text-center">
-          <h2 className="text-xl font-semibold text-foreground">No categories found</h2>
-          <p className="mt-2 text-sm text-muted">Try searching for a category, framework, tag, or component name.</p>
+          <h2 className="text-xl font-semibold text-foreground">
+            No categories found
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            Try searching for a category, framework, tag, or component name.
+          </p>
         </section>
       )}
     </>

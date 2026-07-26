@@ -5,7 +5,10 @@ import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type FloatingLabelLoginFormProps = {
-  onSubmit?: (data: { email: string; password: string }) => Promise<void> | void;
+  onSubmit?: (data: {
+    email: string;
+    password: string;
+  }) => Promise<void> | void;
   loading?: boolean;
   emailLabel?: string;
   passwordLabel?: string;
@@ -26,16 +29,20 @@ export default function FloatingLabelLoginForm({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [focusedField, setFocusedField] = useState<"email" | "password" | null>(null);
-  
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [focusedField, setFocusedField] = useState<"email" | "password" | null>(
+    null,
+  );
+
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {},
+  );
 
   const emailId = useId();
   const passwordId = useId();
 
   const validate = () => {
     if (!showValidation) return true;
-    
+
     const newErrors: { email?: string; password?: string } = {};
     if (!email) {
       newErrors.email = "Email is required";
@@ -73,7 +80,8 @@ export default function FloatingLabelLoginForm({
           value={email}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setEmail(e.target.value);
-            if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
+            if (errors.email)
+              setErrors((prev) => ({ ...prev, email: undefined }));
           }}
           onFocus={() => setFocusedField("email")}
           onBlur={() => setFocusedField(null)}
@@ -82,7 +90,8 @@ export default function FloatingLabelLoginForm({
             "hover:bg-white/10 hover:border-white/30",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:bg-white/10",
             "disabled:opacity-50 disabled:cursor-not-allowed",
-            errors.email && "border-red-400/50 focus-visible:ring-red-400/70 hover:border-red-400/50"
+            errors.email &&
+              "border-red-400/50 focus-visible:ring-red-400/70 hover:border-red-400/50",
           )}
           disabled={loading}
           aria-invalid={!!errors.email}
@@ -94,13 +103,18 @@ export default function FloatingLabelLoginForm({
             "absolute left-4 top-4 z-10 origin-[0] -translate-y-2.5 scale-[0.85] transform text-white/50 transition-all duration-200 pointer-events-none",
             "peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100",
             "peer-focus:-translate-y-2.5 peer-focus:scale-[0.85] peer-focus:text-white/70",
-            (email || focusedField === "email") && "-translate-y-2.5 scale-[0.85]"
+            (email || focusedField === "email") &&
+              "-translate-y-2.5 scale-[0.85]",
           )}
         >
           {emailLabel}
         </label>
         {errors.email && (
-          <p id={`${emailId}-error`} className="mt-1.5 px-2 text-xs text-red-400/90" role="alert">
+          <p
+            id={`${emailId}-error`}
+            className="mt-1.5 px-2 text-xs text-red-400/90"
+            role="alert"
+          >
             {errors.email}
           </p>
         )}
@@ -113,7 +127,8 @@ export default function FloatingLabelLoginForm({
           value={password}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setPassword(e.target.value);
-            if (errors.password) setErrors((prev) => ({ ...prev, password: undefined }));
+            if (errors.password)
+              setErrors((prev) => ({ ...prev, password: undefined }));
           }}
           onFocus={() => setFocusedField("password")}
           onBlur={() => setFocusedField(null)}
@@ -122,7 +137,8 @@ export default function FloatingLabelLoginForm({
             "hover:bg-white/10 hover:border-white/30",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:bg-white/10",
             "disabled:opacity-50 disabled:cursor-not-allowed",
-            errors.password && "border-red-400/50 focus-visible:ring-red-400/70 hover:border-red-400/50"
+            errors.password &&
+              "border-red-400/50 focus-visible:ring-red-400/70 hover:border-red-400/50",
           )}
           disabled={loading}
           aria-invalid={!!errors.password}
@@ -134,12 +150,13 @@ export default function FloatingLabelLoginForm({
             "absolute left-4 top-4 z-10 origin-[0] -translate-y-2.5 scale-[0.85] transform text-white/50 transition-all duration-200 pointer-events-none",
             "peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100",
             "peer-focus:-translate-y-2.5 peer-focus:scale-[0.85] peer-focus:text-white/70",
-            (password || focusedField === "password") && "-translate-y-2.5 scale-[0.85]"
+            (password || focusedField === "password") &&
+              "-translate-y-2.5 scale-[0.85]",
           )}
         >
           {passwordLabel}
         </label>
-        
+
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
@@ -151,7 +168,11 @@ export default function FloatingLabelLoginForm({
         </button>
 
         {errors.password && (
-          <p id={`${passwordId}-error`} className="mt-1.5 px-2 text-xs text-red-400/90" role="alert">
+          <p
+            id={`${passwordId}-error`}
+            className="mt-1.5 px-2 text-xs text-red-400/90"
+            role="alert"
+          >
             {errors.password}
           </p>
         )}
@@ -165,7 +186,7 @@ export default function FloatingLabelLoginForm({
           "hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgb(0_0_0/0.45)]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
           "active:translate-y-0",
-          "disabled:opacity-70 disabled:pointer-events-none"
+          "disabled:opacity-70 disabled:pointer-events-none",
         )}
       >
         {loading ? <Loader2 className="animate-spin" size={18} /> : null}

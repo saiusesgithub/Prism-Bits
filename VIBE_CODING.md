@@ -65,13 +65,13 @@ registry/
 
 ## Live Preview Support
 
-| Framework | Live preview today |
-|---|---|
-| `react` | Yes |
-| `html-css-js` | Yes |
-| `css-only` | Yes |
-| `vue` | No, code view only |
-| `svelte` | No, code view only |
+| Framework     | Live preview today |
+| ------------- | ------------------ |
+| `react`       | Yes                |
+| `html-css-js` | Yes                |
+| `css-only`    | Yes                |
+| `vue`         | No, code view only |
+| `svelte`      | No, code view only |
 
 ## Allowed Categories
 

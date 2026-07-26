@@ -37,7 +37,10 @@ type ButtonAsButtonProps = ComponentPropsWithoutRef<"button"> &
     href?: never;
   };
 
-type ButtonAsLinkProps = Omit<ComponentPropsWithoutRef<typeof Link>, "className"> &
+type ButtonAsLinkProps = Omit<
+  ComponentPropsWithoutRef<typeof Link>,
+  "className"
+> &
   ButtonVariantProps & {
     className?: string;
     asChild?: never;
@@ -45,7 +48,13 @@ type ButtonAsLinkProps = Omit<ComponentPropsWithoutRef<typeof Link>, "className"
 
 type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
-export function Button({ className, variant, size, asChild, ...props }: ButtonProps) {
+export function Button({
+  className,
+  variant,
+  size,
+  asChild,
+  ...props
+}: ButtonProps) {
   const classes = cn(buttonVariants({ variant, size, className }));
 
   if ((props as ButtonAsLinkProps).href !== undefined) {

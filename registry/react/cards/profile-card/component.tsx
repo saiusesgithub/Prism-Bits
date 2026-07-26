@@ -27,7 +27,7 @@ export default function ProfileCard({
       </div>
       <h3 className="text-xl font-bold text-white">{name}</h3>
       <p className="mt-1 text-sm font-medium text-cyan-200/70">{role}</p>
-      
+
       <div className="mt-6 flex w-full gap-3">
         <button
           onClick={onFollow}

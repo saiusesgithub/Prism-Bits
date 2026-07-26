@@ -18,14 +18,14 @@ Components live as **folders on the filesystem** under `src/components/registry/
 
 `src/lib/registry.ts:67-127` (`loadComponentFromMeta`) parses each `meta.json`, **leniently normalizes** it (invalid `difficulty` → `"Beginner"`, invalid `status` → `"draft"`, missing author → `"Prism Bits"`), and reads sibling files **by fixed filename convention** (`registry.ts:89-96`):
 
-| File | Read into |
-|---|---|
-| `index.html` | `files.html` |
-| `style.css` | `files.css` |
-| `script.js` | `files.js` |
-| `component.tsx` / `component.vue` / `component.svelte` | component source → `files.code` |
-| `code.ts` | overrides `files.code` entirely (`registry.ts:98`) |
-| `preview.tsx` | `files.preview` — **read but never rendered anywhere (dead field)** |
+| File                                                   | Read into                                                           |
+| ------------------------------------------------------ | ------------------------------------------------------------------- |
+| `index.html`                                           | `files.html`                                                        |
+| `style.css`                                            | `files.css`                                                         |
+| `script.js`                                            | `files.js`                                                          |
+| `component.tsx` / `component.vue` / `component.svelte` | component source → `files.code`                                     |
+| `code.ts`                                              | overrides `files.code` entirely (`registry.ts:98`)                  |
+| `preview.tsx`                                          | `files.preview` — **read but never rendered anywhere (dead field)** |
 
 If `name`, `slug`, `category`, `framework`, or `description` is missing/invalid, the component is **silently skipped** with only a server console warning (`registry.ts:79-82`).
 
@@ -47,6 +47,7 @@ Three completely different mechanisms, branched on `meta.framework`:
 ### Is contribution automatic or manual?
 
 **Hybrid.** Listing, routing, search, detail page, and code tabs are fully automatic from `meta.json` + files. But:
+
 - A **live React preview requires manually editing** `src/components/landing/component-preview.tsx` (hardcoded slug switch) — de-facto manual registration for React.
 - A **new category** requires editing `src/data/components-registry.ts`.
 
@@ -69,13 +70,13 @@ Contributor folder (meta.json + files)
 
 Framework values enforced by both `src/lib/registry.ts:24` and `scripts/validate-registry.mjs:7`: `react`, `html-css-js`, `vue`, `svelte`, `css-only`.
 
-| Type | Exact directory | Required files (per CONTRIBUTING.md:77-83) | Optional files | Preview mechanism | Current real status |
-|---|---|---|---|---|---|
-| HTML/CSS/JS | `src/components/registry/html-css-js/<category>/<slug>/` | `index.html`, `style.css`, `meta.json` | `script.js`, `code.ts` | Live sandboxed iframe | ✅ **Fully working** — 3 real examples (`corner-outline-button`, `offset-border-button`, `retro-shadow-button`) |
-| CSS-only | `src/components/registry/css-only/<category>/<slug>/` | `index.html`, `style.css`, `meta.json` | `code.ts` | Live sandboxed iframe (same branch as html-css-js) | ⚠️ Pipeline works, but **both existing examples (`pulse-loader`, `ink-highlight`) are meta-only stubs with no source files** |
-| React | `src/components/registry/react/<category>/<slug>/` | `component.tsx`, `meta.json` | `preview.tsx` (dead), `code.ts` | **Hardcoded mock per slug** in `component-preview.tsx`; contributor code never runs | ⚠️ **8 meta-only stubs, zero real `component.tsx` files exist.** Live preview requires maintainer code edits |
-| Vue | `src/components/registry/vue/<category>/<slug>/` | `component.vue`, `meta.json` | `code.ts` | Static code snippet only | ⚠️ 1 meta-only stub (`soft-modal`); no renderer |
-| Svelte | `src/components/registry/svelte/<category>/<slug>/` | `component.svelte`, `meta.json` | `code.ts` | Static code snippet only | ⚠️ 1 meta-only stub (`project-footer`); no renderer |
+| Type        | Exact directory                                          | Required files (per CONTRIBUTING.md:77-83) | Optional files                  | Preview mechanism                                                                   | Current real status                                                                                                          |
+| ----------- | -------------------------------------------------------- | ------------------------------------------ | ------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| HTML/CSS/JS | `src/components/registry/html-css-js/<category>/<slug>/` | `index.html`, `style.css`, `meta.json`     | `script.js`, `code.ts`          | Live sandboxed iframe                                                               | ✅ **Fully working** — 3 real examples (`corner-outline-button`, `offset-border-button`, `retro-shadow-button`)              |
+| CSS-only    | `src/components/registry/css-only/<category>/<slug>/`    | `index.html`, `style.css`, `meta.json`     | `code.ts`                       | Live sandboxed iframe (same branch as html-css-js)                                  | ⚠️ Pipeline works, but **both existing examples (`pulse-loader`, `ink-highlight`) are meta-only stubs with no source files** |
+| React       | `src/components/registry/react/<category>/<slug>/`       | `component.tsx`, `meta.json`               | `preview.tsx` (dead), `code.ts` | **Hardcoded mock per slug** in `component-preview.tsx`; contributor code never runs | ⚠️ **8 meta-only stubs, zero real `component.tsx` files exist.** Live preview requires maintainer code edits                 |
+| Vue         | `src/components/registry/vue/<category>/<slug>/`         | `component.vue`, `meta.json`               | `code.ts`                       | Static code snippet only                                                            | ⚠️ 1 meta-only stub (`soft-modal`); no renderer                                                                              |
+| Svelte      | `src/components/registry/svelte/<category>/<slug>/`      | `component.svelte`, `meta.json`            | `code.ts`                       | Static code snippet only                                                            | ⚠️ 1 meta-only stub (`project-footer`); no renderer                                                                          |
 
 **Only HTML/CSS/JS (and by extension CSS-only) contributions currently produce a genuine end-to-end result** (folder → listing → live preview → copyable code) without maintainer intervention.
 
@@ -149,19 +150,19 @@ The **only complete, canonical examples** in the repo are the three `html-css-js
 
 Two parallel definitions exist: lenient runtime (`src/lib/registry.ts`) and strict validator (`scripts/validate-registry.mjs`). They disagree in places.
 
-| Field | Type | Required? | Purpose | Validation (validator / runtime) | Consumed by |
-|---|---|---|---|---|---|
-| `name` | string | ✅ both | Display name, H1, sort key | validator: presence only / runtime: non-empty or component skipped | detail panel h1, sidebar, cards, `usage` fallback `<NameNoSpaces />` (`registry.ts:117`) |
-| `slug` | string | ✅ both | URL segment `/components/<category>/<slug>` | validator: `^[a-z0-9]+(?:-[a-z0-9]+)*$` (`validate-registry.mjs:6,47`) / runtime: non-empty only | routing, `generateStaticParams`, sidebar links, search |
-| `category` | string | ✅ both | Which category page lists it | validator: must match a slug regex-scraped from `components-registry.ts` (`validate-registry.mjs:12-18,48`) / runtime: any non-empty string (⚠️ unknown category = component exists but is unreachable) | routing, grouping, category counts |
-| `framework` | enum | ✅ both | Preview mechanism + badge | both check against the same 5-value set | preview branching (`component-preview-panel.tsx:53-54`), badges, search |
-| `description` | string | ✅ runtime (skip) / ✅ validator (presence) | Card + detail copy | non-empty (runtime) | detail panel, cards, search |
-| `tags` | string[] | ✅ validator (`validate-registry.mjs:54-56`) / optional runtime (defaults `[]`) | Chips + search | array of strings | tag chips, search text |
-| `status` | `"available" \| "planned" \| "draft"` | ✅ validator presence / runtime defaults `"draft"` | Badge only | enum check both sides | badges in sidebar/cards. **Does NOT hide a component** — `planned`/`draft` components are listed and routable |
-| `difficulty` | string | optional | Badge | validator accepts **both** `"beginner"` and `"Beginner"` casings (`validate-registry.mjs:9`); runtime lowercases and normalizes (`registry.ts:27-34`) | difficulty badge |
-| `author.name` | string | ✅ validator (`validate-registry.mjs:57-59`) / runtime defaults `"Prism Bits"` | Credit line | string check | detail panel "Author:" line |
-| `author.github` | string | optional | Credit handle | none — **not validated, rendered as plain text `@handle`, not a link** (`component-detail-panel.tsx:32`) | detail panel |
-| `dependencies` | string[] | optional | Informational chips | none — free-form strings, nothing installs or verifies them | "Dependencies" section (`component-detail-panel.tsx:39-50`) |
+| Field           | Type                                  | Required?                                                                       | Purpose                                     | Validation (validator / runtime)                                                                                                                                                                        | Consumed by                                                                                                   |
+| --------------- | ------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `name`          | string                                | ✅ both                                                                         | Display name, H1, sort key                  | validator: presence only / runtime: non-empty or component skipped                                                                                                                                      | detail panel h1, sidebar, cards, `usage` fallback `<NameNoSpaces />` (`registry.ts:117`)                      |
+| `slug`          | string                                | ✅ both                                                                         | URL segment `/components/<category>/<slug>` | validator: `^[a-z0-9]+(?:-[a-z0-9]+)*$` (`validate-registry.mjs:6,47`) / runtime: non-empty only                                                                                                        | routing, `generateStaticParams`, sidebar links, search                                                        |
+| `category`      | string                                | ✅ both                                                                         | Which category page lists it                | validator: must match a slug regex-scraped from `components-registry.ts` (`validate-registry.mjs:12-18,48`) / runtime: any non-empty string (⚠️ unknown category = component exists but is unreachable) | routing, grouping, category counts                                                                            |
+| `framework`     | enum                                  | ✅ both                                                                         | Preview mechanism + badge                   | both check against the same 5-value set                                                                                                                                                                 | preview branching (`component-preview-panel.tsx:53-54`), badges, search                                       |
+| `description`   | string                                | ✅ runtime (skip) / ✅ validator (presence)                                     | Card + detail copy                          | non-empty (runtime)                                                                                                                                                                                     | detail panel, cards, search                                                                                   |
+| `tags`          | string[]                              | ✅ validator (`validate-registry.mjs:54-56`) / optional runtime (defaults `[]`) | Chips + search                              | array of strings                                                                                                                                                                                        | tag chips, search text                                                                                        |
+| `status`        | `"available" \| "planned" \| "draft"` | ✅ validator presence / runtime defaults `"draft"`                              | Badge only                                  | enum check both sides                                                                                                                                                                                   | badges in sidebar/cards. **Does NOT hide a component** — `planned`/`draft` components are listed and routable |
+| `difficulty`    | string                                | optional                                                                        | Badge                                       | validator accepts **both** `"beginner"` and `"Beginner"` casings (`validate-registry.mjs:9`); runtime lowercases and normalizes (`registry.ts:27-34`)                                                   | difficulty badge                                                                                              |
+| `author.name`   | string                                | ✅ validator (`validate-registry.mjs:57-59`) / runtime defaults `"Prism Bits"`  | Credit line                                 | string check                                                                                                                                                                                            | detail panel "Author:" line                                                                                   |
+| `author.github` | string                                | optional                                                                        | Credit handle                               | none — **not validated, rendered as plain text `@handle`, not a link** (`component-detail-panel.tsx:32`)                                                                                                | detail panel                                                                                                  |
+| `dependencies`  | string[]                              | optional                                                                        | Informational chips                         | none — free-form strings, nothing installs or verifies them                                                                                                                                             | "Dependencies" section (`component-detail-panel.tsx:39-50`)                                                   |
 
 ### Direct answers
 
@@ -200,11 +201,11 @@ Two parallel definitions exist: lenient runtime (`src/lib/registry.ts`) and stri
 ## 6. Preview and rendering system
 
 - **Route → component:** `[category]/[slug]/page.tsx` → `ComponentBrowserLayout` → `getComponentBySlug(category, slug)` (`registry.ts:144-147`) — a linear scan of the full registry re-globbed per call (each helper calls `getComponentsRegistry()` again; no caching, fine at current scale).
-- **React:** *not imported at all.* `component-preview.tsx` is a manually-maintained mock gallery keyed by slug. Contributor `.tsx` files are read as **text** for the code tab only. Consequences: zero security risk today, and zero live React previews without maintainer work.
+- **React:** _not imported at all._ `component-preview.tsx` is a manually-maintained mock gallery keyed by slug. Contributor `.tsx` files are read as **text** for the code tab only. Consequences: zero security risk today, and zero live React previews without maintainer work.
 - **HTML/CSS/JS & CSS-only:** assembled into a full `srcDoc` document with a fixed dark backdrop and centering grid (`component-preview-panel.tsx:8-50`). `sandbox="allow-scripts"` **without** `allow-same-origin` — scripts run but are origin-isolated: no cookies, no parent DOM, no site storage. Contributor CSS/JS **cannot leak into the main app**. Missing `allow-same-origin` is the correct choice; keep it.
 - **Vue/Svelte:** never rendered; static snippet.
 - **Third-party dependencies:** do not work in any preview. The iframe has no network-restricted CSP, so `<script src="https://cdn...">` would actually load — worth noting as an open risk (e.g. crypto-miner or fingerprinting script inside a "component"); a `csp` attribute or review rule is advisable. React deps are moot since code never runs.
-- **Can contributor code break the site?** Runtime: no (iframe sandbox + never-imported React). Build: only via invalid JSON, which is skipped with a warning (`registry.ts:123-126`) — so a broken meta silently *disappears* rather than failing the build. That silence is itself a problem: **`next build` passes even when a component was dropped.**
+- **Can contributor code break the site?** Runtime: no (iframe sandbox + never-imported React). Build: only via invalid JSON, which is skipped with a warning (`registry.ts:123-126`) — so a broken meta silently _disappears_ rather than failing the build. That silence is itself a problem: **`next build` passes even when a component was dropped.**
 - **Limitations contributors must know:** exact filenames required; no images/assets pipeline; no framework in URL (slug is unique per category across frameworks); iframe is dark-background only (light-theme components look wrong); React/Vue/Svelte have no live preview.
 
 **Maintainability risk (critical):** the hardcoded React preview file guarantees that either every React PR touches shared site code (`component-preview.tsx`) — merge conflicts, review load — or React previews are permanently fake.
@@ -213,12 +214,12 @@ Two parallel definitions exist: lenient runtime (`src/lib/registry.ts`) and stri
 
 ## 7. Validation and quality checks
 
-| Command | Purpose | Required before PR? (per CONTRIBUTING.md:87-93) | Current limitations |
-|---|---|---|---|
-| `npm run validate:registry` | meta.json schema, slug pattern, category existence, enum values, duplicate routes | Yes (documented) | No folder↔meta consistency; no file-existence check (meta-only stubs pass); category list scraped by regex; accepts both difficulty casings |
-| `npm run lint` | ESLint (`eslint-config-next` core-web-vitals + TS) over `src`, configs | Yes (documented) | Does not lint contributor HTML/CSS/JS payloads (they're data, not modules) |
-| `npm run build` | `next build` — type-checks site code, prerenders all component routes | Yes (documented) | Invalid meta is skipped with a console warning, so build **passes** while silently dropping components |
-| `npm run dev` | Manual visual check | Implied ("component page works locally") | Nothing records that it was done; no screenshot requirement enforcement |
+| Command                     | Purpose                                                                           | Required before PR? (per CONTRIBUTING.md:87-93) | Current limitations                                                                                                                         |
+| --------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run validate:registry` | meta.json schema, slug pattern, category existence, enum values, duplicate routes | Yes (documented)                                | No folder↔meta consistency; no file-existence check (meta-only stubs pass); category list scraped by regex; accepts both difficulty casings |
+| `npm run lint`              | ESLint (`eslint-config-next` core-web-vitals + TS) over `src`, configs            | Yes (documented)                                | Does not lint contributor HTML/CSS/JS payloads (they're data, not modules)                                                                  |
+| `npm run build`             | `next build` — type-checks site code, prerenders all component routes             | Yes (documented)                                | Invalid meta is skipped with a console warning, so build **passes** while silently dropping components                                      |
+| `npm run dev`               | Manual visual check                                                               | Implied ("component page works locally")        | Nothing records that it was done; no screenshot requirement enforcement                                                                     |
 
 **CI: none.** There is no `.github/` directory at all — no workflows, no PR/issue templates, no CODEOWNERS. **Every check currently depends on contributors or maintainers remembering to run it locally.** There are also no tests of any kind and no git hooks (no husky, no `prepare` script in `package.json`).
 
@@ -230,8 +231,8 @@ Two parallel definitions exist: lenient runtime (`src/lib/registry.ts`) and stri
 
 1. **React preview is manual & fake.** `src/components/landing/component-preview.tsx:8-48` hardcodes 3 slugs. Every real React contribution either edits shared site code or gets a placeholder. This is the single biggest blocker to scaling contributions.
 2. **No CI.** No `.github/workflows/`. `validate:registry`/`lint`/`build` are honor-system. A broken `meta.json` can merge and silently vanish from the site (`registry.ts:123-126`).
-3. **Docs page contradicts CONTRIBUTING.md.** `src/app/docs/page.tsx:38` tells contributors to *"Register the component in src/data/components-registry.ts"* — false; `CONTRIBUTING.md:3` correctly says no central registration. First-time contributors will follow the website.
-4. **11 of 14 registry entries are meta-only stubs** (all react, vue, svelte, css-only, plus `html-css-js/forms/focus-field`). Two are even marked `"status": "available"` (`glass-cta`, `ink-highlight`) with no source — the site shows "Live iframe preview"/"Live React preview" over placeholder content, and the code tab shows *"… source coming soon."* Contributors copying any of these as a template will produce empty components that pass validation.
+3. **Docs page contradicts CONTRIBUTING.md.** `src/app/docs/page.tsx:38` tells contributors to _"Register the component in src/data/components-registry.ts"_ — false; `CONTRIBUTING.md:3` correctly says no central registration. First-time contributors will follow the website.
+4. **11 of 14 registry entries are meta-only stubs** (all react, vue, svelte, css-only, plus `html-css-js/forms/focus-field`). Two are even marked `"status": "available"` (`glass-cta`, `ink-highlight`) with no source — the site shows "Live iframe preview"/"Live React preview" over placeholder content, and the code tab shows _"… source coming soon."_ Contributors copying any of these as a template will produce empty components that pass validation.
 
 ### Important
 
@@ -284,7 +285,7 @@ Keep the existing architecture (filesystem registry + meta.json + static routes)
 
 ### What Project Admins verify
 
-Review = quality + originality + safety (checklist in §12). Admins should *not* need to check schema mechanics — CI does that.
+Review = quality + originality + safety (checklist in §12). Admins should _not_ need to check schema mechanics — CI does that.
 
 ### What gets rejected / needs prior approval
 
@@ -295,30 +296,30 @@ Review = quality + originality + safety (checklist in §12). Admins should *not*
 
 ## 10. Recommended official rules
 
-| Rule | Level |
-|---|---|
-| Component `name` is unique, descriptive Title Case; `slug` is its kebab-case form | **Mandatory** |
-| Folder path segments exactly match `meta.framework`/`meta.category`/`meta.slug` | **Mandatory** |
-| Category must be one of the 12 in `src/data/components-registry.ts`; new categories via separate approved issue | **Mandatory** |
-| One slug = one component; check the category page and open PRs for duplicates before starting | **Mandatory** |
-| Framework must be one of the 5 supported values; put source in that framework's tree only | **Mandatory** |
-| All required source files present; `status: "available"` only with working source + preview | **Mandatory** |
-| `meta.json` passes `npm run validate:registry` | **Mandatory** |
-| Original work or license-compatible with attribution in the PR description | **Mandatory** |
-| No external network requests (CDN scripts, fonts, trackers, analytics) inside component code | **Mandatory** |
-| No new npm dependencies without prior maintainer approval | **Mandatory** |
-| JS must not use `document.cookie`, storage APIs, `fetch` to third parties, or `eval` | **Mandatory** |
-| One component per PR; no changes to shared site code in a component PR | **Mandatory** |
-| Screenshot (or GIF for animated components) attached to the PR | **Mandatory** |
-| Responsive: usable from 360 px width; no fixed pixel layouts that overflow | **Recommended** (Mandatory for section-scale components: heroes, navbars, footers, bento) |
-| Accessibility: focus-visible states, `aria-*` where interactive, 4.5:1 text contrast, `prefers-reduced-motion` respected for animation | **Recommended** |
-| Looks correct on the dark preview backdrop (current iframe is dark-only); document light-mode behavior if any | **Recommended** |
-| Modern evergreen browser support; no vendor-prefix-only features | **Recommended** |
-| `tags`: 3–6 lowercase single words; `description`: one sentence, ≤ 140 chars | **Recommended** |
-| `author.github` filled in so credit is visible | **Recommended** |
-| `difficulty` set honestly (`beginner`/`intermediate`/`advanced`, pick one canonical casing) | **Recommended** |
-| `code.ts` override for a hand-polished copyable snippet | **Optional** |
-| Extra usage notes in PR description | **Optional** |
+| Rule                                                                                                                                   | Level                                                                                     |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Component `name` is unique, descriptive Title Case; `slug` is its kebab-case form                                                      | **Mandatory**                                                                             |
+| Folder path segments exactly match `meta.framework`/`meta.category`/`meta.slug`                                                        | **Mandatory**                                                                             |
+| Category must be one of the 12 in `src/data/components-registry.ts`; new categories via separate approved issue                        | **Mandatory**                                                                             |
+| One slug = one component; check the category page and open PRs for duplicates before starting                                          | **Mandatory**                                                                             |
+| Framework must be one of the 5 supported values; put source in that framework's tree only                                              | **Mandatory**                                                                             |
+| All required source files present; `status: "available"` only with working source + preview                                            | **Mandatory**                                                                             |
+| `meta.json` passes `npm run validate:registry`                                                                                         | **Mandatory**                                                                             |
+| Original work or license-compatible with attribution in the PR description                                                             | **Mandatory**                                                                             |
+| No external network requests (CDN scripts, fonts, trackers, analytics) inside component code                                           | **Mandatory**                                                                             |
+| No new npm dependencies without prior maintainer approval                                                                              | **Mandatory**                                                                             |
+| JS must not use `document.cookie`, storage APIs, `fetch` to third parties, or `eval`                                                   | **Mandatory**                                                                             |
+| One component per PR; no changes to shared site code in a component PR                                                                 | **Mandatory**                                                                             |
+| Screenshot (or GIF for animated components) attached to the PR                                                                         | **Mandatory**                                                                             |
+| Responsive: usable from 360 px width; no fixed pixel layouts that overflow                                                             | **Recommended** (Mandatory for section-scale components: heroes, navbars, footers, bento) |
+| Accessibility: focus-visible states, `aria-*` where interactive, 4.5:1 text contrast, `prefers-reduced-motion` respected for animation | **Recommended**                                                                           |
+| Looks correct on the dark preview backdrop (current iframe is dark-only); document light-mode behavior if any                          | **Recommended**                                                                           |
+| Modern evergreen browser support; no vendor-prefix-only features                                                                       | **Recommended**                                                                           |
+| `tags`: 3–6 lowercase single words; `description`: one sentence, ≤ 140 chars                                                           | **Recommended**                                                                           |
+| `author.github` filled in so credit is visible                                                                                         | **Recommended**                                                                           |
+| `difficulty` set honestly (`beginner`/`intermediate`/`advanced`, pick one canonical casing)                                            | **Recommended**                                                                           |
+| `code.ts` override for a hand-polished copyable snippet                                                                                | **Optional**                                                                              |
+| Extra usage notes in PR description                                                                                                    | **Optional**                                                                              |
 
 ---
 
@@ -396,4 +397,4 @@ Review = quality + originality + safety (checklist in §12). Admins should *not*
 
 ---
 
-*Every claim above cites the file it was derived from; line numbers refer to the current working tree at commit `06b53df`.*
+_Every claim above cites the file it was derived from; line numbers refer to the current working tree at commit `06b53df`._

@@ -3,7 +3,10 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
-import type { ComponentCategory, ComponentMetadata } from "@/data/components-registry";
+import type {
+  ComponentCategory,
+  ComponentMetadata,
+} from "@/data/components-registry";
 import { getFrameworkLabel } from "@/data/components-registry";
 
 type ComponentSidebarProps = {
@@ -12,7 +15,11 @@ type ComponentSidebarProps = {
   selectedSlug: string;
 };
 
-export function ComponentSidebar({ category, components, selectedSlug }: ComponentSidebarProps) {
+export function ComponentSidebar({
+  category,
+  components,
+  selectedSlug,
+}: ComponentSidebarProps) {
   const [query, setQuery] = useState("");
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -72,7 +79,9 @@ export function ComponentSidebar({ category, components, selectedSlug }: Compone
                     {component.status}
                   </span>
                 </div>
-                <p className="mt-2 text-xs text-white/45">{getFrameworkLabel(component.framework)}</p>
+                <p className="mt-2 text-xs text-white/45">
+                  {getFrameworkLabel(component.framework)}
+                </p>
               </Link>
             );
           })}

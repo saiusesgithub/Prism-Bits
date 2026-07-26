@@ -2,7 +2,8 @@ export type ComponentStatus = "available" | "planned" | "draft";
 
 export type ComponentDifficulty = "Beginner" | "Intermediate" | "Advanced";
 
-export type ComponentFramework = "react" | "html-css-js" | "vue" | "svelte" | "css-only";
+export type ComponentFramework =
+  "react" | "html-css-js" | "vue" | "svelte" | "css-only";
 
 export type ComponentCategory = {
   name: string;
@@ -45,7 +46,8 @@ export const componentCategories: ComponentCategory[] = [
   {
     name: "Cards",
     slug: "cards",
-    description: "Composable content containers for products, dashboards, and docs.",
+    description:
+      "Composable content containers for products, dashboards, and docs.",
     targets: ["React", "HTML/CSS/JS"],
   },
   {
@@ -57,13 +59,15 @@ export const componentCategories: ComponentCategory[] = [
   {
     name: "Forms",
     slug: "forms",
-    description: "Inputs, controls, and field groups for conversion-focused flows.",
+    description:
+      "Inputs, controls, and field groups for conversion-focused flows.",
     targets: ["React", "HTML/CSS/JS"],
   },
   {
     name: "Loaders",
     slug: "loaders",
-    description: "Progress and loading states that feel polished without being loud.",
+    description:
+      "Progress and loading states that feel polished without being loud.",
     targets: ["CSS-only", "React"],
   },
   {
@@ -75,13 +79,15 @@ export const componentCategories: ComponentCategory[] = [
   {
     name: "Backgrounds",
     slug: "backgrounds",
-    description: "Ambient visuals, grids, gradients, and scene-setting effects.",
+    description:
+      "Ambient visuals, grids, gradients, and scene-setting effects.",
     targets: ["React", "CSS-only"],
   },
   {
     name: "Text Effects",
     slug: "text-effects",
-    description: "Animated and expressive type treatments for interface moments.",
+    description:
+      "Animated and expressive type treatments for interface moments.",
     targets: ["React", "CSS-only"],
   },
   {
@@ -105,7 +111,8 @@ export const componentCategories: ComponentCategory[] = [
   {
     name: "Footers",
     slug: "footers",
-    description: "Footer layouts for docs, SaaS, and open-source project sites.",
+    description:
+      "Footer layouts for docs, SaaS, and open-source project sites.",
     targets: ["React", "HTML/CSS/JS"],
   },
 ];

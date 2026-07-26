@@ -19,7 +19,9 @@ export default function FloatingNav({
 
   return (
     <nav className="flex w-full max-w-xl items-center justify-between gap-3 rounded-2xl border border-white/12 bg-white/[0.07] py-2 pl-5 pr-2 shadow-2xl shadow-black/40 backdrop-blur">
-      <span className="text-sm font-bold tracking-wide text-white">{brand}</span>
+      <span className="text-sm font-bold tracking-wide text-white">
+        {brand}
+      </span>
       <div className="hidden items-center gap-1 sm:flex">
         {links.map((link) => (
           <button
@@ -28,7 +30,9 @@ export default function FloatingNav({
             onClick={() => setActive(link)}
             aria-current={active === link ? "page" : undefined}
             className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 ${
-              active === link ? "bg-white/[0.12] text-white" : "text-white/55 hover:text-white"
+              active === link
+                ? "bg-white/[0.12] text-white"
+                : "text-white/55 hover:text-white"
             }`}
           >
             {link}

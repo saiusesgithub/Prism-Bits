@@ -4,11 +4,7 @@
   "category": "navbars",
   "framework": "react",
   "description": "A rounded glass navigation bar aligned with the Prism Bits landing page.",
-  "tags": [
-    "navbar",
-    "glass",
-    "navigation"
-  ],
+  "tags": ["navbar", "glass", "navigation"],
   "difficulty": "intermediate",
   "status": "available",
   "author": {

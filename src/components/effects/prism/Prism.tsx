@@ -241,14 +241,20 @@ const Prism = ({
       iResBuf[1] = gl.drawingBufferHeight;
       offsetPxBuf[0] = offX * dpr;
       offsetPxBuf[1] = offY * dpr;
-      program.uniforms.uPxScale.value = 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE);
+      program.uniforms.uPxScale.value =
+        1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE);
     };
     const ro = new ResizeObserver(resize);
     ro.observe(container);
     resize();
 
     const rotBuf = new Float32Array(9);
-    const setMat3FromEuler = (yawY: number, pitchX: number, rollZ: number, out: Float32Array) => {
+    const setMat3FromEuler = (
+      yawY: number,
+      pitchX: number,
+      rollZ: number,
+      out: Float32Array,
+    ) => {
       const cy = Math.cos(yawY);
       const sy = Math.sin(yawY);
       const cx = Math.cos(pitchX);
@@ -358,11 +364,18 @@ const Prism = ({
         yaw = lerp(prevYaw, targetYaw, INERT);
         pitch = lerp(prevPitch, targetPitch, INERT);
         roll = lerp(prevRoll, 0, 0.1);
-        program.uniforms.uRot.value = setMat3FromEuler(yaw, pitch, roll, rotBuf);
+        program.uniforms.uRot.value = setMat3FromEuler(
+          yaw,
+          pitch,
+          roll,
+          rotBuf,
+        );
 
         if (NOISE_IS_ZERO) {
           const settled =
-            Math.abs(yaw - targetYaw) < 1e-4 && Math.abs(pitch - targetPitch) < 1e-4 && Math.abs(roll) < 1e-4;
+            Math.abs(yaw - targetYaw) < 1e-4 &&
+            Math.abs(pitch - targetPitch) < 1e-4 &&
+            Math.abs(roll) < 1e-4;
           if (settled) continueRAF = false;
         }
       } else if (animationType === "3drotate") {
@@ -370,7 +383,12 @@ const Prism = ({
         yaw = tScaled * wY;
         pitch = Math.sin(tScaled * wX + phX) * 0.6;
         roll = Math.sin(tScaled * wZ + phZ) * 0.5;
-        program.uniforms.uRot.value = setMat3FromEuler(yaw, pitch, roll, rotBuf);
+        program.uniforms.uRot.value = setMat3FromEuler(
+          yaw,
+          pitch,
+          roll,
+          rotBuf,
+        );
         if (TS < 1e-6) continueRAF = false;
       } else {
         rotBuf[0] = 1;
@@ -411,12 +429,14 @@ const Prism = ({
       stopRAF();
       ro.disconnect();
       if (animationType === "hover") {
-        if (onPointerMove) window.removeEventListener("pointermove", onPointerMove);
+        if (onPointerMove)
+          window.removeEventListener("pointermove", onPointerMove);
         window.removeEventListener("mouseleave", onLeave);
         window.removeEventListener("blur", onBlur);
       }
       intersectionObserver?.disconnect();
-      if (gl.canvas.parentElement === container) container.removeChild(gl.canvas);
+      if (gl.canvas.parentElement === container)
+        container.removeChild(gl.canvas);
     };
   }, [
     height,

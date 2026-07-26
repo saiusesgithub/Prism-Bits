@@ -24,8 +24,12 @@ export default function LaunchHero({
       <span className="inline-block rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200/80">
         {badge}
       </span>
-      <h1 className="mt-6 text-balance text-4xl font-bold leading-tight text-white sm:text-5xl">{title}</h1>
-      <p className="mx-auto mt-4 max-w-xl text-balance text-base leading-7 text-white/60">{subtitle}</p>
+      <h1 className="mt-6 text-balance text-4xl font-bold leading-tight text-white sm:text-5xl">
+        {title}
+      </h1>
+      <p className="mx-auto mt-4 max-w-xl text-balance text-base leading-7 text-white/60">
+        {subtitle}
+      </p>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <button
           type="button"

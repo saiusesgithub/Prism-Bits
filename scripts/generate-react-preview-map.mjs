@@ -50,9 +50,13 @@ ${mapBody}
 
 mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
 
-const previous = existsSync(OUTPUT_PATH) ? readFileSync(OUTPUT_PATH, "utf8") : null;
+const previous = existsSync(OUTPUT_PATH)
+  ? readFileSync(OUTPUT_PATH, "utf8")
+  : null;
 if (previous !== output) {
   writeFileSync(OUTPUT_PATH, output);
 }
 
-console.log(`Generated ${OUTPUT_PATH} with ${entries.length} React preview ${entries.length === 1 ? "entry" : "entries"}.`);
+console.log(
+  `Generated ${OUTPUT_PATH} with ${entries.length} React preview ${entries.length === 1 ? "entry" : "entries"}.`,
+);
