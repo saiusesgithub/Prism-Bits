@@ -36,8 +36,6 @@ graph TD
         D --> F
         F --> E
         
-        A --> E
-        
         subgraph Styling & Animation
             G[Tailwind CSS] --> E
             H[Framer Motion / OGL] --> E
@@ -49,11 +47,12 @@ graph TD
     end
 ```
 
-## 🔄 Data Flow
+## 🔄 Data Flow & Rendering Model
 1. **Component Registry**: Developers add new UI components to the `registry/`.
 2. **Build Scripts**: During `predev` and `prebuild`, scripts map the registry components so they can be dynamically previewed in the docs.
-3. **Application Layer**: Next.js renders the documentation and preview pages, consuming the generated maps.
-4. **User Interaction**: Users view the live components, copy code, and interact with the UI, which is styled by Tailwind and animated by Framer Motion.
+3. **Static Generation**: Next.js uses `generateStaticParams` in category and component slug pages to pre-render routes at build time. The application is statically exported (`output: 'standalone'` or similar static hosting optimizations) rather than relying on heavy SSR at runtime.
+4. **Application Layer**: The Next.js client router serves the pre-rendered pages, consuming the generated component maps for live previews.
+5. **User Interaction**: Users view the live components, copy code, and interact with the UI, styled by Tailwind and animated by Framer Motion.
 
-## 🌐 External Services
-Currently, Prism-Bits operates as a static/hybrid frontend web application without requiring a dedicated backend database. It relies on standard hosting providers (e.g., Vercel) for deployment and serving.
+## 🌐 External Services & Deployment
+Currently, Prism-Bits operates as a statically generated frontend web application without requiring a dedicated backend database. It relies on standard hosting providers (e.g., Vercel) for edge deployments, leveraging Next.js's static site generation (SSG) for fast loading.
