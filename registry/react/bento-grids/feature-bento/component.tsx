@@ -11,14 +11,31 @@ type FeatureBentoProps = {
 };
 
 const defaultItems: BentoItem[] = [
-  { title: "Copy-first", description: "Every component is source you paste and own — no package, no lock-in.", wide: true },
+  {
+    title: "Copy-first",
+    description:
+      "Every component is source you paste and own — no package, no lock-in.",
+    wide: true,
+  },
   { title: "Live previews", description: "See it run before you copy it." },
-  { title: "Framework-honest", description: "React bits are real React; HTML bits are real HTML." },
-  { title: "MIT licensed", description: "Use anywhere, including commercial work." },
-  { title: "Community-built", description: "Every bit credits its contributor on the page.", wide: true },
+  {
+    title: "Framework-honest",
+    description: "React bits are real React; HTML bits are real HTML.",
+  },
+  {
+    title: "MIT licensed",
+    description: "Use anywhere, including commercial work.",
+  },
+  {
+    title: "Community-built",
+    description: "Every bit credits its contributor on the page.",
+    wide: true,
+  },
 ];
 
-export default function FeatureBento({ items = defaultItems }: FeatureBentoProps) {
+export default function FeatureBento({
+  items = defaultItems,
+}: FeatureBentoProps) {
   return (
     <div className="grid w-full max-w-2xl gap-3 sm:grid-cols-3">
       {items.map((item) => (
@@ -29,7 +46,9 @@ export default function FeatureBento({ items = defaultItems }: FeatureBentoProps
           }`}
         >
           <h3 className="text-base font-semibold text-white">{item.title}</h3>
-          <p className="mt-2 text-sm leading-6 text-white/55">{item.description}</p>
+          <p className="mt-2 text-sm leading-6 text-white/55">
+            {item.description}
+          </p>
         </article>
       ))}
     </div>

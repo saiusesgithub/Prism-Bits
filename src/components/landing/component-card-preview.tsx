@@ -21,7 +21,10 @@ export function ComponentCardPreview({ component }: ComponentCardPreviewProps) {
     );
   }
 
-  if (component.framework === "html-css-js" || component.framework === "css-only") {
+  if (
+    component.framework === "html-css-js" ||
+    component.framework === "css-only"
+  ) {
     return (
       <iframe
         title={`${component.name} preview`}

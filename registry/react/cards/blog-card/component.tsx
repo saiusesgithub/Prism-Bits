@@ -22,7 +22,10 @@ export default function BlogCard({
   href = "#",
 }: BlogCardProps) {
   return (
-    <a href={href} className="group flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.03] shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+    <a
+      href={href}
+      className="group flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.03] shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+    >
       <div className="relative aspect-[16/10] overflow-hidden">
         <img
           src={imageUrl}
@@ -33,15 +36,23 @@ export default function BlogCard({
           {category}
         </div>
       </div>
-      
+
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="mb-2 text-xl font-semibold leading-tight text-white transition group-hover:text-cyan-300">{title}</h3>
+        <h3 className="mb-2 text-xl font-semibold leading-tight text-white transition group-hover:text-cyan-300">
+          {title}
+        </h3>
         <p className="mb-6 line-clamp-2 text-sm text-white/60">{description}</p>
-        
+
         <div className="mt-auto flex items-center gap-3 border-t border-white/10 pt-4">
-          <img src={authorAvatar} alt={authorName} className="h-8 w-8 rounded-full object-cover" />
+          <img
+            src={authorAvatar}
+            alt={authorName}
+            className="h-8 w-8 rounded-full object-cover"
+          />
           <div className="flex flex-col">
-            <span className="text-xs font-medium text-white/90">{authorName}</span>
+            <span className="text-xs font-medium text-white/90">
+              {authorName}
+            </span>
             <span className="text-xs text-white/50">{date}</span>
           </div>
         </div>

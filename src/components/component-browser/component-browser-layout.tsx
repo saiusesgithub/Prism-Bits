@@ -13,19 +13,28 @@ type ComponentBrowserLayoutProps = {
   selectedSlug?: string;
 };
 
-export async function ComponentBrowserLayout({ categorySlug, selectedSlug }: ComponentBrowserLayoutProps) {
+export async function ComponentBrowserLayout({
+  categorySlug,
+  selectedSlug,
+}: ComponentBrowserLayoutProps) {
   const category = getCategoryBySlug(categorySlug);
   if (!category) notFound();
 
   const components = await getComponentsByCategory(categorySlug);
   if (!components.length) notFound();
 
-  const selected = selectedSlug ? await getComponentBySlug(categorySlug, selectedSlug) : await getFirstComponentForCategory(categorySlug);
+  const selected = selectedSlug
+    ? await getComponentBySlug(categorySlug, selectedSlug)
+    : await getFirstComponentForCategory(categorySlug);
   if (!selected) notFound();
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(240px,25%)_1fr]">
-      <ComponentSidebar category={category} components={components} selectedSlug={selected.slug} />
+      <ComponentSidebar
+        category={category}
+        components={components}
+        selectedSlug={selected.slug}
+      />
       <ComponentDetailPanel category={category} component={selected} />
     </div>
   );

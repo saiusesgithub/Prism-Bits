@@ -21,7 +21,10 @@ export default async function ComponentsPage() {
           </p>
         </section>
 
-        <CategorySearch categories={componentCategories} components={components} />
+        <CategorySearch
+          categories={componentCategories}
+          components={components}
+        />
       </Container>
       <Footer />
     </main>

@@ -4,11 +4,7 @@
   "category": "bento-grids",
   "framework": "react",
   "description": "A responsive bento section for product features and capability highlights.",
-  "tags": [
-    "bento",
-    "features",
-    "grid"
-  ],
+  "tags": ["bento", "features", "grid"],
   "difficulty": "intermediate",
   "status": "available",
   "author": {

@@ -10,7 +10,9 @@ export function Footer() {
           <Atom className="size-6" />
           <span className="font-semibold">Prism Bits</span>
         </Link>
-        <p className="text-sm text-muted">Elegant open-source UI bits you can copy, customize, and ship.</p>
+        <p className="text-sm text-muted">
+          Elegant open-source UI bits you can copy, customize, and ship.
+        </p>
       </Container>
     </footer>
   );

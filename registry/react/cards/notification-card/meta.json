@@ -4,11 +4,7 @@
   "category": "cards",
   "framework": "react",
   "description": "A small notification card showing an alert or update.",
-  "tags": [
-    "card",
-    "notification",
-    "alert"
-  ],
+  "tags": ["card", "notification", "alert"],
   "status": "available",
   "difficulty": "beginner",
   "author": {

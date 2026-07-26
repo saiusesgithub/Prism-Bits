@@ -64,14 +64,22 @@ a {
 }
 
 .prism-text {
-  background: linear-gradient(90deg, hsl(var(--foreground)), hsl(var(--accent-2)), hsl(var(--accent)), hsl(var(--accent-3)));
+  background: linear-gradient(
+    90deg,
+    hsl(var(--foreground)),
+    hsl(var(--accent-2)),
+    hsl(var(--accent)),
+    hsl(var(--accent-3))
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .font-display {
-  font-family: var(--font-display), var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  font-family:
+    var(--font-display), var(--font-montserrat), ui-sans-serif, system-ui,
+    sans-serif;
 }
 
 .font-script {
