@@ -13,7 +13,9 @@
     "start": "next start",
     "lint": "eslint src registry next.config.ts eslint.config.mjs",
     "generate:react-previews": "node scripts/generate-react-preview-map.mjs",
-    "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs"
+    "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -30,13 +32,19 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^25.8.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.6",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "playwright-core": "^1.61.1",
     "tailwindcss": "^4.3.0",
+    "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
   }
 }
