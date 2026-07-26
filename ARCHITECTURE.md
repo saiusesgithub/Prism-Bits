@@ -1,22 +1,59 @@
 # Architecture
 
-## Tech Stack
-- **Frontend Framework**: Next.js
-- **UI Library**: React
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Language**: TypeScript
+## 🚀 Tech Stack
 
-## Folder Structure
-- `src/` - Contains the main application logic, components, and pages.
-- `public/` - Static assets like images and icons.
-- `registry/` - UI components registry.
-- `scripts/` - Helper scripts for generation and validation.
+- **Frontend Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **UI Library**: [React](https://react.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) & [OGL](https://github.com/oframe/ogl)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Tooling**: ESLint, PostCSS
 
-## Data Flow
-Prism-Bits is primarily a frontend application that showcases UI components. The components are built using React and styled using Tailwind CSS. 
-Next.js handles routing and rendering (Server-Side Rendering and Static Site Generation where applicable).
-The user interacts with the application interface, which updates state dynamically or fetches local component metadata from the registry.
+## 📂 Folder Structure
 
-## External Services
-At present, Prism-Bits operates without complex backend services, relying on standard static file hosting platforms like Vercel for deployment.
+- `src/` - Core application logic, routing (Next.js App Router), and UI layouts.
+- `public/` - Static assets like images, icons, and fonts.
+- `registry/` - The core UI components registry where reusable Prism-Bits components are stored.
+- `scripts/` - Node.js helper scripts for generating component previews and validating the registry.
+
+## 🏗️ System Architecture
+
+The following diagram illustrates how the different layers of Prism-Bits interact, from the build process to runtime execution.
+
+```mermaid
+graph TD
+    subgraph Build Phase
+        A[registry/ Components] -->|scripts/generate-react-preview-map.mjs| B(Component Previews Map)
+        C[scripts/validate-registry.mjs] -->|Validates| A
+    end
+
+    subgraph Runtime Next.js Application
+        D[Next.js Server]
+        E[Client Components]
+        F[Server Components]
+        
+        B -.-> D
+        D --> F
+        F --> E
+        
+        A --> E
+        
+        subgraph Styling & Animation
+            G[Tailwind CSS] --> E
+            H[Framer Motion / OGL] --> E
+        end
+    end
+
+    subgraph Deployment
+        D -->|Vercel / Static Hosting| I[End User Browser]
+    end
+```
+
+## 🔄 Data Flow
+1. **Component Registry**: Developers add new UI components to the `registry/`.
+2. **Build Scripts**: During `predev` and `prebuild`, scripts map the registry components so they can be dynamically previewed in the docs.
+3. **Application Layer**: Next.js renders the documentation and preview pages, consuming the generated maps.
+4. **User Interaction**: Users view the live components, copy code, and interact with the UI, which is styled by Tailwind and animated by Framer Motion.
+
+## 🌐 External Services
+Currently, Prism-Bits operates as a static/hybrid frontend web application without requiring a dedicated backend database. It relies on standard hosting providers (e.g., Vercel) for deployment and serving.
