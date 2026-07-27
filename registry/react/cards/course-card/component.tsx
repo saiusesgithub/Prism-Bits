@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type CourseCardProps = {
   title?: string;
   instructor?: string;
@@ -22,10 +24,11 @@ export default function CourseCard({
   return (
     <div className="group flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.04] shadow-2xl transition hover:border-white/20">
       <div className="relative h-40 w-full overflow-hidden">
-        <img
+        <Image
           src={thumbnailUrl}
           alt={title}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          fill
+          className="object-cover transition duration-500 group-hover:scale-105"
         />
         <div className="absolute right-3 top-3 rounded-md bg-black/70 px-2 py-1 text-xs font-semibold text-white backdrop-blur-md">
           {progress}% Complete

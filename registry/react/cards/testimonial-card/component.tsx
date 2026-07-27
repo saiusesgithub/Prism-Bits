@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type TestimonialCardProps = {
   name?: string;
   role?: string;
@@ -35,7 +37,7 @@ export default function TestimonialCard({
       <p className="mb-8 text-base leading-relaxed text-white/80 italic">&quot;{review}&quot;</p>
       
       <div className="flex items-center gap-4">
-        <img src={avatarUrl} alt={name} className="h-12 w-12 rounded-full border border-white/10 object-cover" />
+        <Image src={avatarUrl} alt={name} width={48} height={48} className="rounded-full border border-white/10 object-cover" />
         <div>
           <h4 className="font-semibold text-white">{name}</h4>
           <p className="text-xs text-white/50">{role}, {company}</p>
