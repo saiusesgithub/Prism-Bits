@@ -1,0 +1,14 @@
+{
+  "name": "Magnetic Ripple Button",
+  "slug": "magnetic-ripple-button",
+  "category": "buttons",
+  "framework": "react",
+  "description": "An interactive React CTA button featuring magnetic cursor tracking, dynamic spotlight glow, and expanding click ripple animation.",
+  "tags": ["button", "magnetic", "ripple", "framer-motion", "cta"],
+  "status": "available",
+  "difficulty": "intermediate",
+  "author": {
+    "name": "Vijay Kumar",
+    "github": "Vijaykumar5623"
+  }
+}
