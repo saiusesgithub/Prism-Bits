@@ -37,7 +37,7 @@ export function ComponentSidebar({ category, components, selectedSlug }: Compone
   }, [components, normalizedQuery]);
 
   return (
-    <aside className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-4 lg:sticky lg:top-28 lg:self-start">
+    <aside className="min-w-0 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-4 lg:sticky lg:top-28 lg:self-start">
       <div>
         <p className="text-sm text-accent-2">{category.name}</p>
         <h2 className="mt-1 text-2xl font-semibold text-foreground">Bits</h2>

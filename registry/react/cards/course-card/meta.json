@@ -1,0 +1,19 @@
+{
+  "name": "Course Card",
+  "slug": "course-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "An online learning course card with progress tracking.",
+  "tags": [
+    "card",
+    "course",
+    "education",
+    "progress"
+  ],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

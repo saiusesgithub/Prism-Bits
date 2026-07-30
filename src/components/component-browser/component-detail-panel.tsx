@@ -10,7 +10,7 @@ type ComponentDetailPanelProps = {
 
 export function ComponentDetailPanel({ category, component }: ComponentDetailPanelProps) {
   return (
-    <section className="space-y-6">
+    <section className="min-w-0 space-y-6">
       <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6">
         <p className="text-sm text-accent-2">{category.name}</p>
         <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">

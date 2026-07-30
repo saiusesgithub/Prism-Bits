@@ -2,35 +2,50 @@
   "name": "prism-bits",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
+    "predev": "npm run generate:react-previews",
     "dev": "next dev",
+    "prebuild": "npm run generate:react-previews",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src next.config.ts eslint.config.mjs",
-    "validate:registry": "node scripts/validate-registry.mjs"
+    "lint": "eslint src registry next.config.ts eslint.config.mjs",
+    "generate:react-previews": "node scripts/generate-react-preview-map.mjs",
+    "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "latest",
-    "class-variance-authority": "latest",
-    "clsx": "latest",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "fast-glob": "^3.3.3",
-    "framer-motion": "latest",
-    "lucide-react": "^1.28.0",
-    "next": "latest",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.16.0",
+    "next": "^16.2.6",
     "next-themes": "^0.4.6",
-    "ogl": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "tailwind-merge": "latest"
+    "ogl": "^1.0.11",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
-    "tailwindcss": "latest",
-    "typescript": "latest"
+    "@tailwindcss/postcss": "^4.3.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^25.8.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "playwright-core": "^1.61.1",
+    "tailwindcss": "^4.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
   }
 }

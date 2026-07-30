@@ -1,0 +1,18 @@
+{
+  "name": "Profile Card",
+  "slug": "profile-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "A user profile card highlighting avatar, role, and social links.",
+  "tags": [
+    "card",
+    "profile",
+    "user"
+  ],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

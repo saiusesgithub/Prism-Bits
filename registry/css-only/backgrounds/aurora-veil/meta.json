@@ -1,0 +1,14 @@
+{
+  "name": "Aurora Veil",
+  "slug": "aurora-veil",
+  "category": "backgrounds",
+  "framework": "css-only",
+  "description": "Softly drifting aurora blobs that sit behind any hero or card content.",
+  "tags": ["background", "aurora", "gradient", "motion"],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

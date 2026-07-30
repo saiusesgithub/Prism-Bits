@@ -1,0 +1,18 @@
+{
+  "name": "Basic Card",
+  "slug": "basic-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "A versatile foundational card with a title, description, and an action button.",
+  "tags": [
+    "card",
+    "basic",
+    "foundation"
+  ],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

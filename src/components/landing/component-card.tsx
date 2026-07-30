@@ -5,12 +5,19 @@ import { motion } from "framer-motion";
 import type { ComponentMetadata } from "@/data/components-registry";
 import { getCategoryBySlug } from "@/data/components-registry";
 import { Button } from "@/components/common/button";
-import { ComponentPreview } from "@/components/landing/component-preview";
+import { ComponentCardPreview } from "@/components/landing/component-card-preview";
 
 type ComponentCardProps = {
   component: ComponentMetadata;
 };
 
+/**
+ * Renders a card displaying a component preview and metadata on the landing page.
+ * Provides quick actions to view the full component or its source code.
+ *
+ * @param props - The component properties.
+ * @param props.component - The metadata of the component to display.
+ */
 export function ComponentCard({ component }: ComponentCardProps) {
   const category = getCategoryBySlug(component.category);
 
@@ -25,7 +32,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
       className="group overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-cyan-950/10 backdrop-blur transition duration-300 hover:border-cyan-200/30 hover:bg-white/[0.065] hover:shadow-cyan-950/25"
     >
       <div className="h-52 overflow-hidden border-b border-white/10">
-        <ComponentPreview slug={component.slug} />
+        <ComponentCardPreview component={component} />
       </div>
       <div className="p-5">
         <div className="flex items-start justify-between gap-4">
@@ -50,7 +57,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
             <Eye className="size-4" />
             Preview
           </Button>
-          <Button href="https://github.com/saiusesgithub/Prism-Bits" variant="ghost" className="h-11 rounded-xl border border-white/10 bg-black/20 text-sm">
+          <Button href={`https://github.com/saiusesgithub/Prism-Bits/tree/main/registry/${component.framework}/${component.category}/${component.slug}`} variant="ghost" className="h-11 rounded-xl border border-white/10 bg-black/20 text-sm">
             <Code2 className="size-4" />
             Code
           </Button>

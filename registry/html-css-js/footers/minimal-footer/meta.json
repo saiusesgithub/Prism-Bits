@@ -1,0 +1,14 @@
+{
+  "name": "Minimal Footer",
+  "slug": "minimal-footer",
+  "category": "footers",
+  "framework": "html-css-js",
+  "description": "A compact glassy footer with brand, link row, and legal line.",
+  "tags": ["footer", "links", "minimal"],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

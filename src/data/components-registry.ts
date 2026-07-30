@@ -26,9 +26,9 @@ export type ComponentMetadata = {
   status: ComponentStatus;
   dependencies?: string[];
   files: {
-    preview: string;
     code: string;
     usage: string;
+    previewSource?: string;
     html?: string;
     css?: string;
     js?: string;

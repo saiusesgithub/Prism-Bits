@@ -1,0 +1,18 @@
+{
+  "name": "Blog Card",
+  "slug": "blog-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "A standard blog post card with cover image and author metadata.",
+  "tags": [
+    "card",
+    "blog",
+    "article"
+  ],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

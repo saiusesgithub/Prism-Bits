@@ -1,0 +1,18 @@
+{
+  "name": "Event Card",
+  "slug": "event-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "An event discovery card showing date, time, and location.",
+  "tags": [
+    "card",
+    "event",
+    "calendar"
+  ],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

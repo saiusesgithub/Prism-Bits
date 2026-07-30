@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Bruno_Ace_SC, Inter, Italianno } from "next/font/google";
+import { Bruno_Ace_SC, Italianno, Montserrat } from "next/font/google";
 import "@/styles/globals.css";
 
 import { Navbar } from "@/components/common/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-montserrat",
 });
 
 const italianno = Italianno({
@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}
+        className={`${montserrat.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}
       >
         <ThemeProvider>
           <Navbar />

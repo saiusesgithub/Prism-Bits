@@ -1,0 +1,18 @@
+{
+  "name": "Stats Card",
+  "slug": "stats-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "A compact statistics card showing a key metric and trend indicator.",
+  "tags": [
+    "card",
+    "stats",
+    "dashboard"
+  ],
+  "status": "available",
+  "difficulty": "beginner",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}
