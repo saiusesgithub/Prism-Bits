@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type ProjectCardProps = {
   title?: string;
   description?: string;
@@ -21,10 +23,11 @@ export default function ProjectCard({
     <div className="group flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.04] shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]">
       <div className="relative aspect-video overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-        <img
+        <Image
           src={thumbnailUrl}
           alt={title}
-          className="h-full w-full object-cover transition duration-700 group-hover:scale-105 group-hover:rotate-1"
+          fill
+          className="object-cover transition duration-700 group-hover:scale-105 group-hover:rotate-1"
         />
         <div className="absolute bottom-4 left-4 right-4 z-20 flex gap-2">
           {technologies.slice(0, 3).map((tech) => (

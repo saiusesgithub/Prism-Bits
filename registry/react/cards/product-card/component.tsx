@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type ProductCardProps = {
   title?: string;
   price?: string;
@@ -22,10 +24,11 @@ export default function ProductCard({
   return (
     <div className="group flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.03] shadow-2xl transition duration-300 hover:border-white/20 hover:bg-white/[0.05]">
       <div className="relative aspect-square overflow-hidden bg-white/5">
-        <img
+        <Image
           src={imageUrl}
           alt={title}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          fill
+          className="object-cover transition duration-500 group-hover:scale-105"
         />
         <div className="absolute right-3 top-3 rounded-full bg-black/50 p-2 backdrop-blur-md transition hover:bg-white/20">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type ProfileCardProps = {
   name?: string;
   role?: string;
@@ -19,10 +21,12 @@ export default function ProfileCard({
     <div className="group flex w-full max-w-sm flex-col items-center rounded-2xl border border-white/12 bg-white/[0.05] p-8 shadow-2xl shadow-purple-950/20 transition duration-300 hover:border-white/20 hover:bg-white/[0.08]">
       <div className="relative mb-4">
         <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 opacity-50 blur transition duration-300 group-hover:opacity-100"></div>
-        <img
+        <Image
           src={avatarUrl}
           alt={name}
-          className="relative h-24 w-24 rounded-full border-2 border-white/10 object-cover"
+          width={96}
+          height={96}
+          className="relative rounded-full border-2 border-white/10 object-cover"
         />
       </div>
       <h3 className="text-xl font-bold text-white">{name}</h3>

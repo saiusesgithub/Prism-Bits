@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 type BlogCardProps = {
   title?: string;
   description?: string;
@@ -24,10 +26,11 @@ export default function BlogCard({
   return (
     <a href={href} className="group flex w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.03] shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
       <div className="relative aspect-[16/10] overflow-hidden">
-        <img
+        <Image
           src={imageUrl}
           alt={title}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          fill
+          className="object-cover transition duration-500 group-hover:scale-105"
         />
         <div className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-md">
           {category}
@@ -39,7 +42,7 @@ export default function BlogCard({
         <p className="mb-6 line-clamp-2 text-sm text-white/60">{description}</p>
         
         <div className="mt-auto flex items-center gap-3 border-t border-white/10 pt-4">
-          <img src={authorAvatar} alt={authorName} className="h-8 w-8 rounded-full object-cover" />
+          <Image src={authorAvatar} alt={authorName} width={32} height={32} className="rounded-full object-cover" />
           <div className="flex flex-col">
             <span className="text-xs font-medium text-white/90">{authorName}</span>
             <span className="text-xs text-white/50">{date}</span>
