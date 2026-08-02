@@ -171,8 +171,11 @@ export default function WaveBackground({
         "relative w-full h-full overflow-hidden",
         className
       )}
-      style={{ background: "linear-gradient(135deg, #0a0a0f 0%, #0d1117 100%)" }}
       {...props}
+      style={{
+        background: "linear-gradient(135deg, #0a0a0f 0%, #0d1117 100%)",
+        ...props.style,
+      }}
     >
       <canvas ref={canvasRef} className="block w-full h-full" />
       <div
