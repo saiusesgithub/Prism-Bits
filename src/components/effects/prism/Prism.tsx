@@ -282,6 +282,11 @@ const Prism = ({
     const NOISE_IS_ZERO = NOISE < 1e-6;
     let raf = 0;
     const t0 = performance.now();
+    // Respect prefers-reduced-motion: render a single static frame instead of
+    // running the continuous WebGL loop (WCAG 2.3.3, and a battery/CPU saving).
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const startRAF = () => {
       if (raf) return;
       raf = requestAnimationFrame(render);
@@ -345,7 +350,8 @@ const Prism = ({
       const time = (t - t0) * 0.001;
       program.uniforms.iTime.value = time;
 
-      let continueRAF = true;
+      // With reduced motion we draw one frame and never reschedule.
+      let continueRAF = !prefersReducedMotion;
 
       if (animationType === "hover") {
         const maxPitch = 0.6 * HOVSTR;
