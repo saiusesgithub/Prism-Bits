@@ -1,0 +1,20 @@
+{
+  "name": "Glowing Border Card",
+  "slug": "glowing-border-card",
+  "category": "cards",
+  "framework": "react",
+  "description": "A dark glassmorphic card featuring an animated glowing gradient border and cursor-following spotlight effect.",
+  "tags": [
+    "card",
+    "glowing-border",
+    "glassmorphism",
+    "spotlight",
+    "interactive"
+  ],
+  "status": "available",
+  "difficulty": "intermediate",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

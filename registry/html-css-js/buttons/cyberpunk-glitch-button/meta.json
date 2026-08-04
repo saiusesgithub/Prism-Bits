@@ -1,0 +1,20 @@
+{
+  "name": "Cyberpunk Glitch Button",
+  "slug": "cyberpunk-glitch-button",
+  "category": "buttons",
+  "framework": "html-css-js",
+  "description": "A futuristic neon glitch button featuring angled clip-paths, scanlines, and animated RGB split text effects.",
+  "tags": [
+    "button",
+    "cyberpunk",
+    "glitch",
+    "neon",
+    "interactive"
+  ],
+  "status": "available",
+  "difficulty": "intermediate",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}

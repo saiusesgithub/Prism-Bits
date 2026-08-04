@@ -1,0 +1,119 @@
+:root {
+  --primary-cyan: #00f0ff;
+  --secondary-pink: #ff0055;
+  --yellow-accent: #fcee0a;
+  --bg-dark: #09090b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.demo-wrapper {
+  display: flex;
+  min-height: 250px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Cyberpunk Button Core */
+.cybr-btn {
+  position: relative;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000;
+  background: var(--yellow-accent);
+  border: none;
+  padding: 16px 36px 16px 24px;
+  cursor: pointer;
+  outline: none;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  box-shadow: 0 0 15px rgba(252, 238, 10, 0.4);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.cybr-btn:focus-visible {
+  outline: 2px solid var(--primary-cyan);
+  outline-offset: 4px;
+}
+
+.cybr-btn:hover {
+  background: var(--primary-cyan);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.7);
+}
+
+.cybr-btn:active {
+  transform: scale(0.97);
+}
+
+/* Tag details */
+.cybr-btn__tag {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 8px;
+  line-height: 1;
+  padding: 2px 4px;
+  background: #000;
+  color: var(--yellow-accent);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.cybr-btn:hover .cybr-btn__tag {
+  color: var(--primary-cyan);
+}
+
+/* Glitch effect layer */
+.cybr-btn__glitch {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary-pink);
+  color: #fff;
+  padding: 16px 36px 16px 24px;
+  box-sizing: border-box;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+
+.cybr-btn:hover .cybr-btn__glitch {
+  display: block;
+  animation: cybr-glitch 0.4s steps(2, start) infinite;
+}
+
+@keyframes cybr-glitch {
+  0% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    transform: translate(-3px, 1px);
+  }
+  30% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 85%, 0 85%);
+    transform: translate(3px, -2px);
+  }
+  60% {
+    clip-path: polygon(0 40%, 100% 40%, 100% 50%, 0 50%);
+    transform: translate(-2px, 2px);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cybr-btn:hover .cybr-btn__glitch {
+    animation: none;
+    display: none;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Orbit Ring Loader",
+  "slug": "orbit-ring-loader",
+  "category": "loaders",
+  "framework": "css-only",
+  "description": "A pure CSS glowing 3D orbital ring loader with pulsating core elements and continuous keyframe rotations.",
+  "tags": [
+    "loader",
+    "spinner",
+    "orbit",
+    "css-animation",
+    "glowing"
+  ],
+  "status": "available",
+  "difficulty": "intermediate",
+  "author": {
+    "name": "Prism Bits",
+    "github": "saiusesgithub"
+  }
+}
