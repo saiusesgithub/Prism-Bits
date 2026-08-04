@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { motion, useSpring, useMotionValue, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 
 export interface MagneticRippleButtonProps extends HTMLMotionProps<"button"> {
@@ -45,6 +45,15 @@ export default function MagneticRippleButton({
   const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
   const magneticX = useSpring(rawX, springConfig);
   const magneticY = useSpring(rawY, springConfig);
+
+  // If reduced motion turns on mid-interaction, snap the magnetic offset back
+  // to rest instead of leaving the button displaced until the next mouseleave.
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      rawX.set(0);
+      rawY.set(0);
+    }
+  }, [prefersReducedMotion, rawX, rawY]);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
