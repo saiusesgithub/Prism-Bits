@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
-import { motion, useSpring, useMotionValue, type HTMLMotionProps } from "framer-motion";
+import React, { useState, useRef, useCallback, useEffect } from "react";
+import { motion, useSpring, useMotionValue, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 
 export interface MagneticRippleButtonProps extends HTMLMotionProps<"button"> {
   children?: React.ReactNode;
@@ -34,6 +34,10 @@ export default function MagneticRippleButton({
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
+  // Honor prefers-reduced-motion: skip the magnetic pull, spotlight glow,
+  // ripple, and tap-scale for users who ask for reduced motion (WCAG 2.3.3).
+  const prefersReducedMotion = useReducedMotion();
+
   // Motion values for magnetic pull physics
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
@@ -42,9 +46,18 @@ export default function MagneticRippleButton({
   const magneticX = useSpring(rawX, springConfig);
   const magneticY = useSpring(rawY, springConfig);
 
+  // If reduced motion turns on mid-interaction, snap the magnetic offset back
+  // to rest instead of leaving the button displaced until the next mouseleave.
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      rawX.set(0);
+      rawY.set(0);
+    }
+  }, [prefersReducedMotion, rawX, rawY]);
+
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      if (!buttonRef.current) return;
+      if (!buttonRef.current || prefersReducedMotion) return;
       const rect = buttonRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
@@ -60,7 +73,7 @@ export default function MagneticRippleButton({
         y: e.clientY - rect.top,
       });
     },
-    [magneticStrength, rawX, rawY]
+    [magneticStrength, rawX, rawY, prefersReducedMotion]
   );
 
   const handleMouseEnter = useCallback(() => {
@@ -75,7 +88,7 @@ export default function MagneticRippleButton({
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      if (buttonRef.current) {
+      if (buttonRef.current && !prefersReducedMotion) {
         const rect = buttonRef.current.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height) * 2;
         const x = e.clientX - rect.left;
@@ -99,7 +112,7 @@ export default function MagneticRippleButton({
         onClick(e);
       }
     },
-    [onClick]
+    [onClick, prefersReducedMotion]
   );
 
   // Variant styling
@@ -129,12 +142,12 @@ export default function MagneticRippleButton({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
-      whileTap={{ scale: 0.96 }}
+      whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
       className={`relative inline-flex items-center justify-center overflow-hidden cursor-pointer select-none transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       {...props}
     >
       {/* Interactive Radial Spotlight Glow */}
-      {isHovered && (
+      {isHovered && !prefersReducedMotion && (
         <span
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-full blur-xl transition-opacity duration-300"
           style={{

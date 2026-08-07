@@ -282,6 +282,14 @@ const Prism = ({
     const NOISE_IS_ZERO = NOISE < 1e-6;
     let raf = 0;
     const t0 = performance.now();
+    // Respect prefers-reduced-motion: render a single static frame instead of
+    // running the continuous WebGL loop (WCAG 2.3.3, and a battery/CPU saving).
+    // Tracked live so toggling the OS setting takes effect without a reload.
+    const motionQuery =
+      typeof window !== "undefined"
+        ? window.matchMedia("(prefers-reduced-motion: reduce)")
+        : null;
+    let reducedMotion = motionQuery?.matches ?? false;
     const startRAF = () => {
       if (raf) return;
       raf = requestAnimationFrame(render);
@@ -328,6 +336,7 @@ const Prism = ({
     let onPointerMove: ((event: PointerEvent) => void) | null = null;
     if (animationType === "hover") {
       onPointerMove = (event) => {
+        if (reducedMotion) return; // no pointer-driven tilt under reduced motion
         onMove(event);
         startRAF();
       };
@@ -345,7 +354,8 @@ const Prism = ({
       const time = (t - t0) * 0.001;
       program.uniforms.iTime.value = time;
 
-      let continueRAF = true;
+      // With reduced motion we draw one frame and never reschedule.
+      let continueRAF = !reducedMotion;
 
       if (animationType === "hover") {
         const maxPitch = 0.6 * HOVSTR;
@@ -407,8 +417,19 @@ const Prism = ({
       startRAF();
     }
 
+    // React to the user toggling reduced motion after mount. startRAF() does the
+    // right thing both ways: re-enabling motion resumes the loop (raf was 0);
+    // turning it on lets the in-flight frame stop itself (continueRAF reads the
+    // updated flag) or draws one fresh static frame if nothing was running.
+    const onMotionChange = () => {
+      reducedMotion = motionQuery?.matches ?? false;
+      startRAF();
+    };
+    motionQuery?.addEventListener("change", onMotionChange);
+
     return () => {
       stopRAF();
+      motionQuery?.removeEventListener("change", onMotionChange);
       ro.disconnect();
       if (animationType === "hover") {
         if (onPointerMove) window.removeEventListener("pointermove", onPointerMove);
