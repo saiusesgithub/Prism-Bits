@@ -70,6 +70,7 @@ export default function FloatingLabelLoginForm({
         <input
           id={emailId}
           type="email"
+          placeholder=" "
           value={email}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setEmail(e.target.value);
@@ -110,6 +111,7 @@ export default function FloatingLabelLoginForm({
         <input
           id={passwordId}
           type={showPassword ? "text" : "password"}
+          placeholder=" "
           value={password}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setPassword(e.target.value);
