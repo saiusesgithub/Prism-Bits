@@ -1,0 +1,21 @@
+{
+  "name": "Wave Background",
+  "slug": "wave-background",
+  "category": "backgrounds",
+  "framework": "react",
+  "description": "Interactive 3D wave grid background with mouse-reactive rotation and glowing cyan highlights, built with Canvas 2D.",
+  "tags": [
+    "canvas",
+    "3d",
+    "wave",
+    "background",
+    "animation",
+    "interactive"
+  ],
+  "difficulty": "intermediate",
+  "status": "available",
+  "author": {
+    "name": "mohiuddin",
+    "github": "mohi2006august"
+  }
+}
