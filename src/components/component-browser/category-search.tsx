@@ -48,6 +48,7 @@ export function CategorySearch({ categories, components }: CategorySearchProps) 
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
+            aria-label="Search categories or components"
             placeholder="Search categories or components"
             className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted sm:text-base"
           />

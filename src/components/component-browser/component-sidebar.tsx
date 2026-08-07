@@ -47,6 +47,7 @@ export function ComponentSidebar({ category, components, selectedSlug }: Compone
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          aria-label="Search components"
           placeholder="Search component names"
           className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted"
         />
