@@ -15,3 +15,6 @@ TODO.txt
 
 # Build-time generated files (recreated by npm run generate:react-previews)
 src/generated/
+
+# Coverage reports
+coverage/

@@ -14,7 +14,7 @@
     "lint": "eslint src registry next.config.ts eslint.config.mjs",
     "generate:react-previews": "node scripts/generate-react-preview-map.mjs",
     "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "dependencies": {
