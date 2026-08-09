@@ -57,13 +57,13 @@ Supported categories:
 
 Supported frameworks:
 
-| Framework | Source files | Live preview today |
-|---|---|---|
-| `react` | `component.tsx`, optional `preview.tsx` | Yes, real React render |
-| `html-css-js` | `index.html`, `style.css`, optional `script.js` | Yes, sandboxed iframe |
-| `css-only` | `index.html`, `style.css` | Yes, sandboxed iframe |
-| `vue` | `component.vue` | No, code view only |
-| `svelte` | `component.svelte` | No, code view only |
+| Framework     | Source files                                    | Live preview today     |
+| ------------- | ----------------------------------------------- | ---------------------- |
+| `react`       | `component.tsx`, optional `preview.tsx`         | Yes, real React render |
+| `html-css-js` | `index.html`, `style.css`, optional `script.js` | Yes, sandboxed iframe  |
+| `css-only`    | `index.html`, `style.css`                       | Yes, sandboxed iframe  |
+| `vue`         | `component.vue`                                 | No, code view only     |
+| `svelte`      | `component.svelte`                              | No, code view only     |
 
 ## Before Opening a PR
 
@@ -115,13 +115,13 @@ There is no central list to edit. If the folder and metadata are valid, the comp
 
 ## Scripts
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Starts the local Next.js dev server |
-| `npm run build` | Creates a production build |
-| `npm run lint` | Runs ESLint |
-| `npm run validate:registry` | Validates every component folder and `meta.json` |
-| `npm run generate:react-previews` | Regenerates the React preview import map |
+| Command                           | What it does                                     |
+| --------------------------------- | ------------------------------------------------ |
+| `npm run dev`                     | Starts the local Next.js dev server              |
+| `npm run build`                   | Creates a production build                       |
+| `npm run lint`                    | Runs ESLint                                      |
+| `npm run validate:registry`       | Validates every component folder and `meta.json` |
+| `npm run generate:react-previews` | Regenerates the React preview import map         |
 
 `npm run dev` and `npm run build` automatically regenerate React previews first.
 

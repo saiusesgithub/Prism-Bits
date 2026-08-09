@@ -1,0 +1,7 @@
+.next
+dist
+node_modules
+.swc
+*.d.ts
+public
+coverage

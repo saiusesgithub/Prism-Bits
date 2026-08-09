@@ -1,9 +1,9 @@
-import type { ComponentMetadata } from "@/data/components-registry";
+import type { ComponentMetadata } from '@/data/components-registry';
 
 export function createIframeDocument(component: ComponentMetadata) {
   const html = component.files.html ?? component.files.usage;
-  const css = component.files.css ?? "";
-  const js = component.files.js ?? "";
+  const css = component.files.css ?? '';
+  const js = component.files.js ?? '';
 
   return `<!doctype html>
 <html>
@@ -39,7 +39,7 @@ export function createIframeDocument(component: ComponentMetadata) {
   </head>
   <body>
     ${html}
-    ${js ? `<script>${js}</script>` : ""}
+    ${js ? `<script>${js}</script>` : ''}
   </body>
 </html>`;
 }

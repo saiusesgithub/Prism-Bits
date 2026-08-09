@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import WaveBackground from "./component";
+import WaveBackground from './component';
 
 export default function Preview() {
   return (
-    <div className="w-full h-[400px] overflow-hidden rounded-xl border border-zinc-800 relative">
+    <div className="relative h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
       <WaveBackground />
     </div>
   );

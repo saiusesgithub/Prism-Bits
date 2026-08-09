@@ -14,8 +14,10 @@
     "lint": "eslint src registry next.config.ts eslint.config.mjs",
     "generate:react-previews": "node scripts/generate-react-preview-map.mjs",
     "validate:registry": "npm run generate:react-previews && node scripts/validate-registry.mjs",
+    "format": "prettier --write .",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -40,9 +42,14 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.6",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
+    "lint-staged": "^17.3.0",
     "playwright-core": "^1.61.1",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"

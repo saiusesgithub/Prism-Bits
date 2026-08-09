@@ -1,28 +1,18 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
-import { PlaygroundControls } from "./PlaygroundControls";
-import type {
-  PlaygroundConfig,
-  PlaygroundValues,
-} from "./types";
+import { useMemo, useState } from 'react';
+import { PlaygroundControls } from './PlaygroundControls';
+import type { PlaygroundConfig, PlaygroundValues } from './types';
 
 type PlaygroundProps = {
   config: PlaygroundConfig;
   render: (props: PlaygroundValues) => React.ReactNode;
 };
 
-export function Playground({
-  config,
-  render,
-}: PlaygroundProps) {
-  const initialValues = useMemo(
-    () => ({ ...config.defaults }),
-    [config],
-  );
+export function Playground({ config, render }: PlaygroundProps) {
+  const initialValues = useMemo(() => ({ ...config.defaults }), [config]);
 
-  const [values, setValues] =
-    useState<PlaygroundValues>(initialValues);
+  const [values, setValues] = useState<PlaygroundValues>(initialValues);
 
   function handleReset() {
     setValues(initialValues);
@@ -31,17 +21,17 @@ export function Playground({
   function handleCopy() {
     const props = Object.entries(values)
       .map(([key, value]) => {
-        if (typeof value === "string") {
+        if (typeof value === 'string') {
           return `${key}="${value}"`;
         }
 
-        return value ? key : "";
+        return value ? key : '';
       })
       .filter(Boolean)
-      .join("\n  ");
+      .join('\n  ');
 
     navigator.clipboard.writeText(
-`<${config.componentName}
+      `<${config.componentName}
   ${props}
 />`
     );
@@ -49,7 +39,6 @@ export function Playground({
 
   return (
     <div className="space-y-6">
-
       <div className="rounded-2xl border border-white/10 bg-black/20 p-8">
         {render(values)}
       </div>
@@ -61,7 +50,6 @@ export function Playground({
         onReset={handleReset}
         onCopy={handleCopy}
       />
-
     </div>
   );
 }

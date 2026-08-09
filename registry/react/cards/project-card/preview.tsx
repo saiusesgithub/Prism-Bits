@@ -1,5 +1,5 @@
-"use client";
-import ProjectCard from "./component";
+'use client';
+import ProjectCard from './component';
 
 export default function Preview() {
   return (

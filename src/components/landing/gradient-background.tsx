@@ -1,4 +1,4 @@
-import Prism from "@/components/effects/prism";
+import Prism from '@/components/effects/prism';
 
 export function GradientBackground() {
   return (
@@ -20,7 +20,7 @@ export function GradientBackground() {
           suspendWhenOffscreen
         />
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/72 to-background" />
+      <div className="via-background/72 to-background absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent" />
     </div>
   );
 }

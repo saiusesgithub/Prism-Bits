@@ -1,27 +1,27 @@
-const overlay = document.querySelector("[data-modal]");
-const openButton = document.querySelector("[data-modal-open]");
-const dialog = overlay.querySelector(".glass-modal");
+const overlay = document.querySelector('[data-modal]');
+const openButton = document.querySelector('[data-modal-open]');
+const dialog = overlay.querySelector('.glass-modal');
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 function getFocusable() {
   return Array.from(dialog.querySelectorAll(FOCUSABLE)).filter(
-    (el) => el.offsetParent !== null,
+    (el) => el.offsetParent !== null
   );
 }
 
 function openModal() {
   overlay.hidden = false;
   // aria-modal="true" promises the rest of the page is inert — make it so.
-  openButton.setAttribute("inert", "");
+  openButton.setAttribute('inert', '');
   const focusable = getFocusable();
   (focusable[0] || dialog).focus();
 }
 
 function closeModal() {
   overlay.hidden = true;
-  openButton.removeAttribute("inert");
+  openButton.removeAttribute('inert');
   openButton.focus();
 }
 
@@ -53,19 +53,19 @@ function trapTab(event) {
   }
 }
 
-openButton.addEventListener("click", openModal);
+openButton.addEventListener('click', openModal);
 
-overlay.addEventListener("click", (event) => {
-  if (event.target === overlay || event.target.closest("[data-modal-close]")) {
+overlay.addEventListener('click', (event) => {
+  if (event.target === overlay || event.target.closest('[data-modal-close]')) {
     closeModal();
   }
 });
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener('keydown', (event) => {
   if (overlay.hidden) return;
-  if (event.key === "Escape") {
+  if (event.key === 'Escape') {
     closeModal();
-  } else if (event.key === "Tab") {
+  } else if (event.key === 'Tab') {
     trapTab(event);
   }
 });

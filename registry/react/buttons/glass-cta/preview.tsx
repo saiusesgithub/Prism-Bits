@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import GlassCta from "./component";
-import { Playground } from "@/components/playground/Playground";
-import type { PlaygroundConfig } from "@/components/playground/types";
+import GlassCta from './component';
+import { Playground } from '@/components/playground/Playground';
+import type { PlaygroundConfig } from '@/components/playground/types';
 
 const playgroundConfig: PlaygroundConfig = {
-  title: "Glass CTA",
-  componentName: "GlassCta",
+  title: 'Glass CTA',
+  componentName: 'GlassCta',
 
   defaults: {
-    primaryLabel: "Get started",
-    secondaryLabel: "View docs",
+    primaryLabel: 'Get started',
+    secondaryLabel: 'View docs',
   },
 
   controls: {
     primaryLabel: {
-      type: "text",
-      label: "Primary Label",
-      defaultValue: "Get started",
+      type: 'text',
+      label: 'Primary Label',
+      defaultValue: 'Get started',
     },
 
     secondaryLabel: {
-      type: "text",
-      label: "Secondary Label",
-      defaultValue: "View docs",
+      type: 'text',
+      label: 'Secondary Label',
+      defaultValue: 'View docs',
     },
   },
 };

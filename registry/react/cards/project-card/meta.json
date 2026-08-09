@@ -4,11 +4,7 @@
   "category": "cards",
   "framework": "react",
   "description": "A showcase card for a portfolio project with tech badges and links.",
-  "tags": [
-    "card",
-    "portfolio",
-    "project"
-  ],
+  "tags": ["card", "portfolio", "project"],
   "status": "available",
   "difficulty": "intermediate",
   "author": {
