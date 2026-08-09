@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/common/button";
-import { Container } from "@/components/common/container";
-import { GitHubIcon } from "@/components/common/github-icon";
-import { GradientBackground } from "@/components/landing/gradient-background";
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/common/button';
+import { Container } from '@/components/common/container';
+import { GitHubIcon } from '@/components/common/github-icon';
+import { GradientBackground } from '@/components/landing/gradient-background';
 
 const stagger = {
   hidden: {},
@@ -30,9 +30,11 @@ type HeroSectionProps = {
 
 export function HeroSection({ componentCount }: HeroSectionProps) {
   const stats = [
-    componentCount ? `${componentCount}+ components` : "Growing component library",
-    "React · Vue · HTML/CSS",
-    "MIT licensed",
+    componentCount
+      ? `${componentCount}+ components`
+      : 'Growing component library',
+    'React · Vue · HTML/CSS',
+    'MIT licensed',
   ];
 
   return (
@@ -47,14 +49,14 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
         >
           <motion.h1
             variants={rise}
-            className="font-display text-balance text-6xl font-normal tracking-normal text-foreground sm:text-7xl lg:text-8xl"
+            className="font-display text-foreground text-6xl font-normal tracking-normal text-balance sm:text-7xl lg:text-8xl"
           >
             Prism Bits
           </motion.h1>
 
           <motion.p
             variants={rise}
-            className="mx-auto mt-6 max-w-3xl text-balance text-xl font-medium leading-8 text-white/72 sm:text-2xl"
+            className="mx-auto mt-6 max-w-3xl text-xl leading-8 font-medium text-balance text-white/72 sm:text-2xl"
           >
             <Link
               href="/components"
@@ -68,7 +70,13 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
                 preserveAspectRatio="none"
               >
                 <defs>
-                  <linearGradient id="squiggle-gradient" x1="0" y1="0" x2="1" y2="0">
+                  <linearGradient
+                    id="squiggle-gradient"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
                     <stop offset="0%" stopColor="hsl(266 94% 68%)" />
                     <stop offset="50%" stopColor="hsl(330 92% 70%)" />
                     <stop offset="100%" stopColor="hsl(190 94% 66%)" />
@@ -116,7 +124,7 @@ export function HeroSection({ componentCount }: HeroSectionProps) {
                 {index > 0 && (
                   <span
                     aria-hidden="true"
-                    className="size-1 rounded-full bg-gradient-to-r from-accent to-accent-2"
+                    className="from-accent to-accent-2 size-1 rounded-full bg-gradient-to-r"
                   />
                 )}
                 {stat}

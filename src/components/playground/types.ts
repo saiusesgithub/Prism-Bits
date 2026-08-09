@@ -1,17 +1,17 @@
 export type PlaygroundControl =
   | {
-      type: "text";
+      type: 'text';
       label: string;
       defaultValue: string;
     }
   | {
-      type: "select";
+      type: 'select';
       label: string;
       options: string[];
       defaultValue: string;
     }
   | {
-      type: "boolean";
+      type: 'boolean';
       label: string;
       defaultValue: boolean;
     };

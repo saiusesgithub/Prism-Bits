@@ -64,13 +64,13 @@ registry/html-css-js/buttons/retro-shadow-button/
 
 Required files:
 
-| Framework | Required files | Optional files | Live preview today |
-|---|---|---|---|
-| `react` | `component.tsx`, `meta.json` | `preview.tsx` | Yes |
-| `html-css-js` | `index.html`, `style.css`, `meta.json` | `script.js` | Yes |
-| `css-only` | `index.html`, `style.css`, `meta.json` | None | Yes |
-| `vue` | `component.vue`, `meta.json` | None | No, code view only |
-| `svelte` | `component.svelte`, `meta.json` | None | No, code view only |
+| Framework     | Required files                         | Optional files | Live preview today |
+| ------------- | -------------------------------------- | -------------- | ------------------ |
+| `react`       | `component.tsx`, `meta.json`           | `preview.tsx`  | Yes                |
+| `html-css-js` | `index.html`, `style.css`, `meta.json` | `script.js`    | Yes                |
+| `css-only`    | `index.html`, `style.css`, `meta.json` | None           | Yes                |
+| `vue`         | `component.vue`, `meta.json`           | None           | No, code view only |
+| `svelte`      | `component.svelte`, `meta.json`        | None           | No, code view only |
 
 Before opening your PR:
 
@@ -299,20 +299,20 @@ Svelte components currently show code view only. Live preview is planned.
 
 Use one of these category slugs:
 
-| Category | Slug |
-|---|---|
-| Buttons | `buttons` |
-| Cards | `cards` |
-| Navbars | `navbars` |
-| Forms | `forms` |
-| Loaders | `loaders` |
+| Category      | Slug            |
+| ------------- | --------------- |
+| Buttons       | `buttons`       |
+| Cards         | `cards`         |
+| Navbars       | `navbars`       |
+| Forms         | `forms`         |
+| Loaders       | `loaders`       |
 | Hero Sections | `hero-sections` |
-| Backgrounds | `backgrounds` |
-| Text Effects | `text-effects` |
-| Modals | `modals` |
-| Dashboards | `dashboards` |
-| Bento Grids | `bento-grids` |
-| Footers | `footers` |
+| Backgrounds   | `backgrounds`   |
+| Text Effects  | `text-effects`  |
+| Modals        | `modals`        |
+| Dashboards    | `dashboards`    |
+| Bento Grids   | `bento-grids`   |
+| Footers       | `footers`       |
 
 ### Proposing a New Category
 
@@ -364,19 +364,19 @@ Slugs must be unique per category across all frameworks. For example, React and 
 
 ## `meta.json` Field Reference
 
-| Field | Required | Notes |
-|---|---|---|
-| `name` | Yes | Title Case display name |
-| `slug` | Yes | Must match the folder name |
-| `category` | Yes | Must match the category folder |
-| `framework` | Yes | Must match the framework folder |
-| `description` | Yes | One clear sentence |
-| `tags` | Yes | 3 to 6 useful lowercase tags |
-| `status` | Yes | `available`, `draft`, or `planned` |
-| `difficulty` | Optional | `beginner`, `intermediate`, or `advanced` |
-| `author.name` | Yes | Contributor display name |
-| `author.github` | Optional | GitHub username |
-| `dependencies` | Optional | Informational only; new npm dependencies need maintainer approval |
+| Field           | Required | Notes                                                             |
+| --------------- | -------- | ----------------------------------------------------------------- |
+| `name`          | Yes      | Title Case display name                                           |
+| `slug`          | Yes      | Must match the folder name                                        |
+| `category`      | Yes      | Must match the category folder                                    |
+| `framework`     | Yes      | Must match the framework folder                                   |
+| `description`   | Yes      | One clear sentence                                                |
+| `tags`          | Yes      | 3 to 6 useful lowercase tags                                      |
+| `status`        | Yes      | `available`, `draft`, or `planned`                                |
+| `difficulty`    | Optional | `beginner`, `intermediate`, or `advanced`                         |
+| `author.name`   | Yes      | Contributor display name                                          |
+| `author.github` | Optional | GitHub username                                                   |
+| `dependencies`  | Optional | Informational only; new npm dependencies need maintainer approval |
 
 Use `"status": "available"` only when the component is complete. Available components must include all required files.
 

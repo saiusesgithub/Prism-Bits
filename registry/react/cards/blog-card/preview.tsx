@@ -1,5 +1,5 @@
-"use client";
-import BlogCard from "./component";
+'use client';
+import BlogCard from './component';
 
 export default function Preview() {
   return (

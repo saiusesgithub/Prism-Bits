@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 
 type ProfileCardProps = {
   name?: string;
@@ -11,9 +11,9 @@ type ProfileCardProps = {
 };
 
 export default function ProfileCard({
-  name = "Alex Rivera",
-  role = "Senior Frontend Engineer",
-  avatarUrl = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=128&h=128&q=80",
+  name = 'Alex Rivera',
+  role = 'Senior Frontend Engineer',
+  avatarUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=128&h=128&q=80',
   onFollow,
   onMessage,
 }: ProfileCardProps) {
@@ -31,17 +31,17 @@ export default function ProfileCard({
       </div>
       <h3 className="text-xl font-bold text-white">{name}</h3>
       <p className="mt-1 text-sm font-medium text-cyan-200/70">{role}</p>
-      
+
       <div className="mt-6 flex w-full gap-3">
         <button
           onClick={onFollow}
-          className="flex-1 rounded-lg bg-cyan-500/20 border border-cyan-500/30 px-4 py-2 text-sm font-medium text-cyan-100 transition-colors hover:bg-cyan-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
+          className="flex-1 rounded-lg border border-cyan-500/30 bg-cyan-500/20 px-4 py-2 text-sm font-medium text-cyan-100 transition-colors hover:bg-cyan-500/30 focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:outline-none"
         >
           Follow
         </button>
         <button
           onClick={onMessage}
-          className="flex-1 rounded-lg bg-white/10 border border-white/10 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+          className="flex-1 rounded-lg border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none"
         >
           Message
         </button>

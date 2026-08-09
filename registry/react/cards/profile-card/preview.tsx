@@ -1,5 +1,5 @@
-"use client";
-import ProfileCard from "./component";
+'use client';
+import ProfileCard from './component';
 
 export default function Preview() {
   return (

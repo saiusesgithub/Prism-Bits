@@ -1,7 +1,7 @@
-import { Container } from "@/components/common/container";
-import { ComponentBrowserLayout } from "@/components/component-browser/component-browser-layout";
-import { Footer } from "@/components/landing/footer";
-import { getComponentsRegistry } from "@/lib/registry";
+import { Container } from '@/components/common/container';
+import { ComponentBrowserLayout } from '@/components/component-browser/component-browser-layout';
+import { Footer } from '@/components/landing/footer';
+import { getComponentsRegistry } from '@/lib/registry';
 
 type ComponentPageProps = {
   params: Promise<{
@@ -23,7 +23,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   const { category, slug } = await params;
 
   return (
-    <main className="min-h-screen bg-background pt-36">
+    <main className="bg-background min-h-screen pt-36">
       <Container className="pb-24">
         <ComponentBrowserLayout categorySlug={category} selectedSlug={slug} />
       </Container>

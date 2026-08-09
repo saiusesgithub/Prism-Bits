@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import type { PlaygroundConfig, PlaygroundValues } from "./types";
+import type { PlaygroundConfig, PlaygroundValues } from './types';
 
 type PlaygroundControlsProps = {
   config: PlaygroundConfig;
@@ -43,16 +43,14 @@ export function PlaygroundControls({
 
       {Object.entries(config.controls).map(([key, control]) => {
         switch (control.type) {
-          case "text":
+          case 'text':
             return (
               <div key={key} className="space-y-2">
-                <label className="text-xs text-white/70">
-                  {control.label}
-                </label>
+                <label className="text-xs text-white/70">{control.label}</label>
 
                 <input
                   type="text"
-                  value={String(values[key] ?? "")}
+                  value={String(values[key] ?? '')}
                   onChange={(e) =>
                     onChange({
                       ...values,
@@ -64,12 +62,10 @@ export function PlaygroundControls({
               </div>
             );
 
-          case "select":
+          case 'select':
             return (
               <div key={key} className="space-y-2">
-                <label className="text-xs text-white/70">
-                  {control.label}
-                </label>
+                <label className="text-xs text-white/70">{control.label}</label>
 
                 <select
                   value={String(values[key])}
@@ -88,15 +84,10 @@ export function PlaygroundControls({
               </div>
             );
 
-          case "boolean":
+          case 'boolean':
             return (
-              <div
-                key={key}
-                className="flex items-center justify-between"
-              >
-                <label className="text-sm text-white/70">
-                  {control.label}
-                </label>
+              <div key={key} className="flex items-center justify-between">
+                <label className="text-sm text-white/70">{control.label}</label>
 
                 <input
                   type="checkbox"

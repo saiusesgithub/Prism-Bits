@@ -4,11 +4,7 @@
   "category": "cards",
   "framework": "react",
   "description": "A compact metadata card for previewing copy-ready UI components.",
-  "tags": [
-    "card",
-    "registry",
-    "metadata"
-  ],
+  "tags": ["card", "registry", "metadata"],
   "difficulty": "beginner",
   "status": "available",
   "author": {

@@ -4,11 +4,7 @@
   "category": "cards",
   "framework": "react",
   "description": "A compact statistics card showing a key metric and trend indicator.",
-  "tags": [
-    "card",
-    "stats",
-    "dashboard"
-  ],
+  "tags": ["card", "stats", "dashboard"],
   "status": "available",
   "difficulty": "beginner",
   "author": {

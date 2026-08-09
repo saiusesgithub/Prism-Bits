@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import type { ComponentMetadata } from "@/data/components-registry";
-import { getFrameworkLabel } from "@/data/components-registry";
-import { createIframeDocument } from "@/lib/preview-document";
-import { ReactPreviewRenderer } from "@/components/component-browser/react-preview-renderer";
+import type { ComponentMetadata } from '@/data/components-registry';
+import { getFrameworkLabel } from '@/data/components-registry';
+import { createIframeDocument } from '@/lib/preview-document';
+import { ReactPreviewRenderer } from '@/components/component-browser/react-preview-renderer';
 
 type ComponentCardPreviewProps = {
   component: ComponentMetadata;
 };
 
 export function ComponentCardPreview({ component }: ComponentCardPreviewProps) {
-  if (component.framework === "react") {
+  if (component.framework === 'react') {
     return (
       <ReactPreviewRenderer
         category={component.category}
@@ -21,7 +21,10 @@ export function ComponentCardPreview({ component }: ComponentCardPreviewProps) {
     );
   }
 
-  if (component.framework === "html-css-js" || component.framework === "css-only") {
+  if (
+    component.framework === 'html-css-js' ||
+    component.framework === 'css-only'
+  ) {
     return (
       <iframe
         title={`${component.name} preview`}

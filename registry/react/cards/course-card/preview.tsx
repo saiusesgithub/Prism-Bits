@@ -1,5 +1,5 @@
-"use client";
-import CourseCard from "./component";
+'use client';
+import CourseCard from './component';
 
 export default function Preview() {
   return (

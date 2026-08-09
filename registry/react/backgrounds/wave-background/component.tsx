@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
+import React, { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 type WaveBackgroundProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -16,7 +16,7 @@ export default function WaveBackground({
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let width = 0;
@@ -32,7 +32,7 @@ export default function WaveBackground({
       canvas.height = height;
     }
 
-    window.addEventListener("resize", resize);
+    window.addEventListener('resize', resize);
     resize();
 
     const isMobile = width < 768;
@@ -71,8 +71,8 @@ export default function WaveBackground({
       targetRotX = 1.1;
     };
 
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
 
     function animate() {
       if (!isAnimating || !ctx) return;
@@ -143,7 +143,7 @@ export default function WaveBackground({
             ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(0, 255, 255, ${opacity})`;
             ctx.shadowBlur = 10;
-            ctx.shadowColor = "#00ffff";
+            ctx.shadowColor = '#00ffff';
             ctx.fill();
             ctx.shadowBlur = 0;
           }
@@ -158,31 +158,28 @@ export default function WaveBackground({
     return () => {
       isAnimating = false;
       cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener('resize', resize);
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className={cn(
-        "relative w-full h-full overflow-hidden",
-        className
-      )}
+      className={cn('relative h-full w-full overflow-hidden', className)}
       {...props}
       style={{
-        background: "linear-gradient(135deg, #0a0a0f 0%, #0d1117 100%)",
+        background: 'linear-gradient(135deg, #0a0a0f 0%, #0d1117 100%)',
         ...props.style,
       }}
     >
-      <canvas ref={canvasRef} className="block w-full h-full" />
+      <canvas ref={canvasRef} className="block h-full w-full" />
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%), linear-gradient(to bottom, transparent 65%, rgba(10,10,15,0.9) 98%)",
+            'radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%), linear-gradient(to bottom, transparent 65%, rgba(10,10,15,0.9) 98%)',
         }}
       />
     </div>

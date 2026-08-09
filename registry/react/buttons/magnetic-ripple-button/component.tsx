@@ -1,13 +1,19 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useCallback, useEffect } from "react";
-import { motion, useSpring, useMotionValue, useReducedMotion, type HTMLMotionProps } from "framer-motion";
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import {
+  motion,
+  useSpring,
+  useMotionValue,
+  useReducedMotion,
+  type HTMLMotionProps,
+} from 'framer-motion';
 
-export interface MagneticRippleButtonProps extends HTMLMotionProps<"button"> {
+export interface MagneticRippleButtonProps extends HTMLMotionProps<'button'> {
   children?: React.ReactNode;
   className?: string;
-  variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
   magneticStrength?: number;
   rippleColor?: string;
 }
@@ -21,11 +27,11 @@ interface Ripple {
 
 export default function MagneticRippleButton({
   children,
-  className = "",
-  variant = "primary",
-  size = "md",
+  className = '',
+  variant = 'primary',
+  size = 'md',
   magneticStrength = 0.35,
-  rippleColor = "rgba(255, 255, 255, 0.4)",
+  rippleColor = 'rgba(255, 255, 255, 0.4)',
   onClick,
   ...props
 }: MagneticRippleButtonProps) {
@@ -118,20 +124,20 @@ export default function MagneticRippleButton({
   // Variant styling
   const variantStyles = {
     primary:
-      "bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 border border-violet-500/30",
+      'bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 border border-violet-500/30',
     secondary:
-      "bg-slate-900 text-slate-100 border border-slate-700/80 hover:bg-slate-800 shadow-md shadow-black/40",
+      'bg-slate-900 text-slate-100 border border-slate-700/80 hover:bg-slate-800 shadow-md shadow-black/40',
     outline:
-      "bg-transparent text-indigo-400 border-2 border-indigo-500/60 hover:bg-indigo-500/10 hover:border-indigo-400",
+      'bg-transparent text-indigo-400 border-2 border-indigo-500/60 hover:bg-indigo-500/10 hover:border-indigo-400',
     ghost:
-      "bg-transparent text-slate-200 hover:bg-slate-800/60 hover:text-white",
+      'bg-transparent text-slate-200 hover:bg-slate-800/60 hover:text-white',
   };
 
   // Size styling
   const sizeStyles = {
-    sm: "px-4 py-2 text-xs font-semibold gap-1.5 rounded-lg",
-    md: "px-6 py-3 text-sm font-semibold gap-2 rounded-xl",
-    lg: "px-8 py-4 text-base font-semibold gap-2.5 rounded-2xl",
+    sm: 'px-4 py-2 text-xs font-semibold gap-1.5 rounded-lg',
+    md: 'px-6 py-3 text-sm font-semibold gap-2 rounded-xl',
+    lg: 'px-8 py-4 text-base font-semibold gap-2.5 rounded-2xl',
   };
 
   return (
@@ -143,7 +149,7 @@ export default function MagneticRippleButton({
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
       whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
-      className={`relative inline-flex items-center justify-center overflow-hidden cursor-pointer select-none transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`relative inline-flex cursor-pointer items-center justify-center overflow-hidden transition-colors duration-200 outline-none select-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       {...props}
     >
       {/* Interactive Radial Spotlight Glow */}
@@ -153,12 +159,12 @@ export default function MagneticRippleButton({
           style={{
             left: `${mousePos.x}px`,
             top: `${mousePos.y}px`,
-            width: "120px",
-            height: "120px",
+            width: '120px',
+            height: '120px',
             background:
-              variant === "primary"
-                ? "radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)"
-                : "radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%)",
+              variant === 'primary'
+                ? 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%)',
           }}
         />
       )}
@@ -170,14 +176,14 @@ export default function MagneticRippleButton({
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
-          className="pointer-events-none absolute rounded-full animate-ripple"
+          className="animate-ripple pointer-events-none absolute rounded-full"
           style={{
             left: `${ripple.x}px`,
             top: `${ripple.y}px`,
             width: `${ripple.size}px`,
             height: `${ripple.size}px`,
             backgroundColor: rippleColor,
-            transform: "translate(-50%, -50%) scale(0)",
+            transform: 'translate(-50%, -50%) scale(0)',
           }}
         />
       ))}

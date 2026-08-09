@@ -1,1 +1,1 @@
-export { default } from "./Prism";
+export { default } from './Prism';

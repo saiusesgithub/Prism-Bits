@@ -1,9 +1,15 @@
-import "server-only";
+import 'server-only';
 
-import { readFile } from "node:fs/promises";
-import { dirname, join, relative } from "node:path";
-import fg from "fast-glob";
-import { componentCategories, type ComponentDifficulty, type ComponentFramework, type ComponentMetadata, type ComponentStatus } from "@/data/components-registry";
+import { readFile } from 'node:fs/promises';
+import { dirname, join, relative } from 'node:path';
+import fg from 'fast-glob';
+import {
+  componentCategories,
+  type ComponentDifficulty,
+  type ComponentFramework,
+  type ComponentMetadata,
+  type ComponentStatus,
+} from '@/data/components-registry';
 
 type ComponentMetaJson = {
   name?: unknown;
@@ -21,53 +27,78 @@ type ComponentMetaJson = {
   dependencies?: unknown;
 };
 
-const allowedFrameworks = new Set<ComponentFramework>(["react", "html-css-js", "vue", "svelte", "css-only"]);
-const allowedStatuses = new Set<ComponentStatus>(["available", "planned", "draft"]);
+const allowedFrameworks = new Set<ComponentFramework>([
+  'react',
+  'html-css-js',
+  'vue',
+  'svelte',
+  'css-only',
+]);
+const allowedStatuses = new Set<ComponentStatus>([
+  'available',
+  'planned',
+  'draft',
+]);
 
 function normalizeDifficulty(value: unknown): ComponentDifficulty {
-  if (typeof value !== "string") return "Beginner";
+  if (typeof value !== 'string') return 'Beginner';
 
   const normalized = value.toLowerCase();
-  if (normalized === "advanced") return "Advanced";
-  if (normalized === "intermediate") return "Intermediate";
-  return "Beginner";
+  if (normalized === 'advanced') return 'Advanced';
+  if (normalized === 'intermediate') return 'Intermediate';
+  return 'Beginner';
 }
 
 function normalizeStatus(value: unknown): ComponentStatus {
-  return typeof value === "string" && allowedStatuses.has(value as ComponentStatus) ? (value as ComponentStatus) : "draft";
+  return typeof value === 'string' &&
+    allowedStatuses.has(value as ComponentStatus)
+    ? (value as ComponentStatus)
+    : 'draft';
 }
 
 function normalizeFramework(value: unknown): ComponentFramework | null {
-  return typeof value === "string" && allowedFrameworks.has(value as ComponentFramework) ? (value as ComponentFramework) : null;
+  return typeof value === 'string' &&
+    allowedFrameworks.has(value as ComponentFramework)
+    ? (value as ComponentFramework)
+    : null;
 }
 
 async function readOptionalFile(directory: string, fileName: string) {
   try {
-    return await readFile(join(directory, fileName), "utf8");
+    return await readFile(join(directory, fileName), 'utf8');
   } catch {
     return undefined;
   }
 }
 
 function validateString(value: unknown) {
-  return typeof value === "string" && value.trim() ? value.trim() : null;
+  return typeof value === 'string' && value.trim() ? value.trim() : null;
 }
 
-function getAssembledWebCode(meta: ComponentMetaJson, files: { html?: string; css?: string; js?: string }) {
+function getAssembledWebCode(
+  meta: ComponentMetaJson,
+  files: { html?: string; css?: string; js?: string }
+) {
   const chunks = [];
   if (files.html) chunks.push(files.html);
   if (files.css) chunks.push(`<style>\n${files.css}\n</style>`);
   if (files.js) chunks.push(`<script>\n${files.js}\n</script>`);
 
-  return chunks.join("\n\n") || `${meta.name ?? "Component"} source coming soon.`;
+  return (
+    chunks.join('\n\n') || `${meta.name ?? 'Component'} source coming soon.`
+  );
 }
 
-async function loadComponentFromMeta(metaPath: string): Promise<ComponentMetadata | null> {
+async function loadComponentFromMeta(
+  metaPath: string
+): Promise<ComponentMetadata | null> {
   const directory = dirname(metaPath);
   const relativeMetaPath = relative(process.cwd(), metaPath);
 
   try {
-    const meta = JSON.parse(await readFile(metaPath, "utf8")) as ComponentMetaJson;
+    const meta = JSON.parse(
+      await readFile(metaPath, 'utf8')
+    ) as ComponentMetaJson;
     const name = validateString(meta.name);
     const slug = validateString(meta.slug);
     const category = validateString(meta.category);
@@ -75,30 +106,42 @@ async function loadComponentFromMeta(metaPath: string): Promise<ComponentMetadat
     const description = validateString(meta.description);
 
     if (!name || !slug || !category || !framework || !description) {
-      console.warn(`[registry] Skipping ${relativeMetaPath}: missing name, slug, category, framework, or description.`);
+      console.warn(
+        `[registry] Skipping ${relativeMetaPath}: missing name, slug, category, framework, or description.`
+      );
       return null;
     }
 
-    const tags = Array.isArray(meta.tags) ? meta.tags.filter((tag): tag is string => typeof tag === "string") : [];
+    const tags = Array.isArray(meta.tags)
+      ? meta.tags.filter((tag): tag is string => typeof tag === 'string')
+      : [];
     const dependencies = Array.isArray(meta.dependencies)
-      ? meta.dependencies.filter((dependency): dependency is string => typeof dependency === "string")
+      ? meta.dependencies.filter(
+          (dependency): dependency is string => typeof dependency === 'string'
+        )
       : undefined;
 
-    const html = await readOptionalFile(directory, "index.html");
-    const css = await readOptionalFile(directory, "style.css");
-    const js = await readOptionalFile(directory, "script.js");
-    const tsxComponent = await readOptionalFile(directory, "component.tsx");
-    const vueComponent = await readOptionalFile(directory, "component.vue");
-    const svelteComponent = await readOptionalFile(directory, "component.svelte");
-    const previewSource = await readOptionalFile(directory, "preview.tsx");
-    const codeFile = await readOptionalFile(directory, "code.ts");
+    const html = await readOptionalFile(directory, 'index.html');
+    const css = await readOptionalFile(directory, 'style.css');
+    const js = await readOptionalFile(directory, 'script.js');
+    const tsxComponent = await readOptionalFile(directory, 'component.tsx');
+    const vueComponent = await readOptionalFile(directory, 'component.vue');
+    const svelteComponent = await readOptionalFile(
+      directory,
+      'component.svelte'
+    );
+    const previewSource = await readOptionalFile(directory, 'preview.tsx');
+    const codeFile = await readOptionalFile(directory, 'code.ts');
     const componentSource = tsxComponent ?? vueComponent ?? svelteComponent;
     // Code-tab source selection, in priority order:
     // 1. component.tsx / component.vue / component.svelte — the reusable source users copy.
     //    preview.tsx is a demo wrapper and never replaces it.
     // 2. code.ts — hand-written snippet override for components without a source module.
     // 3. Assembled index.html + style.css + script.js for web components.
-    const code = componentSource ?? codeFile ?? getAssembledWebCode(meta, { html, css, js });
+    const code =
+      componentSource ??
+      codeFile ??
+      getAssembledWebCode(meta, { html, css, js });
 
     return {
       name,
@@ -109,14 +152,16 @@ async function loadComponentFromMeta(metaPath: string): Promise<ComponentMetadat
       tags,
       difficulty: normalizeDifficulty(meta.difficulty),
       author: {
-        name: validateString(meta.author?.name) ?? "Prism Bits",
+        name: validateString(meta.author?.name) ?? 'Prism Bits',
         github: validateString(meta.author?.github) ?? undefined,
       },
       status: normalizeStatus(meta.status),
       dependencies,
       files: {
         code,
-        usage: componentSource ? `<${name.replace(/\s+/g, "")} />` : html ?? code,
+        usage: componentSource
+          ? `<${name.replace(/\s+/g, '')} />`
+          : (html ?? code),
         previewSource,
         html,
         css,
@@ -124,17 +169,21 @@ async function loadComponentFromMeta(metaPath: string): Promise<ComponentMetadat
       },
     };
   } catch (error) {
-    console.warn(`[registry] Skipping ${relativeMetaPath}: ${error instanceof Error ? error.message : "invalid meta.json"}`);
+    console.warn(
+      `[registry] Skipping ${relativeMetaPath}: ${error instanceof Error ? error.message : 'invalid meta.json'}`
+    );
     return null;
   }
 }
 
 export async function getComponentsRegistry() {
-  const metaPaths = await fg("registry/**/meta.json", {
+  const metaPaths = await fg('registry/**/meta.json', {
     absolute: true,
     onlyFiles: true,
   });
-  const components = (await Promise.all(metaPaths.map(loadComponentFromMeta))).filter((component): component is ComponentMetadata => Boolean(component));
+  const components = (
+    await Promise.all(metaPaths.map(loadComponentFromMeta))
+  ).filter((component): component is ComponentMetadata => Boolean(component));
 
   return components.sort((a, b) => a.name.localeCompare(b.name));
 }
