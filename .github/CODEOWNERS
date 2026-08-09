@@ -1,0 +1,15 @@
+# Default owners for everything in the repo
+* @rohitkumarnaidu @saiusesgithub
+
+# Core configuration and CI/CD
+/.github/ @rohitkumarnaidu
+/.husky/ @rohitkumarnaidu
+/scripts/ @rohitkumarnaidu
+package.json @rohitkumarnaidu
+eslint.config.mjs @rohitkumarnaidu
+.prettierrc @rohitkumarnaidu
+
+# Component registry and UI
+/registry/ @saiusesgithub
+/src/ @saiusesgithub
+
