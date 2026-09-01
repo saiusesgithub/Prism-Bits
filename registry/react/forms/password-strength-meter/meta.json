@@ -1,0 +1,20 @@
+{
+  "name": "Password Strength Meter",
+  "slug": "password-strength-meter",
+  "category": "forms",
+  "framework": "react",
+  "description": "A password field with a live segmented strength bar and a requirements checklist, powered by a pure scoring function.",
+  "tags": [
+    "form",
+    "password",
+    "validation",
+    "strength",
+    "security"
+  ],
+  "difficulty": "intermediate",
+  "status": "available",
+  "author": {
+    "name": "Vedant",
+    "github": "vedant7007"
+  }
+}
