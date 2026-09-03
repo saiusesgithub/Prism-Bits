@@ -7,12 +7,13 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/common/button";
 import { GitHubIcon } from "@/components/common/github-icon";
+import { ThemeToggle } from "@/components/common/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/docs", label: "Docs" },
-  { href: "/components", label: "Components" },
-  { href: "/showcase", label: "Showcase" },
+	{ href: "/docs", label: "Docs" },
+	{ href: "/components", label: "Components" },
+	{ href: "/showcase", label: "Showcase" },
 ];
 
 export function Navbar() {
@@ -57,7 +58,7 @@ export function Navbar() {
                   onMouseEnter={() => setHovered(item.href)}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "relative rounded-full px-4 py-2 text-[15px] font-medium transition-colors duration-200",
+                    "relative rounded-full px-4 py-2 text[15px] font-medium transition-colors duration-200",
                     isActive || hovered === item.href ? "text-white" : "text-white/55",
                   )}
                 >
@@ -75,6 +76,7 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Button
               href="https://github.com/saiusesgithub/Prism-Bits"
               target="_blank"

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Bruno_Ace_SC, Italianno, Montserrat } from "next/font/google";
 import "@/styles/globals.css";
+
 import { Navbar } from "@/components/common/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -36,10 +38,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${montserrat.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}>
-        <Navbar />
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${montserrat.variable} ${italianno.variable} ${brunoAce.variable} antialiased`}
+      >
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
